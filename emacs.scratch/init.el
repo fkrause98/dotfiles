@@ -63,6 +63,7 @@
 (setq use-package-always-ensure t)
 
 (global-display-line-numbers-mode)
+(column-number-mode)
 (setq display-line-numbers-type 'relative)
 (defun toggle-lines ()
   (interactive)
