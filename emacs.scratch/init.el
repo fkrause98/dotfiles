@@ -188,8 +188,25 @@
   (evil-collection-init))
 (use-package evil-commentary
   :after evil-collection)
+(use-package evil-surround
+  :after evil-commentary
+  :config
+  (global-evil-surround-mode 1))
+(use-package evil-snipe
+  :config
+  (evil-snipe-mode)
+  (evil-snipe-override-mode 1))
+(setq org-format-latex-options
+      '(:foreground default
+        :background default
+        :scale 1.5
+        :html-foreground "Black"
+        :html-background "Transparent"
+        :html-scale 1.5
+        :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
 
 (use-package hydra)
+(use-package ace-window)
 
 (defhydra hydra-text-scale (:timeout 4)
   "scale text"
