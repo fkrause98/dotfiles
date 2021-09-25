@@ -19,8 +19,8 @@
     (if (string-empty-p new-buffer)
 	(switch-to-buffer (concat "new-buff"(number-to-string (random 100))))
 	(switch-to-buffer new-buffer))))
-;; (defun funcs//check-tree-sitter-has-lang  (mode)
-;;   (assoc mode (
+(defun funcs//tree-sitter-has-lang  (mode)
+  (assoc mode tree-sitter-major-mode-language-alist))
   
 			       
     

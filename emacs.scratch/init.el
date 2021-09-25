@@ -124,8 +124,9 @@
 (which-key-setup-minibuffer)
 
 (use-package ivy-rich
-  :init
-  (ivy-rich-mode 1))
+  :config
+  (ivy-rich-mode 1)
+  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line))
 
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
@@ -283,11 +284,10 @@
 (use-package tree-sitter)
 (use-package tree-sitter-langs
   :after tree-sitter)
-;; (progn
-;; (global-tree-sitter-mode)
 (add-hook 'prog-mode-hook
 	    #'(lambda ()
-		(message (symbol-name major-mode))))
+		(when (funcs//tree-sitter-has-lang major-mode)
+                 (tree-sitter-hl-mode))))
   
 (use-package expand-region
   :bind ("C-=" . er/expand-region))
@@ -298,6 +298,7 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 (use-package highlight-indent-guides)
 (setq highlight-indent-guides-method 'character)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 (setq-default indent-tabs-mode nil)
 (use-package undo-tree)
 (use-package ivy-rich)
@@ -312,6 +313,34 @@
                         (registers . 5))))
 (straight-use-package
  '(buffer-expose :type git :host github :repo "clemera/buffer-expose"))
+(use-package scroll-on-jump)
+(with-eval-after-load 'evil
+  (scroll-on-jump-advice-add evil-undo)
+  (scroll-on-jump-advice-add evil-redo)
+  (scroll-on-jump-advice-add evil-jump-item)
+  (scroll-on-jump-advice-add evil-jump-forward)
+  (scroll-on-jump-advice-add evil-jump-backward)
+  (scroll-on-jump-advice-add evil-ex-search-next)
+  (scroll-on-jump-advice-add evil-ex-search-previous)
+  (scroll-on-jump-advice-add evil-forward-paragraph)
+  (scroll-on-jump-advice-add evil-backward-paragraph)
+  (scroll-on-jump-advice-add evil-goto-mark)
+
+  ;; Actions that themselves scroll.
+  (scroll-on-jump-with-scroll-advice-add evil-goto-line)
+  (scroll-on-jump-with-scroll-advice-add evil-scroll-down)
+  (scroll-on-jump-with-scroll-advice-add evil-scroll-up)
+  (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-center)
+  (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-top)
+  (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-bottom))
+
+(with-eval-after-load 'goto-chg
+  (scroll-on-jump-advice-add goto-last-change)
+  (scroll-on-jump-advice-add goto-last-change-reverse))
+
+(global-set-key (kbd "<C-M-next>") (scroll-on-jump-interactive 'diff-hl-next-hunk))
+(global-set-key (kbd "<C-M-prior>") (scroll-on-jump-interactive 'diff-hl-previous-hunk))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
