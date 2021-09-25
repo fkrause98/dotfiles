@@ -115,8 +115,6 @@
 (use-package doom-themes
   :init (load-theme 'doom-palenight t))
 
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package which-key
   :init (which-key-mode)
@@ -181,6 +179,8 @@
   (evil-set-initial-state 'dashboard-mode 'normal))
 (evil-mode 1)
 (turn-on-evil-mode)
+(add-hook 'evil-mode-hook
+          'undo-tree-mode)
 
 (use-package evil-collection
   :after evil
@@ -240,7 +240,10 @@
 :prefix "SPC"
  :global-prefix "C-SPC")
 
+
 (general//leader-key
+  "i" '(:ignore t :which-key "Insert...")
+  "ir" '(counsel-evil-registers :which-key "Evil Register")
   "g" '(:ignore t :which-key "Magit...")
   "gg" '(magit-status :which-key "Status")
   "gc" '(magit-checkout :which-key "Checkout")
@@ -258,38 +261,121 @@
  "b" '(:ignore t :which-key "Buffers")
  "bs" '(counsel-switch-buffer :which-key "Switch buffers")
  "br" '(revert-buffer-quick :which-key "Revert buffer")
+ "bp" '(counsel-projectile-switch-to-buffer :which-key "Switch buffer projects")
+ "bk" '(kill-current-buffer :which-key "Kill current buffer")
+ "bn" '(funcs//new-buffer :which-key "New buffer")
+ "bl" '(evil-switch-to-windows-last-buffer :which-key "Switch to last buffer")
+ "be" '(buffer-expose :wich-key "Grid buffer view")
  "s" '(:ignore t :which-key "Search")
  "ss" '(swiper  :which-key "Search Buffer")
  "sp" '(counsel-projectile-ag :which-key "Search Current Project")
+ "sm" '(counsel-evil-marks :which-key "Evil Marks")
  "p" '(:ignore t :which-key "Projectile")
  "pr" '(projectile-run-project :which-key "Run Project")
  "pc" '(projectile-compile-project :which-key "Switch project")
  "pp" '(counsel-projectile-switch-project :which-key "Switch project")
  "pf" '(counsel-projectile-find-file :which-key "Open Project File ")
- "pa"'(projectile-add-known-project :which-key "Add project"))
+ "pa"'(projectile-add-known-project :which-key "Add project")
+ "w" '(:ignore t :which-key "Window...")
+ "ww" '(ace-window :which-key "Switch"))
 
 
 (use-package tree-sitter)
 (use-package tree-sitter-langs
   :after tree-sitter)
-(progn
-(global-tree-sitter-mode)
+;; (progn
+;; (global-tree-sitter-mode)
 (add-hook 'prog-mode-hook
 	    #'(lambda ()
-		(tree-sitter-hl-mode))))
+		(message (symbol-name major-mode))))
   
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
+(setq-default c-basic-offset 4)
+(setq c-default-style "stroustrup")
 
-
+(use-package rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(use-package highlight-indent-guides)
+(setq highlight-indent-guides-method 'character)
+(setq-default indent-tabs-mode nil)
+(use-package undo-tree)
+(use-package ivy-rich)
+(use-package ace-window)
+(use-package dashboard
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-items '((recents  . 5)
+                        (bookmarks . 5)
+                        (projects . 5)
+                        (agenda . 5)
+                        (registers . 5))))
+(straight-use-package
+ '(buffer-expose :type git :host github :repo "clemera/buffer-expose"))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-undo-system 'undo-tree)
  '(package-selected-packages
-   '(tree-sitter-langs all-the-icons-ivy evil-commentary evil-commentary-mode forge evil-magit magit counsel-projectile projectile which-key use-package rainbow-delimiters ivy-rich hydra helpful general evil-collection doom-themes doom-modeline counsel command-log-mode)))
+   '(evil-snipe dashboard highlight-indent-guides higlight-indent-guides evil-surround ace-window expand-region tree-sitter-langs all-the-icons-ivy evil-commentary evil-commentary-mode forge evil-magit magit counsel-projectile projectile which-key use-package rainbow-delimiters ivy-rich hydra helpful general evil-collection doom-themes doom-modeline counsel command-log-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+;; (defhydra hydra-flycheck
+;;     (:pre (flycheck-list-errors)
+;;      :post (quit-windows-on "*Flycheck errors*")
+;;      :hint nil)
+;;   "Errors"
+;;   ("f" flycheck-error-list-set-filter "Filter")
+;;   ("j" flycheck-next-error "Next")
+;;   ("k" flycheck-previous-error "Previous")
+;;   ("gg" flycheck-first-error "First")
+;;   ("G" (progn (goto-char (point-max)) (flycheck-previous-error)) "Last")
+;;   ("q" nil))
+;; (defhydra hydra-window (:color red
+;;                                :hint nil)
+;;   "
+;;  Split: _v_ert _x_:horz
+;; Delete: _o_nly  _da_ce  _dw_indow  _db_uffer  _df_rame
+;;   Move: _s_wap
+;; Frames: _f_rame new  _df_ delete
+;;   Misc: _m_ark _a_ce  _u_ndo  _r_edo"
+;;   ("h" windmove-left)
+;;   ("j" windmove-down)
+;;   ("k" windmove-up)
+;;   ("l" windmove-right)
+;;   ("H" hydra-move-splitter-left)
+;;   ("J" hydra-move-splitter-down)
+;;   ("K" hydra-move-splitter-up)
+;;   ("L" hydra-move-splitter-right)
+;;   ("|" (lambda ()
+;;          (interactive)
+;;          (split-window-right)
+;;          (windmove-right)))
+;;   ("_" (lambda ()
+;;          (interactive)
+;;          (split-window-below)
+;;          (windmove-down)))
+;;   ("v" split-window-right)
+;;   ("x" split-window-below)
+;;                                         ;("t" transpose-frame "'")
+;;   ;; winner-mode must be enabled
+;;   ("u" winner-undo)
+;;   ("r" winner-redo) ;;Fixme, not working?
+;;   ("o" delete-other-windows :exit t)
+;;   ("a" ace-window :exit t)
+;;   ("f" new-frame :exit t)
+;;   ("s" ace-swap-window)
+;;   ("da" ace-delete-window)
+;;   ("dw" delete-window)
+;;   ("db" kill-this-buffer)
+;;   ("df" delete-frame :exit t)
+;;   ("q" nil)
+;;                                         ;("i" ace-maximize-window "ace-one" :color blue)
+;;                                         ;("b" ido-switch-buffer "buf")
+;;   ("m" headlong-bookmark-jump))
