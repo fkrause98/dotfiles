@@ -10,7 +10,8 @@
 (set-fringe-mode 10)        ; Give some breathing room
 
 (menu-bar-mode -1)            ; Disable the menu bar
-;; Set up the visible bell
+
+;; Disable this annoying effect
 (setq visible-bell nil)
 
 ;;(set-face-attribute 'default nil :font "Fira Code Retina" :height 120)
