@@ -1,4 +1,4 @@
-;; You will most likely need to adjust this font size for your system!
+(load "~/.emacs.scratch/funcs.el")
 
 
 ;; Less typing == Happines
