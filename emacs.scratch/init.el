@@ -1,4 +1,25 @@
 (load "~/.emacs.scratch/funcs.el")
+(setq dashboard-items '((recents  . 5)
+                        (bookmarks . 5)
+                        (projects . 5)
+                        (agenda . 5)
+                        (registers . 5)))
+
+(setq dashboard-set-heading-icons t)
+(setq dashboard-set-file-icons t)
+(when (display-graphic-p)
+  (setq dashboard-startup-banner 'logo))
+;; Value can be
+;; 'official which displays the official emacs logo
+;; 'logo which displays an alternative emacs logo
+;; 1, 2 or 3 which displays one of the text banners
+;; "path/to/your/image.gif", "path/to/your/image.png" or "path/to/your/text.txt" which displays whatever gif/image/text you would prefer
+
+;; Content is not centered by default. To center, set
+(setq dashboard-center-content t)
+
+;; To disable shortcut "jump" indicators for each section, set
+(setq dashboard-show-shortcuts nil)
 
 
 ;; Less typing == Happines
@@ -15,7 +36,7 @@
 (setq visible-bell nil)
 
 ;;(set-face-attribute 'default nil :font "Fira Code Retina" :height 120)
-(set-face-attribute 'default nil :font "JetBrains Mono" :height 120)
+(set-face-attribute 'default nil :font "JetBrains Mono" :height 90)
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -74,6 +95,7 @@
 ;; Disable line numbers for some modes
 (dolist (mode '(term-mode-hook
                 shell-mode-hook
+                treemacs-mode-hook
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
@@ -111,7 +133,6 @@
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 35)))
-
 (use-package doom-themes
   :init (load-theme 'doom-palenight t))
 
@@ -127,16 +148,17 @@
   :config
   (ivy-rich-mode 1)
   (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line))
-
+(use-package all-the-icons-ivy-rich
+  :after ivy-rich
+  :init
+  (all-the-icons-ivy-rich-mode 1))
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
          ("C-x b" . counsel-ibuffer)
          ("C-x C-f" . counsel-find-file)
          :map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history)))
-
 (setq ivy-initial-inputs-alist nil)
-
 (use-package helpful
   :custom
   (counsel-describe-function-function #'helpful-callable)
@@ -166,6 +188,7 @@
   (setq evil-want-C-u-scroll t)
   (setq evil-want-C-i-jump t)
   (setq evil-want-C-u-delete t)
+  (setq evil-kill-on-visual-paste nil)
   :hook (evil-mode . evil//evil-hook)
   :config
   (evil-mode 1)
@@ -197,14 +220,17 @@
   :config
   (evil-snipe-mode)
   (evil-snipe-override-mode 1))
+(use-package evil-matchit)
+(add-hook 'prog-mode-hook 'evil-matchit-mode)
+;; (use-package evil-nerd-commenter)
 (setq org-format-latex-options
       '(:foreground default
-        :background default
-        :scale 1.5
-        :html-foreground "Black"
-        :html-background "Transparent"
-        :html-scale 1.5
-        :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+                    :background default
+                    :scale 1.5
+                    :html-foreground "Black"
+                    :html-background "Transparent"
+                    :html-scale 1.5
+                    :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
 
 (use-package hydra)
 (use-package ace-window)
@@ -214,6 +240,17 @@
   ("j" text-scale-increase "in")
   ("k" text-scale-decrease "out")
   ("f" nil "finished" :exit t))
+(defhydra hydra-flycheck
+  (:pre (flycheck-list-errors)
+        :post (quit-windows-on "*Flycheck errors*")
+        :hint nil)
+  "Errors"
+  ("f" flycheck-error-list-set-filter "Filter")
+  ("j" flycheck-next-error "Next")
+  ("k" flycheck-previous-error "Previous")
+  ("gg" flycheck-first-error "First")
+  ("G" (progn (goto-char (point-max)) (flycheck-previous-error)) "Last")
+  ("q" nil))
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
@@ -243,6 +280,8 @@
 
 
 (general//leader-key
+  "c" '(:ignore t :which-key "Code")
+  "cl" '(lsp-command-map :which-key "LSP...")
   "i" '(:ignore t :which-key "Insert...")
   "ir" '(counsel-evil-registers :which-key "Evil Register")
   "g" '(:ignore t :which-key "Magit...")
@@ -250,35 +289,37 @@
   "gc" '(magit-checkout :which-key "Checkout")
   "gb" '(magit-branch-checkout :which-key "Branch Checkout")
   "gf" '(magit-file-checkout :which-key "File Checkout")
- "e" '(:ignore t :which-key "Eval...")
- "el" '(eval-last-sexp :which-key "Last sexp")
- "eb" '(eval-buffer :which-key "Buffer")
- "f" '(:ignore t :which-key "Files")
- "ff" '(counsel-find-file :which-key "Open a file")
- "fr" '(counsel-recentf :which-key "Open a recent file")
- "d" '(:ignore t :which-key "Dired")
- "dp" '(projectile-dired :which-key "Dired Current Project")
- "dj" '(dired-jump :which-key "Open dired on the current dir.")
- "b" '(:ignore t :which-key "Buffers")
- "bs" '(counsel-switch-buffer :which-key "Switch buffers")
- "br" '(revert-buffer-quick :which-key "Revert buffer")
- "bp" '(counsel-projectile-switch-to-buffer :which-key "Switch buffer projects")
- "bk" '(kill-current-buffer :which-key "Kill current buffer")
- "bn" '(funcs//new-buffer :which-key "New buffer")
- "bl" '(evil-switch-to-windows-last-buffer :which-key "Switch to last buffer")
- "be" '(buffer-expose :wich-key "Grid buffer view")
- "s" '(:ignore t :which-key "Search")
- "ss" '(swiper  :which-key "Search Buffer")
- "sp" '(counsel-projectile-ag :which-key "Search Current Project")
- "sm" '(counsel-evil-marks :which-key "Evil Marks")
- "p" '(:ignore t :which-key "Projectile")
- "pr" '(projectile-run-project :which-key "Run Project")
- "pc" '(projectile-compile-project :which-key "Switch project")
- "pp" '(counsel-projectile-switch-project :which-key "Switch project")
- "pf" '(counsel-projectile-find-file :which-key "Open Project File ")
- "pa"'(projectile-add-known-project :which-key "Add project")
- "w" '(:ignore t :which-key "Window...")
- "ww" '(ace-window :which-key "Switch"))
+  "e" '(:ignore t :which-key "Eval...")
+  "el" '(eval-last-sexp :which-key "Last sexp")
+  "eb" '(eval-buffer :which-key "Buffer")
+  "f" '(:ignore t :which-key "Files")
+  "ff" '(counsel-find-file :which-key "Open a file")
+  "fr" '(counsel-recentf :which-key "Open a recent file")
+  "d" '(:ignore t :which-key "Dired")
+  "dp" '(projectile-dired :which-key "Dired Current Project")
+  "dj" '(dired-jump :which-key "Open dired on the current dir.")
+  "b" '(:ignore t :which-key "Buffers")
+  "bs" '(counsel-switch-buffer :which-key "Switch buffers")
+  "br" '(revert-buffer-quick :which-key "Revert buffer")
+  "bp" '(counsel-projectile-switch-to-buffer :which-key "Switch buffer projects")
+  "bk" '(kill-current-buffer :which-key "Kill current buffer")
+  "bn" '(funcs//new-buffer :which-key "New buffer")
+  "bl" '(evil-switch-to-windows-last-buffer :which-key "Switch to last buffer")
+  "be" '(buffer-expose :wich-key "Grid buffer view")
+  "bt" '(hydra-text-scale/body :wich-key "Buffer Text Size")
+  "s" '(:ignore t :which-key "Search")
+  "ss" '(swiper  :which-key "Search Buffer")
+  "sp" '(counsel-projectile-rg :which-key "Search Current Project")
+  "sm" '(counsel-evil-marks :which-key "Evil Marks")
+  "si" '(counsel-imenu :which-key "Symbol")
+  "p" '(:ignore t :which-key "Projectile")
+  "pr" '(projectile-run-project :which-key "Run Project")
+  "pc" '(projectile-compile-project :which-key "Switch project")
+  "pp" '(counsel-projectile-switch-project :which-key "Switch project")
+  "pf" '(counsel-projectile-find-file :which-key "Open Project File ")
+  "pa"'(projectile-add-known-project :which-key "Add project")
+  "w" '(:ignore t :which-key "Window...")
+  "ww" '(ace-window :which-key "Switch"))
 
 
 (use-package tree-sitter)
@@ -300,9 +341,12 @@
 (setq highlight-indent-guides-method 'character)
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 (setq-default indent-tabs-mode nil)
-(use-package undo-tree)
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode))
 (use-package ivy-rich)
 (use-package ace-window)
+(use-package page-break-lines)
 (use-package dashboard
   :config
   (dashboard-setup-startup-hook)
@@ -346,26 +390,19 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(display-line-numbers-type 'relative)
  '(evil-undo-system 'undo-tree)
+ '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(evil-snipe dashboard highlight-indent-guides higlight-indent-guides evil-surround ace-window expand-region tree-sitter-langs all-the-icons-ivy evil-commentary evil-commentary-mode forge evil-magit magit counsel-projectile projectile which-key use-package rainbow-delimiters ivy-rich hydra helpful general evil-collection doom-themes doom-modeline counsel command-log-mode)))
+   '(evil-snipe dashboard highlight-indent-guides higlight-indent-guides evil-surround ace-window expand-region tree-sitter-langs all-the-icons-ivy evil-commentary evil-commentary-mode forge evil-magit magit counsel-projectile projectile which-key use-package rainbow-delimiters ivy-rich hydra helpful general evil-collection doom-themes doom-modeline counsel command-log-mode))
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
-;; (defhydra hydra-flycheck
-;;     (:pre (flycheck-list-errors)
-;;      :post (quit-windows-on "*Flycheck errors*")
-;;      :hint nil)
-;;   "Errors"
-;;   ("f" flycheck-error-list-set-filter "Filter")
-;;   ("j" flycheck-next-error "Next")
-;;   ("k" flycheck-previous-error "Previous")
-;;   ("gg" flycheck-first-error "First")
-;;   ("G" (progn (goto-char (point-max)) (flycheck-previous-error)) "Last")
-;;   ("q" nil))
+ '(default ((t (:family "JetBrains Mono" :foundry "JB" :slant normal :weight normal :height 98 :width normal)))))
 ;; (defhydra hydra-window (:color red
 ;;                                :hint nil)
 ;;   "
@@ -408,3 +445,166 @@
 ;;                                         ;("i" ace-maximize-window "ace-one" :color blue)
 ;;                                         ;("b" ido-switch-buffer "buf")
 ;;   ("m" headlong-bookmark-jump))
+
+;; (add-to-list 'default-frame-alist '(font . "JetBrains Mono-10"))
+(use-package treemacs
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'winum
+    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+  :config
+  (progn
+    (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
+          treemacs-deferred-git-apply-delay        0.5
+          treemacs-directory-name-transformer      #'identity
+          treemacs-display-in-side-window          t
+          treemacs-eldoc-display                   t
+          treemacs-file-event-delay                5000
+          treemacs-file-extension-regex            treemacs-last-period-regex-value
+          treemacs-file-follow-delay               0.2
+          treemacs-file-name-transformer           #'identity
+          treemacs-follow-after-init               t
+          treemacs-expand-after-init               t
+          treemacs-git-command-pipe                ""
+          treemacs-goto-tag-strategy               'refetch-index
+          treemacs-indentation                     2
+          treemacs-indentation-string              " "
+          treemacs-is-never-other-window           nil
+          treemacs-max-git-entries                 5000
+          treemacs-missing-project-action          'ask
+          treemacs-move-forward-on-expand          nil
+          treemacs-no-png-images                   nil
+          treemacs-no-delete-other-windows         t
+          treemacs-project-follow-cleanup          nil
+          treemacs-persist-file                    (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+          treemacs-position                        'left
+          treemacs-read-string-input               'from-child-frame
+          treemacs-recenter-distance               0.1
+          treemacs-recenter-after-file-follow      nil
+          treemacs-recenter-after-tag-follow       nil
+          treemacs-recenter-after-project-jump     'always
+          treemacs-recenter-after-project-expand   'on-distance
+          treemacs-litter-directories              '("/node_modules" "/.venv" "/.cask")
+          treemacs-show-cursor                     nil
+          treemacs-show-hidden-files               t
+          treemacs-silent-filewatch                nil
+          treemacs-silent-refresh                  nil
+          treemacs-sorting                         'alphabetic-asc
+          treemacs-select-when-already-in-treemacs 'move-back
+          treemacs-space-between-root-nodes        t
+          treemacs-tag-follow-cleanup              t
+          treemacs-tag-follow-delay                1.5
+          treemacs-text-scale                      nil
+          treemacs-user-mode-line-format           nil
+          treemacs-user-header-line-format         nil
+          treemacs-width                           35
+          treemacs-width-is-initially-locked       t
+          treemacs-workspace-switch-cleanup        nil)
+
+    ;; The default width and height of the icons is 22 pixels. If you are
+    ;; using a Hi-DPI display, uncomment this to double the icon size.
+    ;;(treemacs-resize-icons 44)
+
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t)
+    (treemacs-fringe-indicator-mode 'always)
+
+    (pcase (cons (not (null (executable-find "git")))
+                 (not (null treemacs-python-executable)))
+      (`(t . t)
+       (treemacs-git-mode 'deferred))
+      (`(t . _)
+       (treemacs-git-mode 'simple)))
+
+    (treemacs-hide-gitignored-files-mode nil))
+  :bind
+  (:map global-map
+        ("M-0"       . treemacs-select-window)
+        ("C-x t 1"   . treemacs-delete-other-windows)
+        ("C-x t t"   . treemacs)
+        ("C-x t B"   . treemacs-bookmark)
+        ("C-x t C-t" . treemacs-find-file)
+        ("C-x t M-t" . treemacs-find-tag)))
+
+(use-package treemacs-evil
+  :after (treemacs evil)
+  :ensure t)
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
+
+(use-package all-the-icons-dired
+  :config
+  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+(use-package treemacs-all-the-icons)
+(use-package treemacs-magit
+  :after (treemacs magit)
+  :ensure t)
+
+(use-package company
+  :config
+  (dolist (mode '(python-mode-hook
+                  c++-mode-hook
+                  emacs-lisp-mode-hook))
+    (add-hook mode 'company-mode))
+  :custom 
+  (company--idle-delay 0.0))
+(use-package company-box
+  :config
+  (add-hook 'company-mode 'company-box))
+(add-hook 'python-mode 'company-mode)
+(defun hooks//aggressive-indent-hook ()
+  (progn
+    (electric-indent-mode -1)
+    (electric-indent-local-mode -1)
+    (aggressive-indent-mode)))
+
+(use-package aggressive-indent
+  :config
+  (add-hook 'emacs-lisp-mode-hook 'hooks//aggressive-indent-hook))
+(dolist (mode '(c++-mode-hook))
+  (add-hook mode 'electric-indent-mode))
+(use-package flycheck
+  :config 
+  (add-hook 'c++-mode-hook #'flycheck-mode))
+(use-package elpy
+  :config
+  (add-hook 'python-mode-hook #'elpy-enable)
+  (add-hook 'elpy-mode-hook #'(lambda () (highlight-indentation-mode -1)))
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+(treemacs-load-theme "all-the-icons")
+
+(use-package vterm
+  :config 
+  (add-hook 'vterm-mode-hook #'display-line-numbers-mode))
+
+(add-hook 'prog-mode-hook #'(lambda () (setq truncate-lines nil)))
+(add-hook 'prog-mode-hook #'electric-pair-mode)
+
+(use-package alchemist)
+(use-package js2-mode
+  :config
+  (add-hook 'js-mode-hook #'(progn
+                              (js2-minor-mode)
+                              (js2-imenu-extras-setup)
+                              (js2-imenu-extras-mode))))
+(use-package web-mode)
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-lens-enable t
+        lsp-eldoc-enable-hover nil
+        lsp-ui-sideline-enable nil)
+  :config
+  (lsp-enable-which-key-integration t)
+  (add-hook 'c++-mode-hook 'lsp))
+(use-package lsp-treemacs
+  :after lsp)
+(use-package lsp-ivy)
+(straight-use-package '(apheleia :host github :repo "raxod502/apheleia"))
+(apheleia-global-mode +1)
