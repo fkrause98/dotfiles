@@ -1,7 +1,7 @@
 from typing import List  # noqa: F401
 import os
 import subprocess
-from libqtile import bar, layout, widget, hook, qtile, window
+from libqtile import bar, layout, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
