@@ -4,3 +4,4 @@ nm-applet &
 # https://github.com/flameshot-org/flameshot
 flameshot &
 setxkbmap us intl &
+picom &

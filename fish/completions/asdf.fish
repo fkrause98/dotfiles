@@ -1,1 +1,0 @@
-/home/francisco/.asdf/completions/asdf.fish
