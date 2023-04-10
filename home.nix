@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 let
-  isDarwin = builtins.currentSystem == "darwin";
+  isMac = builtins.currentSystem == "darwin";
   isLinux = builtins.currentSystem == "linux";
   # The emacs aarch64 is currently broken, so
   # ignore it for now.
   emacs = if isLinux then [pkgs.emacs-gtk] else [];
+  iterm = if isMac then [pkgs.iterm2] else [];
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -33,6 +34,7 @@ in
     pkgs.direnv
     pkgs.rustup
     pkgs.gnumake
+    pkgs.neofetch
     pkgs.elixir-ls
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -49,6 +51,8 @@ in
   ]
   ++
   emacs
+  ++
+  iterm
   ;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
