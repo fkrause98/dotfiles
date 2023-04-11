@@ -4,6 +4,7 @@ This repo contains my configuration files for the programs I use, managed with n
 
 ## Install:
 Simply run the install.sh and wait for it to finish (more info in home_manager.md)
-This will also install doom emacs and sym-link the config.
+
+This will also install doom emacs and symlink the config.
 ## Adding programs:
 To add a program, add a nix pkg to the home.nix file.
