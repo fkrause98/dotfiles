@@ -27,7 +27,11 @@ $ nix-channel --add https://github.com/nix-community/home-manager/archive/master
   nix-channel --update &&
   nix-shell '<home-manager>' -A install
 ```
-5. Finally, run home-manager:
+5. Link this repo's config:
+```
+ln -s $(pwd)/home.nix ~/.config/home-manager/home.nix
+```
+6. Finally, run home-manager:
 ```
 $ home-manager switch
 ```
