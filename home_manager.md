@@ -1,6 +1,6 @@
 ## Install Nix
 ```sh
- sh <(curl -L https://nixos.org/nix/install) --no-daemon --yes
+sh <(curl -L https://nixos.org/nix/install) --no-daemon --yes
 ```
 ## Install Home-manager
 Check with:

@@ -1,17 +1,16 @@
 { config, pkgs, ... }:
 let
   isMac = builtins.currentSystem == "darwin";
-  isLinux = builtins.currentSystem == "linux";
+  isLinux = builtins.currentSystem == "x86_64-linux";
   # The emacs aarch64 is currently broken, so
   # ignore it for now.
-  emacs = if isLinux then [pkgs.emacs-gtk] else [];
-  iterm = if isMac then [pkgs.iterm2] else [];
-in
-{
+  emacs = if isLinux then [ pkgs.emacs ] else [ ];
+  iterm = if isMac then [ pkgs.iterm2 ] else [ ];
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "fran";
-  home.homeDirectory = "/Users/fran";
+  home.homeDirectory = builtins.getEnv "HOME";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -24,18 +23,19 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.neovim
     pkgs.asdf-vm
     pkgs.ripgrep
+    pkgs.fd
     pkgs.exa
     pkgs.bat
-    pkgs.fish
     pkgs.tmux
     pkgs.direnv
     pkgs.rustup
     pkgs.gnumake
     pkgs.neofetch
     pkgs.elixir-ls
+    pkgs.jq
+    pkgs.nixfmt
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -48,12 +48,7 @@ in
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-  ]
-  ++
-  emacs
-  ++
-  iterm
-  ;
+  ] ++ emacs ++ iterm;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -81,43 +76,93 @@ in
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "vim";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  # Tmux config
   programs.tmux = {
     enable = true;
     extraConfig = ''
-    #   # List of plugins
-    #   set -g @plugin 'tmux-plugins/tpm'
-    #   set -g @plugin 'tmux-plugins/tmux-sensible'
-    #   set -g @plugin 'jabirali/tmux-tilish'
-    #   set-window-option -g mode-keys vi
-    #   # Keybinds
-    #   bind-key -T copy-mode-vi v send -X begin-selection
-    #   bind-key -T copy-mode-vi V send -X select-line
-    #   bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
-    #   unbind -T copy-mode MouseDragEnd1Pane
-    #   unbind -T copy-mode-vi MouseDragEnd1Pane
-    #   bind-key -T copy-mode-vi y send-keys -X copy-selection
-    #   bind-key -T vi-copy    MouseDragEnd1Pane copy-selection -x
-    #   bind-key -T copy-mode-vi y send -X copy-selection-no-clear
-    #   set-option -g mouse on
-    #   setw -g mode-mouse on
-    #   set -g terminal-overrides 'xterm*:smcup@:rmcup@'
-    #   # Other examples:
-    #   # set -g @plugin 'github_username/plugin_name'
-    #   # set -g @plugin 'github_username/plugin_name#branch'
-    #   # set -g @plugin 'git@github.com:user/plugin'
-    #   # set -g @plugin 'git@bitbucket.com:user/plugin'
-    #   set-option -g status-position top
-    #   # Start windows and panes at 1, not 0
-    #   set -g base-index 1
-    #   setw -g pane-base-index 1
+         # List of plugins
+         set -g @plugin 'tmux-plugins/tpm'
+         set -g @plugin 'tmux-plugins/tmux-sensible'
+         set -g @plugin 'jabirali/tmux-tilish'
+         set-window-option -g mode-keys vi
+         # Keybinds
+         bind-key -T copy-mode-vi v send -X begin-selection
+         bind-key -T copy-mode-vi V send -X select-line
+         bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+         unbind -T copy-mode MouseDragEnd1Pane
+         unbind -T copy-mode-vi MouseDragEnd1Pane
+         bind-key -T copy-mode-vi y send-keys -X copy-selection
+         bind-key -T vi-copy    MouseDragEnd1Pane copy-selection -x
+         bind-key -T copy-mode-vi y send -X copy-selection-no-clear
+         set-option -g mouse on
+         setw -g mode-mouse on
+         set -g terminal-overrides 'xterm*:smcup@:rmcup@'
+         # Other examples:
+         # set -g @plugin 'github_username/plugin_name'
+         # set -g @plugin 'github_username/plugin_name#branch'
+         # set -g @plugin 'git@github.com:user/plugin'
+         # set -g @plugin 'git@bitbucket.com:user/plugin'
+         set-option -g status-position top
+         # Start windows and panes at 1, not 0
+         set -g base-index 1
+         setw -g pane-base-index 1
 
-    #   # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-    #   run '~/.tmux/plugins/tpm/tpm'
-    #   '';
+         # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+         run '~/.tmux/plugins/tpm/tpm'
+         '';
+  };
+  # Vim  config
+  programs.vim = {
+    enable = true;
+    settings = { ignorecase = true; };
+    extraConfig = ''
+      set mouse=a
+       set nu
+       set rnu
+       set expandtab
+       set tabstop=2
+       set softtabstop=2
+       set shiftwidth=2
+    '';
+  };
+  programs.fish = {
+    enable = true;
+    plugins = with pkgs.fishPlugins; [
+      {
+        name = "z";
+        src = z.src;
+      }
+      {
+        name = "colored-man-pages";
+        src = colored-man-pages.src;
+      }
+      {
+        name = "autopair";
+        src = autopair.src;
+      }
+      {
+        name = "fisher";
+        src = pkgs.fetchFromGitHub {
+          owner = "jorgebucaran";
+          repo = "fisher";
+          rev = "67bec738dbec2442d05d09ef72b2be82acb1d774";
+          sha256 = "rtWPiEalxUhZQMZ8Ydk3E4wKke+Pdl7WaM4iOEKYuvM=";
+        };
+      }
+      {
+        name = "replay";
+        src = pkgs.fetchFromGitHub {
+          owner = "jorgebucaran";
+          repo = "replay.fish";
+          rev = "bd8e5b89ec78313538e747f0292fcaf631e87bd2";
+          sha256 = "bM6+oAd/HXaVgpJMut8bwqO54Le33hwO9qet9paK1kY=";
+        };
+      }
+    ];
   };
 }
