@@ -27,6 +27,10 @@ $ nix-channel --add https://github.com/nix-community/home-manager/archive/master
   nix-channel --update &&
   nix-shell '<home-manager>' -A install
 ```
+5. Finally, run home-manager:
+```
+$ home-manager switch
+```
 ### 🐃 Emacs:
 Emacs should be installed through nix, so:
 1. Get doom:
