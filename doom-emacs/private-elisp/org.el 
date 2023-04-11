@@ -1,0 +1,21 @@
+;;; ../../emacs-doom-config/private-elisp/ui.el -*- lexical-binding: t; -*-
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory
+      (if (file-exists-p "~/Documents")
+          "~/Documents/org/"
+          "~/Documentos/org/"))
+;; Org mode options
+(setq
+ org-re-reveal-mousewheel t
+ org-edit-src-turn-on-auto-save t
+ org-src-preserve-indentation t
+ org-use-sub-superscripts t)
+(setq neo-theme
+      (if (display-graphic-p)
+          'icons
+        'arrow))
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((restclient . t)))
+
