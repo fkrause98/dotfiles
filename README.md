@@ -36,7 +36,8 @@ $ ln -s $(pwd)/home.nix ~/.config/home-manager/home.nix
 $ home-manager switch
 ```
 ### 🐃 Emacs:
-Emacs should be installed through nix, so:
+Emacs should be now installed through nix, so
+we can just install doom and link the config:
 1. Get doom:
 ```
 $ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
