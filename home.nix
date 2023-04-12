@@ -7,8 +7,8 @@ let
   emacs = if isLinux then [ pkgs.emacs-gtk ] else [];
   iterm = if isMac then [ pkgs.iterm2 ] else [ ];
   elixir-ls = if isMac then [pkgs.elixir-ls] else [];
-  home = "/Users/fran";
-  user = "fran";
+  home = builtins.getEnv "HOME";
+  user = builtins.getEnv "USER";
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
