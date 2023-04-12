@@ -4,15 +4,16 @@ let
   isLinux = builtins.currentSystem == "x86_64-linux";
   # The emacs aarch64 is currently broken, so
   # ignore it for now.
-  emacs = if isLinux then [ pkgs.emacs ] else [];
+  emacs = if isLinux then [ pkgs.emacs-gtk ] else [];
   iterm = if isMac then [ pkgs.iterm2 ] else [ ];
   elixir-ls = if isMac then [pkgs.elixir-ls] else [];
+  home = "/Users/fran";
+  user = "fran";
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "fran";
-  home.homeDirectory = builtins.getEnv "HOME";
-
+  home.username = user;
+  home.homeDirectory = home;
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -23,19 +24,32 @@ in {
   home.stateVersion = "22.11"; # Please read the comment before changing.
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.asdf-vm
-    pkgs.ripgrep
-    pkgs.fd
-    pkgs.exa
-    pkgs.bat
-    pkgs.tmux
-    pkgs.direnv
-    pkgs.rustup
-    pkgs.gnumake
-    pkgs.neofetch
-    pkgs.jq
-    pkgs.nixfmt
+  home.packages = with pkgs; [
+    asdf-vm
+    ripgrep
+    fd
+    exa
+    bat
+    tmux
+    direnv
+    rustup
+    gnumake
+    neofetch
+    jq
+    nixfmt
+    neovim
+    # DOOM Emacs dependencies
+    binutils
+    (ripgrep.override { withPCRE2 = true; })
+    gnutls
+    fd
+    imagemagick
+    zstd
+    nodePackages.javascript-typescript-langserver
+    sqlite
+    editorconfig-core-c
+    emacs-all-the-icons-fonts
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -45,9 +59,11 @@ in {
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    (writeShellScriptBin "install-emacs" ''
+    ${if isMac then "brew install emacs &&"  else ""} + 
+    git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+    ~/.config/emacs/bin/doom install
+    '')
   ] ++ emacs ++ iterm ++ elixir-ls;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -56,7 +72,7 @@ in {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    #".config/doom".source = home + "" + "/dotfiles/doom-emacs";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -77,6 +93,8 @@ in {
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     EDITOR = "vim";
+    DOOMDIR = home + "" + "/doom-config";
+    DOOMLOCALDIR = home + "" + "/doom-local";
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

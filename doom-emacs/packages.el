@@ -50,19 +50,11 @@
                                         ;(unpin! t)
 ;; (package! solaire-mode
 ;;   :disable t)
-(package! blamer
-  :recipe (:host github :repo "d11wtq/blamer.el"))
+(package! blamer)
 (package! dtrt-indent)
 (package! flycheck-popup-tip :disable t)
-(package! frogtag
-  :recipe (:host github
-           :repo "io12/org-fragtog"))
-(package! emacs-livedown
-  :recipe (:host github
-           :repo "shime/emacs-livedown"))
 (package! impatient-mode)
 (package! xelb)
-;; (package! exwm)
 (package! telega)
 (package! org-mime)
 
@@ -76,22 +68,14 @@
 (package! evil-matchit)
 (package! perfect-margin)
 (package! company-web)
-(package! mix
-  :recipe (:host github
-           :repo "ayrat555/mix.el"))
 (package! all-the-icons-ivy-rich)
 (package! consult-dir)
 (package! command-log-mode)
-;; (package! tree-sitter)
-;; (package! tree-sitter-langs)
 (package! emamux)
 (package! aggressive-indent)
-(package! ob-restclient :recipe (:host github
-                   :repo "alf/ob-restclient.el"))
 (package! crux)
 (package! dired-sidebar)
 (package! slack)
-(package! blamer :recipe (:host github :repo "artawower/blamer.el"))
 (package! ob-restclient)
 (package! ox-gfm)
 ;; Eshell goodies
@@ -106,8 +90,6 @@
 (package! request)
 (package! blamer)
 (package! dired-sidebar)
-;; (package! tree-sitter :ignore (not (eq system-type 'gnu/linux)))
-;; (package! tree-sitter-langs :ignore (not (eq system-type 'gnu/linux)))
 (package! smart-semicolon)
 (package! counsel-tramp)
 (package! x86-lookup)
@@ -115,35 +97,23 @@
 (package! dirvish)
 (package! modus-themes)
 (package! gruvbox-theme)
-(package! icons-in-terminal
-  :recipe (:host github :repo "seagle0128/icons-in-terminal.el"))
+;;(package! icons-in-terminal
+;;  :recipe (:host github :repo "seagle0128/icons-in-terminal.el"))
 (package! inf-elixir)
-
 (package! apheleia)
 (package! visual-regexp)
 (package! visual-regexp-steroids)
 (package! evil-smartparens)
 (package! edit-server)
-;; (package! scrollkeeper)
-
-(package! scrollkeeper
- :recipe (:host github
-          :repo "alphapapa/scrollkeeper.el"))
-
+(package! scrollkeeper)
 (package! org-tree-slide)
-
-(package! string-inflection
-  :recipe (:host github
-           :repo "akicho8/string-inflection"))
 (package! markdown-toc)
 (package! counsel-tramp)
-(package! chatgpt-shell
-  :recipe (:host github
-           :repo "xenodium/chatgpt-shell"))
+;;(package! chatgpt-shell
+;;  :recipe (:host github
+;;           :repo "xenodium/chatgpt-shell"))
 
 ;; (package! gptel
 ;;   :recipe (:host github
 ;;            :repo "karthink/gptel"))
-(package! mix
-  :recipe (:host :github
-           :repo "ayrat555/mix.el"))
+(package! mix)

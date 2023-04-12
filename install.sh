@@ -27,10 +27,9 @@ ln -s $(pwd)/home.nix ~/.config/home-manager/home.nix
 # Run home-manager
 home-manager switch
 
-# Now we should have emacs and be ready to install doom:
-git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-~/.config/emacs/bin/doom install
-
+# Install emacs and doom:
+install-emacs
+#
 # Remove default config and link mine
 rm -rf ~/.config/doom
 ln -s $(pwd)/doom-emacs ~/.config/doom
