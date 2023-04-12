@@ -73,7 +73,7 @@ in {
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     #".config/doom".source = home + "" + "/dotfiles/doom-emacs";
-
+    #".config/fish".source = /dotfiles/fish; 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
@@ -93,7 +93,7 @@ in {
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     EDITOR = "vim";
-    DOOMDIR = home + "" + "/doom-config";
+    DOOMDIR = home + "" + "/dotfiles/doom-emacsconfig";
     DOOMLOCALDIR = home + "" + "/doom-local";
   };
   # Let Home Manager install and manage itself.
@@ -165,6 +165,10 @@ in {
       {
         name = "fzf";
         src = fzf.src;
+      }
+      { 
+        name = "pure";
+        src = pure.src;
       }
       {
         name = "fisher";
