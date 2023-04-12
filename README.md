@@ -36,13 +36,11 @@ $ ln -s $(pwd)/home.nix ~/.config/home-manager/home.nix
 $ home-manager switch
 ```
 ### 🐃 Emacs:
-Emacs should be now installed through nix, so
-we can just install doom and link the config:
-1. Get emacs and doom, with this alias added by the home.nix file:
+The home.nix provides a convenient alias to install Emacs and Doom:
 ```
 $  install-emacs
 ```
-2. Remove default config and link this repo's:
+And then, remove the default config and link this repo's:
 ```
 $ rm -rf ~/.config/doom &&
 ln -s $(pwd)/doom-emacs ~/.config/doom &&
