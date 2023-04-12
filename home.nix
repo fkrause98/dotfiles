@@ -4,8 +4,9 @@ let
   isLinux = builtins.currentSystem == "x86_64-linux";
   # The emacs aarch64 is currently broken, so
   # ignore it for now.
-  emacs = if isLinux then [ pkgs.emacs ] else [ ];
+  emacs = if isLinux then [ pkgs.emacs ] else [];
   iterm = if isMac then [ pkgs.iterm2 ] else [ ];
+  elixir-ls = if isMac then [pkgs.elixir-ls] else [];
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -33,7 +34,6 @@ in {
     pkgs.rustup
     pkgs.gnumake
     pkgs.neofetch
-    pkgs.elixir-ls
     pkgs.jq
     pkgs.nixfmt
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -48,7 +48,7 @@ in {
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-  ] ++ emacs ++ iterm;
+  ] ++ emacs ++ iterm ++ elixir-ls;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -78,7 +78,6 @@ in {
   home.sessionVariables = {
     EDITOR = "vim";
   };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   # Tmux config
@@ -144,6 +143,10 @@ in {
       {
         name = "autopair";
         src = autopair.src;
+      }
+      {
+        name = "fzf";
+        src = fzf.src;
       }
       {
         name = "fisher";
