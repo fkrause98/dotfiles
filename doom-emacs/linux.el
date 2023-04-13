@@ -10,8 +10,8 @@
 ;; font string. You generally only need these two:
 ;; (when (display-graphic-p)
 ;;; Shell to use
-(setq shell-file-name "/usr/bin/bash"
-      vterm-shell "/usr/bin/fish")
+(setq shell-file-name "/usr/share/bash"
+      vterm-shell "fish")
 (let ((fonts (font-family-list)))
 ;; (when (or (member "Fira Code" fonts)
 ;;           (member "FiraCode Nerd Font" fonts)

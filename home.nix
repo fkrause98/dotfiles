@@ -2,9 +2,6 @@
 let
   isMac = builtins.currentSystem == "darwin";
   isLinux = builtins.currentSystem == "x86_64-linux";
-  # The emacs aarch64 is currently broken, so
-  # ignore it for now.
-  emacs = if isLinux then [ pkgs.emacs-gtk ] else [];
   iterm = if isMac then [ pkgs.iterm2 ] else [ ];
   elixir-ls = if isMac then [pkgs.elixir-ls] else [];
   home = builtins.getEnv "HOME";
@@ -38,6 +35,7 @@ in {
     jq
     nixfmt
     neovim
+    plocate
     # DOOM Emacs dependencies
     binutils
     (ripgrep.override { withPCRE2 = true; })
@@ -48,8 +46,7 @@ in {
     nodePackages.javascript-typescript-langserver
     sqlite
     editorconfig-core-c
-    emacs-all-the-icons-fonts
-
+    libvterm
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -64,7 +61,7 @@ in {
     git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
     ~/.config/emacs/bin/doom install
     '')
-  ] ++ emacs ++ iterm ++ elixir-ls;
+  ] ++ iterm ++ elixir-ls;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -100,6 +97,15 @@ in {
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  # Best editor ever
+  programs.emacs = {
+    # The emacs aarch64 is currently broken, so
+    # ignore it for now, plus I'd rather
+    # use railwaycat's port.
+    enable = true;
+    package = pkgs.emacs-gtk;
+    extraPackages = ( epkgs: [ epkgs.vterm ] );
+  };
   # Tmux config
   programs.tmux = {
     enable = true;

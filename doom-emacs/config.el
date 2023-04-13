@@ -25,7 +25,7 @@
 (when (eq system-type 'darwin)
   (load! "mac"))
 ;;; Load files inside the "private-elisp" folder.
-(setq doom-config-dir (expand-file-name "~/.doom.d"))
+(setq doom-config-dir (expand-file-name "~/dotfiles/doom-emacs"))
 (let ((no-dots-regex "^[^\.].*$")
       (private-elisp-fldr (concat doom-config-dir "/private-elisp")))
   (dolist
