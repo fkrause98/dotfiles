@@ -12,6 +12,12 @@ $ sh <(curl -L https://nixos.org/nix/install) --daemon --yes
 ```
 $ sh <(curl -L https://nixos.org/nix/install) --yes
 ```
+
+If for some reason the install fails, be sure to remove every
+backup file that nix creates:
+```
+$ find /etc/ -name '*nix*' -print0 | xargs --null rm
+```
 ## ❄️  Nix
 1. After installing nix, restart the terminal, currently open sessions won't work properly.
 2. If this command runs without sudo, the setup is working
