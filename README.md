@@ -52,8 +52,9 @@ ln -s $(pwd)/doom-emacs ~/.config/doom &&
 ## 🐟 Fish shell: 
 
 Home-manager installs every plugin in home.nix, but I have to manually
-setup the prompt with:
+setup the prompt: 
 ```
-$ prompt-setup
+# Run this command inside fish
+$ tide configure
 ```
 
