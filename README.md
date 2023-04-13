@@ -1,7 +1,7 @@
 # 📓 dotfiles
 
 This repo contains my configuration files for the programs I use, managed with nix through home-manager.
-There is a Linux and a Mac setup.
+It should work both on Mac and Linux.
 
 ## Setup
 ## 🐧 Linux nix install:
