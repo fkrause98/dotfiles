@@ -34,7 +34,6 @@ $ nix-channel --add https://github.com/nix-community/home-manager/archive/master
   nix-channel --update &&
   nix-shell '<home-manager>' -A install
 ```
-```
 4. Finally, run home-manager:
 ```
 $ home-manager switch
