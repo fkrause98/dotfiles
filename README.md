@@ -49,3 +49,11 @@ $ rm -rf ~/.config/doom &&
 ln -s $(pwd)/doom-emacs ~/.config/doom &&
 ~/.config/emacs/bin/doom sync &&
 ```
+## 🐟 Fish shell: 
+
+Home-manager installs every plugin in home.nix, but I have to manually
+setup the prompt with:
+```
+$ prompt-setup
+```
+
