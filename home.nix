@@ -36,7 +36,6 @@ in {
       jq
       nixfmt
       neovim
-      plocate
       eb-garamond
       # DOOM Emacs dependencies
       binutils
@@ -48,7 +47,6 @@ in {
       nodePackages.javascript-typescript-langserver
       sqlite
       editorconfig-core-c
-      libvterm
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
