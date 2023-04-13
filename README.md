@@ -3,39 +3,36 @@
 This repo contains my configuration files for the programs I use, managed with nix through home-manager.
 There is a Linux and a Mac setup.
 
-## 🐧 Linux setup:
-Simply run the install.sh and wait for it to finish (more info in home_manager.md), this
-is a single-user nix install. The script will also install doom emacs and 
-symlink the config.
-## 🍎 Mac setup
-### ❄️ Nix
-MacOS only allows multi-user install, it can get a bit messy so I haven't
-created a script yet.
-
-1. Install Nix, you will probably be asked to use sudo: 
+## Setup
+## 🐧 Linux nix install:
 ```
-$ sh <(curl -L https://nixos.org/nix/install)
+$ sh <(curl -L https://nixos.org/nix/install) --daemon --yes
 ```
-2. Restart your terminal, currently open sessions won't work properly.
-3. If this command runs without sudo, the setup is working
+## 🍎 Mac nix install:
+```
+$ sh <(curl -L https://nixos.org/nix/install) --yes
+```
+## ❄️  Nix
+1. After installing nix, restart the terminal, currently open sessions won't work properly.
+2. If this command runs without sudo, the setup is working
 ```
 $ nix-instantiate '<nixpkgs>' -A hello
 ```
-4. Install home-manager:
+3. Install home-manager:
 ```
 $ nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager &&
   nix-channel --update &&
   nix-shell '<home-manager>' -A install
 ```
-5. Link this repo's config (make sure you're in the repo's local folder):
+4. Link this repo's config (make sure you're in the repo's local folder):
 ```
 $ ln -s $(pwd)/home.nix ~/.config/home-manager/home.nix
 ```
-6. Finally, run home-manager:
+5. Finally, run home-manager:
 ```
 $ home-manager switch
 ```
-### 🐃 Emacs:
+## 🐃 Emacs:
 The home.nix provides a convenient alias to install Emacs and Doom:
 ```
 $  install-emacs
