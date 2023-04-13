@@ -36,6 +36,7 @@ in {
     nixfmt
     neovim
     plocate
+    eb-garamond
     # DOOM Emacs dependencies
     binutils
     (ripgrep.override { withPCRE2 = true; })
