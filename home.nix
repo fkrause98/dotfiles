@@ -181,6 +181,18 @@ in {
       source ~/.asdf/asdf.fish
       ## Add asdf completions
       mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions 
+      # To test python packages without installing them
+      function pythonEnv --description 'start a nix-shell with the given python packages' --argument pythonVersion
+        if set -q argv[2]
+          set argv $argv[2..-1]
+        end
+
+        for el in $argv
+          set ppkgs $ppkgs "python"$pythonVersion"Packages.$el"
+        end
+
+        nix-shell -p $ppkgs
+      end
       ${if isMac then ''
         ## Fix issues with not enough file descriptors
         ulimit -n 200000
