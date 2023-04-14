@@ -177,7 +177,16 @@ in {
       function ls --wraps=exa --description 'alias ls exa'
       exa $argv
       end
-
+      ## Start asdf
+      source ~/.asdf/asdf.fish
+      ## Add asdf completions
+      mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions 
+      ${if isMac then ''
+        ## Fix issues with not enough file descriptors
+        ulimit -n 200000
+        ulimit -u 2048
+      '' else
+        ""}
     '';
     plugins = with pkgs.fishPlugins; [
       {
@@ -213,7 +222,7 @@ in {
           sha256 = "UP+bk5luk6bNrMzI4eQkt9TzU8dkjEqGoEnlEh4fEK4=";
         };
       }
-      { 
+      {
         name = "fish-abbreviation-tips";
         src = pkgs.fetchFromGitHub {
           owner = "gazorby";
