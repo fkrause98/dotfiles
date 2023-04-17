@@ -35,8 +35,9 @@ in {
       neofetch
       jq
       nixfmt
-      neovim
+      git
       eb-garamond
+      vim
       # DOOM Emacs dependencies
       binutils
       (ripgrep.override { withPCRE2 = true; })
@@ -147,7 +148,6 @@ in {
   };
   # Vim  config
   programs.vim = {
-    enable = true;
     settings = { ignorecase = true; };
     extraConfig = ''
       set mouse=a
@@ -199,6 +199,8 @@ in {
         ulimit -u 2048
       '' else
         ""}
+      ## Add doom binary to path
+      fish_add_path /Users/fran/.config/emacs/bin
     '';
     plugins = with pkgs.fishPlugins; [
       {
@@ -262,5 +264,11 @@ in {
         };
       }
     ];
+  };
+  programs.git = {
+    extraConfig = ''
+      [merge]
+        conflictstyle = diff3
+    '';
   };
 }

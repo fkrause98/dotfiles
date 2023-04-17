@@ -2,8 +2,8 @@
 ;;; Evil
 (evil-global-set-key 'motion "j" 'evil-next-visual-line)
 (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-(set-face-attribute 'comint-highlight-prompt nil
-                    :inherit nil)
+;; (set-face-attribute 'comint-highlight-prompt nil
+;;                     :inherit nil)
 (global-evil-matchit-mode 1)
 ;;; Jumping in Evil
 (with-eval-after-load 'evil

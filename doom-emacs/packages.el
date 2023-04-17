@@ -57,8 +57,6 @@
 (package! xelb)
 (package! telega)
 (package! org-mime)
-
-
 (package! scroll-on-jump)
 (package! inf-elixir)
 (package! evil-matchit)

@@ -2,8 +2,7 @@
 
 
 ;;; GPT related config
-(setq chatgpt-shell-openai-key
-      (plist-get (car (auth-source-search :host "openai.com"))
-                 :secret))
-;; (setq gptel-api-key
-;;       chatgpt-shell-openai-key)
+(after! chatgpt-shell
+  (setq chatgpt-shell-openai-key
+        (plist-get (car (auth-source-search :host "openai.com"))
+                   :secret)))
