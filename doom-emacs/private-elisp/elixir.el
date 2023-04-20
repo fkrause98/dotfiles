@@ -10,13 +10,14 @@
 ;; Disable for reasons I don't remember
 (setq alchemist-mix-test-default-options nil)
 
-(defun elixir/variables-hook ()
+(defun my-elixir-hooks ()
   (setq company-idle-delay 0.2
         yas-also-auto-indent-first-line t)
   ;; Company can be a bit annoying with its
   ;; suggestions, as the default value
   ;;  of this variable is 2.
-  (setq-local company-minimum-prefix-length 3))
+  (setq-local company-minimum-prefix-length 3)
+  (mix-minor-mode))
 ;; Show which function I'm visiting in the modeline
 ;; (add-hook 'elixir-mode-hook 'which-function-mode)
 (add-hook 'elixir-mode-hook 'elixir/variables-hook)
@@ -31,3 +32,4 @@
           (lambda ()
             (when (derived-mode-p 'elixir-mode)
               (setq my/flycheck-local-cache '((lsp . ((next-checkers . (elixir-credo)))))))))
+(add-hook 'elixir-mode #'my-elixir-hooks)
