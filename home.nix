@@ -96,9 +96,8 @@ in {
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
+    # The best $EDITOR
     EDITOR = "vim";
-    DOOMDIR = home + "" + "/dotfiles/doom-emacs";
-    DOOMLOCALDIR = home + "" + "/doom-local";
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -108,8 +107,12 @@ in {
     # ignore it for now, plus I'd rather
     # use railwaycat's port.
     enable = isLinux;
-    package = pkgs.emacs-gtk;
+    package = pkgs.emacs-nox;
     extraPackages = (epkgs: [ epkgs.vterm ]);
+  };
+  services.emacs = {
+   enable = true;
+   package = pkgs.emacs-nox;
   };
   # Tmux config
   programs.tmux = {
