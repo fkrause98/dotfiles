@@ -107,15 +107,12 @@ in {
   # Do not enable until I fix
   # issues with doom.
   programs.emacs = {
-    # The emacs aarch64 is currently broken, so
-    # ignore it for now, plus I'd rather
-    # use railwaycat's port.
     enable = false;
     package = pkgs.emacs-gtk;
     extraPackages = (epkgs: [ epkgs.vterm ]);
   };
   services.emacs = {
-   enable = true;
+   enable = false;
    package = pkgs.emacs-nox;
   };
   # Tmux config
@@ -276,6 +273,8 @@ in {
     extraConfig = ''
       [merge]
         conflictstyle = diff3
+      [pull]
+        rebase = false
     '';
   };
 }
