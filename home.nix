@@ -11,6 +11,7 @@ in {
   # manage.
   home.username = user;
   home.homeDirectory = home;
+  nixpkgs.config.allowUnfree = true;
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -48,6 +49,7 @@ in {
       nodePackages.javascript-typescript-langserver
       sqlite
       editorconfig-core-c
+      ngrok
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -58,7 +60,7 @@ in {
       # # configuration. For example, this adds a command 'my-hello' to your
       # # environment:
       (writeShellScriptBin "install-emacs" ''
-        ${if isMac then "brew install emacs &&" else ""} + 
+        ${if isMac then "brew install emacs &&" else "pacman -S emacs-nox && "} +
         git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
         ~/.config/emacs/bin/doom install
       '')
@@ -102,12 +104,14 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   # Best editor ever
+  # Do not enable until I fix
+  # issues with doom.
   programs.emacs = {
     # The emacs aarch64 is currently broken, so
     # ignore it for now, plus I'd rather
     # use railwaycat's port.
-    enable = isLinux;
-    package = pkgs.emacs-nox;
+    enable = false;
+    package = pkgs.emacs-gtk;
     extraPackages = (epkgs: [ epkgs.vterm ]);
   };
   services.emacs = {
