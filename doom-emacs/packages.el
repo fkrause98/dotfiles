@@ -116,3 +116,4 @@
 ;;            :repo "karthink/gptel"))
 (package! mix)
 (package! org-modern)
+(package! evil-textobj-tree-sitter)

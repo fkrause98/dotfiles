@@ -26,15 +26,6 @@
   (setq-default line-spacing 4))
 (setq highlight-indent-guides-responsive 'top)
 
-;; Center text and add rainbow parens in programming-modes
-(add-hook
- 'prog-mode-hook
- #'(lambda ()
-     ;; To almost center text
-     (perfect-margin-mode)
-     ;; Rainbow parens
-     (rainbow-delimiters-mode)))
-
 ;; Scrolling
 (setq scroll-conservatively 101)
 

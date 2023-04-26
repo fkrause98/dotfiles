@@ -17,7 +17,8 @@
   ;; suggestions, as the default value
   ;;  of this variable is 2.
   (setq-local company-minimum-prefix-length 3)
-  (mix-minor-mode))
+  (mix-minor-mode)
+  (lsp-lens--hide))
 ;; Show which function I'm visiting in the modeline
 ;; (add-hook 'elixir-mode-hook 'which-function-mode)
 (add-hook 'elixir-mode-hook 'elixir/variables-hook)
