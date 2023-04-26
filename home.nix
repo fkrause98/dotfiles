@@ -181,6 +181,14 @@ in {
       function ls --wraps=exa --description 'alias ls exa'
       exa $argv
       end
+      ## Vim aliases
+      function vi --wraps=vim --description 'alias vi vim'
+      vim $argv
+      end
+      ## Vim aliases
+      function nvim --wraps=vim --description 'alias nvim vim'
+      vim $argv
+      end
       ## Start asdf
       source ~/.asdf/asdf.fish
       ## Add asdf completions
