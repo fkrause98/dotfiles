@@ -16,7 +16,7 @@ $ sh <(curl -L https://nixos.org/nix/install) --yes
 If for some reason the install fails, be sure to remove every
 backup file that nix creates:
 ```
-$ find /etc/ -name '*nix*' -print0 | xargs --null rm
+$ sudo find /etc/ -name '*nix*' -print0 | sudo xargs --null rm
 ```
 ## ❄️  Nix
 After installing nix, restart the terminal, currently open sessions won't work properly.
