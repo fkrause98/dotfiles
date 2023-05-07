@@ -9,6 +9,7 @@ let
     [ ];
   devPackages = [ asdf-vm rustup ];
   basePackages = [
+    statix
     ripgrep
     fd
     ea
