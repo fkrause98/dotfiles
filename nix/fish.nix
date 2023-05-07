@@ -1,7 +1,7 @@
 {pkgs}:
 {
     enable = true;
-    # interactiveShellInit = builtins.readFile ./fish/config.fish;
+    interactiveShellInit = builtins.readFile ../fish/config.fish;
     plugins = with pkgs.fishPlugins; [
       {
         name = "z";
