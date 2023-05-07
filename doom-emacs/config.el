@@ -16,18 +16,13 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
 ;;; OS
 ;; Config for Linux distros.
 (when (eq system-type 'gnu/linux)
-  (progn
-    (setq system/running-linux t)
-    (load! "linux")))
+    (load! "linux"))
 ;; Config for MacOs.
 (when (eq system-type 'darwin)
-  (progn
-    (setq system/running-linux t)
-    (load! "mac")))
+    (load! "mac"))
 ;;; Load files inside the "private-elisp" folder.
 (setq doom-config-dir (expand-file-name "~/dotfiles/doom-emacs"))
 (let ((no-dots-regex "^[^\.].*$")

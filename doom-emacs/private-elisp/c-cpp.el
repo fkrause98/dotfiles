@@ -5,7 +5,7 @@
 (add-hook 'c++-mode-hook
           (lambda ()
             (progn
-              (setq-local
+              (setq
                company-minimum-prefix-length 4
                tab-width 4
                evil-shift-width 4))))
@@ -20,8 +20,3 @@
                               "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 (setq org-latex-minted-options '(("breaklines" "true")
                                  ("breakanywhere" "true")))
-(setq +format-on-save-enabled-modes '(not emacs-lisp-mode ; elisp's mechanisms are good enough
-                                          sql-mode ; sqlformat is currently broken
-                                          tex-mode ; latexindent is broken
-                                          latex-mode c++-mode ; C++ autoindent is not meant for mortals...
-                                          html-mode))

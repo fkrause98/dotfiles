@@ -3,14 +3,10 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 
-(setq-local is-alacritty-running?
-            (s-contains? "alacritty"
-                         (shell-command-to-string
-                          "pgrep -a alacritty")))
-(if (and is-alacritty-running? system/running-linux)
-  (setq doom-theme 'doom-gruvbox)
+(when (eq system-type 'gnu/linux)
+  (setq doom-theme 'doom-gruvbox))
+(when (eq system-type 'darwin)
   (setq doom-theme 'doom-palenight))
-
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t)
 ;; This determines the style of line numbers in effect. If set to `nil', line

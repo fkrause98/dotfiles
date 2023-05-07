@@ -12,3 +12,12 @@
 ;; Center text and add rainbow parens in programming-modes
 (dolist (hook '(perfect-margin-mode-setup rainbow-delimiters-mode))
               (add-hook 'prog-mode-hook hook))
+
+;; Formatting enabled modes
+(setq +format-on-save-enabled-modes '(not emacs-lisp-mode ; elisp's mechanisms are good enough
+                                          sql-mode ; sqlformat is currently broken
+                                          tex-mode ; latexindent is broken
+                                          latex-mode
+                                          c++-mode ; C++ autoindent really sucks
+                                          html-mode
+                                          web-mode))
