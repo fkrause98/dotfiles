@@ -118,11 +118,13 @@ in {
   # Tmux config
   programs.tmux = {
     enable = true;
+    plugins = with pkgs.tmuxPlugins; [
+      tilish
+    ];
     extraConfig = ''
       # List of plugins
       set -g @plugin 'tmux-plugins/tpm'
       set -g @plugin 'tmux-plugins/tmux-sensible'
-      set -g @plugin 'jabirali/tmux-tilish'
       set-window-option -g mode-keys vi
       # Keybinds
       bind-key -T copy-mode-vi v send -X begin-selection
@@ -212,7 +214,7 @@ in {
       '' else
         ""}
       ## Add doom binary to path
-      fish_add_path /Users/fran/.config/emacs/bin
+      fish_add_path ${home}/.config/emacs/bin/doom
     '';
     plugins = with pkgs.fishPlugins; [
       {
