@@ -117,3 +117,5 @@
 (package! mix)
 (package! org-modern)
 (package! evil-textobj-tree-sitter)
+(package! alchemist)
+(package! yasnippet)
