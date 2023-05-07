@@ -3,6 +3,10 @@ let vars = import ./vars.nix;
 in with pkgs;
 let
   macPackages = if vars.isMac then [ elixir-ls iterm2 ngrok ] else [ ];
+  archPackages = if vars.isLinux then
+    [ (pkgs.callPackage ./arch/rate_mirrors.nix { inherit pkgs; }) ]
+  else
+    [ ];
   devPackages = [ asdf-vm rustup ];
   basePackages = [
     ripgrep
@@ -19,6 +23,7 @@ let
     vim
     victor-mono
     fira-code
+    nil
   ];
   doomEmacsDeps = [
     binutils
@@ -31,4 +36,5 @@ let
     sqlite
     editorconfig-core-c
   ];
-in builtins.concatLists [ doomEmacsDeps devPackages basePackages ]
+
+in builtins.concatLists [ doomEmacsDeps devPackages basePackages archPackages ]

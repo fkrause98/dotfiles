@@ -4,27 +4,27 @@
   plugins = with pkgs.fishPlugins; [
     {
       name = "z";
-      src = z.src;
+      inherit (z) src;
     }
     {
       name = "colored-man-pages";
-      src = colored-man-pages.src;
+      inherit (colored-man-pages) src;
     }
     {
       name = "autopair";
-      src = autopair.src;
+      inherit (autopair) src;
     }
     {
       name = "fzf";
-      src = fzf.src;
+      inherit (fzf) src;
     }
     {
       name = "tide";
-      src = tide.src;
+      inherit (tide) src;
     }
     {
       name = "done";
-      src = done.src;
+      inherit (done) src;
     }
     {
       name = "fish-git-abbr";
