@@ -20,10 +20,14 @@
 ;;; OS
 ;; Config for Linux distros.
 (when (eq system-type 'gnu/linux)
-  (load! "linux"))
+  (progn
+    (setq system/running-linux t)
+    (load! "linux")))
 ;; Config for MacOs.
 (when (eq system-type 'darwin)
-  (load! "mac"))
+  (progn
+    (setq system/running-linux t)
+    (load! "mac")))
 ;;; Load files inside the "private-elisp" folder.
 (setq doom-config-dir (expand-file-name "~/dotfiles/doom-emacs"))
 (let ((no-dots-regex "^[^\.].*$")

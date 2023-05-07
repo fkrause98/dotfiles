@@ -12,3 +12,7 @@
       :i "C-j" 'comint-next-input
       :n "C-k" 'comint-previous-input
       :n "C-j" 'comint-next-input)
+
+;; Scroll
+(global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+(global-set-key (kbd "<mouse-5>") 'scroll-up-line)

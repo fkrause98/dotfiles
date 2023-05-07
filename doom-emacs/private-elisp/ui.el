@@ -2,7 +2,14 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-palenight)
+
+(setq-local is-alacritty-running?
+            (s-contains? "alacritty"
+                         (shell-command-to-string
+                          "pgrep -a alacritty")))
+(if (and is-alacritty-running? system/running-linux)
+  (setq doom-theme 'doom-gruvbox)
+  (setq doom-theme 'doom-palenight))
 
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t)
@@ -32,3 +39,6 @@
 ;;; Treemacs
 (setq doom-themes-treemacs-variable-pitch-face nil)
 
+
+;;; Indent chars
+(setq highlight-indent-guides-method 'character)

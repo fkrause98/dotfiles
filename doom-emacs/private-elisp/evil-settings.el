@@ -34,3 +34,5 @@
 (global-set-key (kbd "<C-M-prior>") (scroll-on-jump-interactive 'diff-hl-previous-hunk))
 (setq org-image-actual-width nil)
 (setq org-element-use-cache nil)
+
+(setq scroll-on-jump-use-curve t)
