@@ -1,7 +1,10 @@
-{ config, pkgs, ... } :
+{ config, pkgs, ... }:
 let
-  vars = import ./nix/vars.nix ;
-  packages = import ./nix/packages.nix {config = config; pkgs = pkgs;};
+  vars = import ./nix/vars.nix;
+  packages = import ./nix/packages.nix {
+    config = config;
+    pkgs = pkgs;
+  };
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -27,8 +30,11 @@ in {
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.tmux = import ./nix/tmux.nix {pkgs = pkgs;};
-  programs.vim = import ./nix/vim.nix {};
-  programs.fish = import ./nix/fish.nix {pkgs = pkgs;};
-  programs.git = import ./nix/git.nix {};
+  programs.tmux = import ./nix/tmux.nix {
+    pkgs = pkgs;
+    fishNixPath = vars.fishNixPath;
+  };
+  programs.vim = import ./nix/vim.nix { };
+  programs.fish = import ./nix/fish.nix { pkgs = pkgs; };
+  programs.git = import ./nix/git.nix { };
 }

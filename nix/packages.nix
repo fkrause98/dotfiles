@@ -2,10 +2,24 @@
 let vars = import ./vars.nix;
 in with pkgs;
 let
-  macPackages = if vars.isMac then [ elixir-ls iterm2 ] else [ ];
+  macPackages = if vars.isMac then [ elixir-ls iterm2 ngrok ] else [ ];
   devPackages = [ asdf-vm rustup ];
-  basePackages =
-    [ ripgrep fd ea bat tmux direnv gnumake neofetch jq nixfmt git vim ];
+  basePackages = [
+    ripgrep
+    fd
+    ea
+    bat
+    tmux
+    direnv
+    gnumake
+    neofetch
+    jq
+    nixfmt
+    git
+    vim
+    victor-mono
+    fira-code
+  ];
   doomEmacsDeps = [
     binutils
     (ripgrep.override { withPCRE2 = true; })
@@ -16,6 +30,5 @@ let
     nodePackages.javascript-typescript-langserver
     sqlite
     editorconfig-core-c
-    ngrok
   ];
 in builtins.concatLists [ doomEmacsDeps devPackages basePackages ]
