@@ -33,7 +33,6 @@
           nix-shell -p $ppkgs
       end
       if [ (uname -s) = Darwin ]
-          echo "Running MacOS"
           ulimit -n 200000
           ulimit -u 2048
       end
