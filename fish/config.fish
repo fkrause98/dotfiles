@@ -32,10 +32,20 @@
 
           nix-shell -p $ppkgs
       end
-      if [ (uname -s) = darwin ]
-          # Code to be executed if condition is true
+      if [ (uname -s) = Darwin ]
+          echo "Running MacOS"
           ulimit -n 200000
           ulimit -u 2048
+      end
+      ## Add copy and paste as
+      ## a terminal command
+      if test (uname -s) = Linux
+          function pbpaste --wraps='xsel --clipboard --output' --description 'alias pbpaste=xsel --clipboard --output'
+              xsel --clipboard --output $argv
+          end
+          function pbcopy --wraps='xsel --clipboard --input' --description 'alias pbcopy=xsel --clipboard --input'
+              xsel --clipboard --input $argv
+          end
       end
       ## Add doom binary to path
       fish_add_path $HOME/.config/emacs/bin/doom

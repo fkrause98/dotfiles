@@ -3,9 +3,10 @@ let vars = import ./vars.nix;
 in with pkgs;
 let
   macPackages = if vars.isMac then [ elixir-ls iterm2 ngrok ] else [ ];
-  archPackages = if vars.isLinux then
-    [ (pkgs.callPackage ./arch/rate_mirrors.nix { inherit pkgs; }) ]
-  else
+  archPackages = if vars.isLinux then [
+    xsel
+    (pkgs.callPackage ./arch/rate_mirrors.nix { inherit pkgs; })
+  ] else
     [ ];
   devPackages = [ asdf-vm rustup ];
   basePackages = [
