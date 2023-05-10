@@ -31,5 +31,10 @@
     bind-key -T copy-mode-vi v send -X begin-selection
     bind-key -T copy-mode-vi V send -X select-line
     bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+    unbind -T copy-mode-vi MouseDragEnd1Pane
+    bind -T copy-mode-vi MouseDown1Pane select-pane \;\
+      send-keys -X copy-pipe "pbcopy" \;\
+      send-keys -X clear-selection
+    set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"
   '';
 }

@@ -26,6 +26,7 @@ let
     victor-mono
     fira-code
     nil
+    jetbrains-mono
   ];
   doomEmacsDeps = [
     binutils

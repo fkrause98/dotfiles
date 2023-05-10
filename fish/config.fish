@@ -10,15 +10,14 @@
           vim $argv
       end
 
-      set fish_completions = ~/.config/fish/completions
-      if test ! -d fish_completions
-          mkdir -p fish_completions
+      if test ! -d ~/.config/fish/completions
+          mkdir -p ~/.config/fish/completions
       end
 
       ## Add asdf completions
-      set asdf_completions = ~/.asdf/completions/asdf.fish
-      if test -d asdf_completions
-          ln -s asdf_completions ~/.config/fish/completions
+      set asdf_completions =
+      if test -d ~/.asdf/completions/asdf.fish
+          ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
       end
       # To test python packages without installing them
       function pythonEnv --description 'start a nix-shell with the given python packages' --argument pythonVersion
