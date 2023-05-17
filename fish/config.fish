@@ -46,7 +46,7 @@
           end
       end
       ## Add doom binary to path
-      fish_add_path $HOME/.config/emacs/bin/doom
+      fish_add_path $HOME/.config/emacs/bin/
 
       # Defined via `source`
       function nix-shell --description 'alias nix-shell nix-shell --run fish'
