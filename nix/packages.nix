@@ -8,13 +8,21 @@ let
     (pkgs.callPackage ./arch/rate_mirrors.nix { inherit pkgs; })
   ] else
     [ ];
-  devPackages = [ asdf-vm rustup ];
+  devPackages = [
+    asdf-vm
+    rustup
+    protobuf
+    libiconv
+    omnisharp-roslyn
+    dotnet-sdk_7
+  ];
   basePackages = [
     statix
     ripgrep
     fd
-    ea
+    exa
     bat
+    tealdeer
     tmux
     direnv
     gnumake
