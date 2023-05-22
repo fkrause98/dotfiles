@@ -1,21 +1,25 @@
 { config, pkgs, ... }:
-let vars = import ./vars.nix;
+let
+ vars = import ./vars.nix;
 in with pkgs;
 let
-  macPackages = if vars.isMac then [ elixir-ls iterm2 ngrok ] else [ ];
-  archPackages = if vars.isLinux then [
-    xsel
-    (pkgs.callPackage ./arch/rate_mirrors.nix { inherit pkgs; })
-  ] else
-    [ ];
-  devPackages = [
-    asdf-vm
-    rustup
+  macPackages = if vars.isMac then [
+    elixir-ls
+    iterm2
+    ngrok
     protobuf
     libiconv
     omnisharp-roslyn
     dotnet-sdk_7
-  ];
+  ] else
+    [ ];
+  linuxPackages = if vars.isLinux then [
+    xsel
+    (pkgs.callPackage ./arch/rate_mirrors.nix { inherit pkgs; })
+    ((emacsPackagesFor emacsNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm ]))
+  ] else
+    [ ];
+  devPackages = [ asdf-vm rustup ];
   basePackages = [
     statix
     ripgrep
@@ -48,4 +52,4 @@ let
     editorconfig-core-c
   ];
 
-in builtins.concatLists [ doomEmacsDeps devPackages basePackages archPackages ]
+in builtins.concatLists [ doomEmacsDeps devPackages basePackages macPackages linuxPackages ]
