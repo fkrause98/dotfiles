@@ -26,7 +26,7 @@ $ nix-instantiate '<nixpkgs>' -A hello
 ```
 2. Link this repo's config (make sure you're in the repo's local folder)
 ```
-$ ln -s $(pwd)/home.nix ~/.config/home-manager/home.nix
+$ mkdir -p ~/.config/home-manager && ln -s $(pwd)/home.nix ~/.config/home-manager/home.nix
 ```
 3. Install home-manager:
 ```
