@@ -4,4 +4,6 @@
 (add-hook 'rustic-mode-hook
           (lambda ()
             (setq lsp-signature-render-documentation nil
-                  lsp-lens-enable nil)))
+                  lsp-lens-enable nil)
+            (when (boundp 'eglot-inlay-hints-mode)
+              (eglot-inlay-hints-mode))))

@@ -7,7 +7,6 @@
       company-tooltip-align-annotations t
       company-tooltip-flip-when-above nil
       c-syntactic-indentation t)
-(setq company-idle-delay 0.3)
 (setq company-show-numbers t)
 (setq company-tooltip-limit 10)
 (setq company-minimum-prefix-length 2)

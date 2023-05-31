@@ -21,7 +21,6 @@
   (lsp-lens--hide))
 ;; Show which function I'm visiting in the modeline
 ;; (add-hook 'elixir-mode-hook 'which-function-mode)
-(add-hook 'elixir-mode-hook 'elixir/variables-hook)
 (add-hook 'elixir-mode-hook 'which-function-mode)
 ;; Workaround to enable running credo after lsp
 (defvar-local my/flycheck-local-cache nil)

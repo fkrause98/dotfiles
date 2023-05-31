@@ -6,7 +6,7 @@
 ;;                     :inherit nil)
 (global-evil-matchit-mode 1)
 ;;; Jumping in Evil
-(with-eval-after-load 'evil
+(after! evil
   (scroll-on-jump-advice-add evil-undo)
   (scroll-on-jump-advice-add evil-redo)
   (scroll-on-jump-advice-add evil-jump-item)
@@ -24,7 +24,9 @@
   (scroll-on-jump-with-scroll-advice-add evil-scroll-up)
   (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-center)
   (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-top)
-  (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-bottom))
+  (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-bottom)
+  ;; Set cursor type
+  (setq evil-insert-state-cursor 'block))
 
 (with-eval-after-load 'goto-chg
   (scroll-on-jump-advice-add goto-last-change)

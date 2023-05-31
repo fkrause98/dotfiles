@@ -119,3 +119,4 @@
 (package! evil-textobj-tree-sitter)
 (package! alchemist)
 (package! yasnippet)
+(package! protobuf-mode)
