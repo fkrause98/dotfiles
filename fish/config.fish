@@ -6,6 +6,7 @@
       function vi --wraps=vim --description 'alias vi vim'
           vim $argv
       end
+
       function nvim --wraps=vim --description 'alias nvim vim'
           vim $argv
       end

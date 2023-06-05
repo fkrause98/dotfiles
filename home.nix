@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 let
   vars = import ./nix/vars.nix;
-  packages = import ./nix/packages.nix {
-    config = config;
-    pkgs = pkgs;
-  };
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -15,7 +11,10 @@ in {
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "22.11"; # Please read the comment before changing.
-  home.packages = packages;
+  home.packages = import ./nix/packages.nix {
+    config = config;
+    pkgs = pkgs;
+  };
 
   home.file = {
     ".config/doom" = {

@@ -9,7 +9,7 @@
     prefix-highlight
     open
     # cool theme
-    #power-theme
+    power-theme
     # save history to file
     logging
     fpp
@@ -26,6 +26,8 @@
   escapeTime = 0;
   mouse = true;
   extraConfig = ''
+    set -g @tmux_power_theme 'violet'
+    run-shell "/Users/fran/dotfiles/tmux-power/tmux-power.tmux"
     set-option -g status-position top
     # Keybinds
     bind-key -T copy-mode-vi v send -X begin-selection
