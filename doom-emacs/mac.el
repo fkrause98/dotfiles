@@ -20,7 +20,7 @@
        :size 12))
 ;;; Shell to use
 (setq shell-file-name "fish"
-      vterm-shell "/opt/homebrew/bin/fish")
+      vterm-shell "fish")
 ;;; Elixir
 (setq elixir-ls-folder "~/elixir-ls")
 ;;; Modifiers
