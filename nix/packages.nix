@@ -10,6 +10,10 @@ let
     protobuf
     libiconv
     omnisharp-roslyn
+    # TODO: Use emacs-mac port when this
+    # issue is closed!
+    # https://github.com/NixOS/nixpkgs/issues/127902
+    #emacsMacPort
     dotnet-sdk_7
   ] else
     [ ];
@@ -39,6 +43,7 @@ let
     fira-code
     nil
     jetbrains-mono
+    nodejs
   ];
   doomEmacsDeps = [
     binutils

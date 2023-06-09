@@ -30,3 +30,9 @@
   (dolist
       (file (directory-files private-elisp-fldr t no-dots-regex))
         (load!  file)))
+;; ;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("C-TAB" . 'copilot-accept-completion)
+              ("C-<tab>" . 'copilot-accept-completion)))

@@ -120,3 +120,5 @@
 (package! alchemist)
 (package! yasnippet)
 (package! protobuf-mode)
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
