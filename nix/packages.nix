@@ -20,7 +20,7 @@ let
   linuxPackages = if vars.isLinux then [
     xsel
     (pkgs.callPackage ./arch/rate_mirrors.nix { inherit pkgs; })
-    ((emacsPackagesFor emacsNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm ]))
+    emacs
   ] else
     [ ];
   devPackages = [ asdf-vm rustup ];

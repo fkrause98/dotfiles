@@ -3,7 +3,7 @@ let
   vars = import ./nix/vars.nix;
 in {
   # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  # managej
   home.username = vars.user;
   home.homeDirectory = vars.home;
   nixpkgs.config.allowUnfree = true;
@@ -36,4 +36,8 @@ in {
   programs.vim = import ./nix/vim.nix { };
   programs.fish = import ./nix/fish.nix { pkgs = pkgs; };
   programs.git = import ./nix/git.nix { };
+  home.activation.postSwitch = "
+      echo -e '\\033[36;49;1mRunning post switch commands!\\033[36;49;1m'
+      ${vars.home}/.config/emacs/bin/doom sync
+";
 }
