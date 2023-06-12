@@ -29,6 +29,7 @@ let
   ];
   devPackages = [ asdf-vm rustup ];
   basePackages = [
+    htop
     statix
     ripgrep
     fd
