@@ -20,7 +20,7 @@
        :size 12))
 ;;; Shell to use
 (setq shell-file-name "fish"
-      vterm-shell "fish")
+      vterm-shell "~/.nix-profile/bin/fish")
 ;;; Elixir
 (setq elixir-ls-folder "~/elixir-ls")
 ;;; Modifiers

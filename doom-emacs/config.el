@@ -32,7 +32,5 @@
         (load!  file)))
 ;; ;; accept completion from copilot and fallback to company
 (use-package! copilot
-  :hook (prog-mode . copilot-mode)
-  :bind (:map copilot-completion-map
-              ("C-TAB" . 'copilot-accept-completion)
-              ("C-<tab>" . 'copilot-accept-completion)))
+  :hook (prog-mode . copilot-mode))
+(map! :i :desc "Accept a copilot completion prompt" "C-c TAB" #'copilot-accept-completion)

@@ -23,6 +23,10 @@ let
     emacs
   ] else
     [ ];
+  rustUtils = [
+      bacon
+      mprocs
+  ];
   devPackages = [ asdf-vm rustup ];
   basePackages = [
     statix
@@ -57,4 +61,4 @@ let
     editorconfig-core-c
   ];
 
-in builtins.concatLists [ doomEmacsDeps devPackages basePackages macPackages linuxPackages ]
+in builtins.concatLists [ doomEmacsDeps devPackages basePackages macPackages linuxPackages rustUtils]
