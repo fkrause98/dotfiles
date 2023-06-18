@@ -21,6 +21,10 @@ in {
       source = vars.emacsConfig;
       recursive = true;
     };
+    ".emacs.d" = {
+      source = ./emacs-vanilla;
+      recursive = true;
+   }
   };
 
   home.sessionVariables = {
