@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 let
- vars = import ./vars.nix;
+  vars = import ./vars.nix;
+  # Rust packages overlay
+  fenix = import
+    (fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz")
+    { };
 in with pkgs;
 let
   macPackages = if vars.isMac then [
@@ -23,11 +27,16 @@ let
     emacs
   ] else
     [ ];
-  rustUtils = [
-      bacon
-      mprocs
+  rustUtils = [ bacon mprocs ];
+  rustComponents = fenix.stable.withComponents [
+    "cargo"
+    "clippy"
+    "rust-src"
+    "rustc"
+    "rustfmt"
   ];
-  devPackages = [ asdf-vm rustup ];
+  rustAnalyzer = fenix.latest.rust-analyzer;
+  devPackages = [ asdf rustComponents rustAnalyzer ];
   basePackages = [
     htop
     statix
@@ -62,4 +71,11 @@ let
     editorconfig-core-c
   ];
 
-in builtins.concatLists [ doomEmacsDeps devPackages basePackages macPackages linuxPackages rustUtils]
+in builtins.concatLists [
+  doomEmacsDeps
+  devPackages
+  basePackages
+  macPackages
+  linuxPackages
+  rustUtils
+]
