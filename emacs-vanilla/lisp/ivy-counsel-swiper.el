@@ -31,14 +31,20 @@
   (setq ivy-height-alist 
         '((counsel-evil-registers . 15)
          (counsel-yank-pop . 15)
-         (counsel-git-log . 15)))
+         (counsel-git-log . 15)
+         (counsel-ibuffer . 15)
+         ))
   (setq ivy-height 15)
   ;; Orderless matching
   (setq ivy-re-builders-alist
         '((ivy-switch-buffer . ivy--regex-plus)
           (t . ivy--regex-ignore-order)))
+  ;; Make the input selectable, to
+  ;; be able to perform an action
+  ;; when there is a single, perfect match
+  ;; that has the same name as the input.
+  (setq ivy-use-selectable-prompt t)
   :config
-  ;; Ignore initial inputs in ivy
   (ivy-mode 1))
 ;; (use-package ivy-rich
   ;; :after ivy

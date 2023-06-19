@@ -32,9 +32,10 @@
 ;; loading themes
 (setq custom-safe-themes t)
 (use-package ef-themes
-  :init (load-theme 'ef-dark)
+  :config (load-theme 'ef-dark)
   :straight t)
 (use-package doom-themes
+  :config (load-theme 'doom-palenight)
   :straight t)
 (setq ring-bell-function 'ignore) 
 

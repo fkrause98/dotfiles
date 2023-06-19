@@ -13,10 +13,9 @@
               ("C-c C-c Q" . lsp-workspace-shutdown)
               ("C-c C-c s" . lsp-rust-analyzer-status))
   :config
-  ;; uncomment for less flashiness
-  ;; (setq lsp-eldoc-hook nil)
-  ;; (setq lsp-enable-symbol-highlighting nil)
-  ;; (setq lsp-signature-auto-activate nil)
-
-  ;; comment to disable rustfmt on save
-  (setq rustic-format-on-save t))
+  (setq rustic-format-on-save t)
+  (keys/local-leader
+    :keymaps 'rustic-mode-map
+    "f" '(rustic-format-buffer :which-key "rustic-format-buffer")
+    "b" '(rustic-cargo-build :which-key "rustic-cargo-build")
+    "c" '(rustic-cargo-check :which-key "rustic-cargo-check")))

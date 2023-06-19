@@ -4,6 +4,8 @@
 (load "~/.emacs.d/lisp/garbage-collection.el")
 ;;; Load editor settings
 (load "~/.emacs.d/lisp/settings.el")
+;;; Load some libs
+(load "~/.emacs.d/lisp/utils.el")
 ;;; Interactive text sorting and filtering
 (load "~/.emacs.d/lisp/ivy-counsel-swiper.el")
 ;;; Customized sorting
@@ -28,7 +30,10 @@
 (load "~/.emacs.d/lisp/elixir.el")
 (load "~/.emacs.d/lisp/rust.el")
 (load "~/.emacs.d/lisp/tree-sitter.el")
+(load "~/.emacs.d/lisp/webmode.el")
 ;;; Terminals
 (load "~/.emacs.d/lisp/term.el")
 ;;; Custom funcs
 (load "~/.emacs.d/lisp/custom-funcs.el")
+;;; Github Copilot
+(load "~/.emacs.d/lisp/copilot.el")

@@ -11,8 +11,11 @@
     (when
 	(file-directory-p projects-folder))
     (setq projectile-project-search-path '("~/Programming")))
-  (setq projectile-switch-project-action #'projectile-find-file))
+  (setq projectile-switch-project-action #'projectile-find-file
+        projectile-sort-order 'recently-active
+        projectile-enable-caching t
+        ))
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 (use-package projectile-ripgrep)
-(setq projectile-generic-comand "rg --files --hidden")
+(setq projectile-generic-command "rg --files --hidden")
