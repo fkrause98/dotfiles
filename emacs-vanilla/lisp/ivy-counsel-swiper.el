@@ -28,6 +28,10 @@
   (setq ivy-initial-inputs-alist nil)
   ;; Make ivy bigger, default
   ;; is 10
+  (setq ivy-height-alist 
+        '((counsel-evil-registers . 15)
+         (counsel-yank-pop . 15)
+         (counsel-git-log . 15)))
   (setq ivy-height 15)
   ;; Orderless matching
   (setq ivy-re-builders-alist
