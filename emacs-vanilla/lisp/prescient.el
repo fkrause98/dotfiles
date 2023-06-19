@@ -1,6 +1,9 @@
 ;;; package -- prescient
 ;; Intelligent sorting w/ Ivy and counsel
-(use-package prescient)
+(use-package prescient
+  :config
+  ;; Remember candidate frequencies across sessions
+  (prescient-persist-mode 1))
 (use-package ivy-prescient
   :requires (ivy counsel prescient)
   :after counsel
@@ -12,3 +15,4 @@
   :after company
   :config
   (company-prescient-mode 1))
+
