@@ -32,4 +32,3 @@
 (load "~/.emacs.d/lisp/term.el")
 ;;; Custom funcs
 (load "~/.emacs.d/lisp/custom-funcs.el")
-

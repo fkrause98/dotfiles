@@ -1,7 +1,7 @@
 ;;; package -- Ivy-counsel-swiper
 ;; Ivy, counsel and swiper are closely related,
 ;; so let's have them in a single config file :-).
-(use-package swiper :ensure t)
+(use-package swiper :straight t)
 (use-package counsel
   :after ivy
   :bind (("M-x" . counsel-M-x)
@@ -10,7 +10,7 @@
 	 ("C-r" . 'counsel-minibuffer-history)))
 (use-package ivy
   :diminish ivy-mode 
-  :ensure t
+  :straight t
   :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)	
          ("C-l" . ivy-alt-done)
@@ -23,15 +23,20 @@
          :map ivy-reverse-i-search-map
          ("C-k" . ivy-previous-line)
          ("C-d" . ivy-reverse-i-search-kill))
-  :config
-  (ivy-mode 1)
-  ;; Ignore initial inputs in ivy
+  :init
+  ;; No initial input
   (setq ivy-initial-inputs-alist nil)
+  ;; Make ivy bigger, default
+  ;; is 10
+  (setq ivy-height 15)
   ;; Orderless matching
   (setq ivy-re-builders-alist
         '((ivy-switch-buffer . ivy--regex-plus)
-          (t . ivy--regex-ignore-order))))
-(use-package ivy-rich
-  :after ivy
-  :init
-  (ivy-rich-mode 1))
+          (t . ivy--regex-ignore-order)))
+  :config
+  ;; Ignore initial inputs in ivy
+  (ivy-mode 1))
+;; (use-package ivy-rich
+  ;; :after ivy
+  ;; :config
+  ;; (ivy-rich-mode 1))

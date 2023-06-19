@@ -1,7 +1,7 @@
 ;;; package --- Summary: Rust settings
 
 (use-package rustic
-  :ensure t
+  :straight t
   :mode ("\\.rs\\'" . rustic-mode)
   :bind (:map rustic-mode-map
               ("M-j" . lsp-ui-imenu)

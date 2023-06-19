@@ -33,9 +33,9 @@
 (setq custom-safe-themes t)
 (use-package ef-themes
   :init (load-theme 'ef-dark)
-  :ensure t)
+  :straight t)
 (use-package doom-themes
-  :ensure t)
+  :straight t)
 (setq ring-bell-function 'ignore) 
 
 ;; Center text when only 1 window

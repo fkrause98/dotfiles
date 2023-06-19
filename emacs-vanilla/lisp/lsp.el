@@ -1,7 +1,7 @@
 ;;; package --- lsp mode settings
 (use-package lsp-mode
   :defer t
-  :ensure t
+  :straight t
   :commands (lsp lsp-deferred)
   :config
   (lsp-enable-which-key-integration t))

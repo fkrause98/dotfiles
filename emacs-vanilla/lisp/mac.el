@@ -5,7 +5,7 @@
 ;;; Get env from shell
 (use-package exec-path-from-shell
   :defer t
-  :ensure t
+  :straight t
   :init
   (when (memq window-system '(mac ns x))
 	(exec-path-from-shell-initialize)))

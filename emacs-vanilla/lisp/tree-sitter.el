@@ -1,9 +1,9 @@
 ;;; package --- Summary: Tree sitter
 (use-package tree-sitter
-  :ensure t
+  :straight t
   :commands tree-sitter-mode
   :hook
   ((rustic-mode) . tree-sitter-hl-mode))
 (use-package tree-sitter-langs
-  :ensure t
+  :straight t
   :after tree-sitter)

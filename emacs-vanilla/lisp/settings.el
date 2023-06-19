@@ -33,9 +33,9 @@
 (setq custom-safe-themes t)
 (use-package ef-themes
   :init (load-theme 'ef-dark)
-  :ensure t)
+  :straight t)
 (use-package doom-themes
-  :ensure t)
+  :straight t)
 (setq ring-bell-function 'ignore) 
 
 ;; Center text when only 1 window
@@ -45,7 +45,7 @@
   (perfect-margin-mode 1))
 ;;; Move this awful file somewhere else
 (setq custom-file
-      (concat user-emacs-directory "~/.emacs.d/lisp/.custom.el"))
+      (concat user-emacs-directory "~/.emacs/.custom.el"))
 ;;; Move backup files to another folder,
 ;;; instead of creating them everywhere
 (setq backup-directory-alist `(("." . "~/.saves")))

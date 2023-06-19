@@ -10,7 +10,7 @@
   :config
   (setq which-key-idle-delay 0.3))
 (use-package helpful
-  :ensure t
+  :straight t
   :custom
   (counsel-describe-function-function #'helpful-callable)
   (counsel-describe-function-variable #'helpful-variable)
@@ -29,7 +29,7 @@
   (sp-pair "(" nil :post-handlers '(("||\n[i]" "RET"))))
 
 (use-package popper
-  :ensure t ; or :straight t
+  :straight t ; or :straight t
   :bind (("C-`"   . popper-toggle-latest)
          ("M-`"   . popper-cycle)
          ("C-M-`" . popper-toggle-type))
@@ -44,6 +44,13 @@
   (popper-echo-mode +1))                ; For echo area hints
 
 (use-package flycheck
+  :hook lsp-mode
   :config
   (global-flycheck-mode))
 
+(use-package undo-fu
+  :after evil-mode)
+(use-package undo-fu-session
+  :after undo-fu
+  :config
+  (undo-fu-session-global-mode))

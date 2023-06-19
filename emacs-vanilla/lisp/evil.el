@@ -3,7 +3,8 @@
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil
-	evil-want-C-u-scroll t)
+	evil-want-C-u-scroll t
+        evil-undo-system 'undo-fu)
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
@@ -13,7 +14,7 @@
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
 
 (use-package evil-surround
-  :ensure t
+  :straight t
   :config (global-evil-surround-mode 1)
   :after (evil))
 (use-package evil-smartparens

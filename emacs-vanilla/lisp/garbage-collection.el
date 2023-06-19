@@ -1,5 +1,5 @@
 ;;; package -- Emacs settings
 (use-package gcmh
-  :ensure t
+  :straight t
   :demand t)
 (gcmh-mode 1)
