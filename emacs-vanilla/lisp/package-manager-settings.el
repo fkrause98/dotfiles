@@ -16,3 +16,10 @@
 (straight-use-package 'use-package)
 (setq use-package-always-ensure nil)
 (setq straight-use-package-by-default t)
+
+;; (use-package benchmark-init
+;;   :straight t
+;;   :config
+;;   (add-hook 'after-init-hook 'benchmark-init/deactivate))
+  
+  

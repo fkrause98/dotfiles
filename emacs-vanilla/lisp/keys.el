@@ -14,7 +14,7 @@
     "e" '(:ignore t :which-key "Eval")
     "ee" '(eval-last-sexp :which-key "Last sexp")
     "eb" '(eval-buffer :which-key "Buffer")
-    "er" '(eval-buffer :which-key "Region"))
+    "er" '(eval-region :which-key "Region"))
   ;;; Evil motion binds
   (general-create-definer keys/motion-state
     :prefix "g"

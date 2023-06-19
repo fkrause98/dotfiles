@@ -1,7 +1,7 @@
 (use-package copilot
-  :commands copilot-mode
+  :defines (copilot copilot-mode)
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :bind
   (("TAB" . copilot-accept-completion))
   :init
-  (add-hook 'prog-mode-hook #'copilot-mode))
+  (add-hook 'prog-mode-hook #'global-copilot-mode))

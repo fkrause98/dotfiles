@@ -1,5 +1,6 @@
 ;;; package -- For the evil you need in your life :-)
 (use-package evil
+  :straight t
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil
@@ -14,19 +15,24 @@
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
 
 (use-package evil-surround
+  :hook prog-mode
   :straight t
   :config (global-evil-surround-mode 1)
   :after (evil))
 (use-package evil-smartparens
   :requires smartparens
-  :hook (smartparens-global-mode . evil-smart-parens))
+  :hook (smartparens-global-mode . evil-smart-parens)
+  :after (:all (evil smartparens)))
 
 (use-package evil-collection
   :after evil
   :config
-  (evil-collection-init))
+  (evil-collection-init)
+  :after evil)
 (use-package evil-nerd-commenter
-  :init (evilnc-default-hotkeys))
+  :hook prog-mode
+  :init (evilnc-default-hotkeys)
+  :after evil)
 
 (use-package scroll-on-jump
   :config
