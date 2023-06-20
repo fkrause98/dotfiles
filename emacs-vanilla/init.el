@@ -1,39 +1,44 @@
 ;;; Load package manager config
-(load "~/.emacs.d/lisp/package-manager-settings.el")
+(load "~/.emacs.d/lisp/package-manager-settings")
 ;;; Better GC for Emacs
-(load "~/.emacs.d/lisp/garbage-collection.el")
-;;; Load editor settings
-(load "~/.emacs.d/lisp/settings.el")
-;;; Load some libs
-(load "~/.emacs.d/lisp/utils.el")
-;;; Interactive text sorting and filtering
-(load "~/.emacs.d/lisp/ivy-counsel-swiper.el")
-;;; Customized sorting
-(load "~/.emacs.d/lisp/prescient.el")
-;;; Some non-related (between them) packages
-(load "~/.emacs.d/lisp/packages.el")
-;;; A proper editor for Emacs
-(load "~/.emacs.d/lisp/evil.el")
-;;; General keybinds
-(load "~/.emacs.d/lisp/keys.el")
-;;; Project management
-(load "~/.emacs.d/lisp/project.el")
-;;; Git management
-(load "~/.emacs.d/lisp/git.el")
-;;; Lsp settings
-(load "~/.emacs.d/lisp/lsp.el")
-;;; Autocomplete
-(load "~/.emacs.d/lisp/company.el")
-;;; Mac-os specific settings
-(load "~/.emacs.d/lisp/mac.el")
-;;; Lang settings
-(load "~/.emacs.d/lisp/elixir.el")
-(load "~/.emacs.d/lisp/rust.el")
-(load "~/.emacs.d/lisp/tree-sitter.el")
-(load "~/.emacs.d/lisp/webmode.el")
-;;; Terminals
-(load "~/.emacs.d/lisp/term.el")
+(load "~/.emacs.d/lisp/garbage-collection")
 ;;; Custom funcs
-(load "~/.emacs.d/lisp/custom-funcs.el")
+(load "~/.emacs.d/lisp/custom-funcs")
+;;; Load editor settings
+(load "~/.emacs.d/lisp/settings")
+;;; Load some libs
+(load "~/.emacs.d/lisp/utils")
+;;; Interactive text sorting and filtering
+(load "~/.emacs.d/lisp/ivy-counsel-swiper")
+;;; Customized sorting
+(load "~/.emacs.d/lisp/prescient")
+;;; Some non-ated (between them) packages
+(load "~/.emacs.d/lisp/packages")
+;;; A proper editor for Emacs
+(load "~/.emacs.d/lisp/evil")
+;;; General keybinds
+(load "~/.emacs.d/lisp/keys")
+;;; Project management
+(load "~/.emacs.d/lisp/project")
+;;; Git management
+(load "~/.emacs.d/lisp/git")
+;;; Lsp settings
+(load "~/.emacs.d/lisp/lsp")
+;;; Autocomplete
+(load "~/.emacs.d/lisp/company")
+;;; Mac-os specific settings
+(load "~/.emacs.d/lisp/mac")
+;;; Lang settings
+(load "~/.emacs.d/lisp/elixir")
+(load "~/.emacs.d/lisp/rust")
+(load "~/.emacs.d/lisp/nix")
+(load "~/.emacs.d/lisp/csharp")
+(load "~/.emacs.d/lisp/tree-sitter")
+(load "~/.emacs.d/lisp/webmode")
+;;; Terminals
+(load "~/.emacs.d/lisp/term")
 ;;; Github Copilot
-(load "~/.emacs.d/lisp/copilot.el")
+(load "~/.emacs.d/lisp/copilot")
+
+;;; Send startup time as a message on startup.
+(funs/display-startup-time)

@@ -1,5 +1,6 @@
 ;;; package -- Some keybinds
 (use-package general
+  :straight t
   :config
   (general-create-definer keys/leader
     :states '(normal insert visual emacs)
@@ -21,6 +22,10 @@
     :states 'motion)
   (keys/motion-state
     "cc" '(evilnc-comment-or-uncomment-lines :which-key "Comment line"))
+  ;;; Commands that open special new buffers
+  (keys/leader
+    "o" '(:ignore t :which-key "Open")
+    "ot" '(vterm :which-key "Terminal"))
   ;;; Git binds
   (keys/leader
     "g" '(:ignore t :which-key "Git")
@@ -33,7 +38,7 @@
   ;;; Buffer keys
   (keys/leader
     "b" '(:ignore t :which-key "Buffer")
-    "bb" '(counsel-ibuffer :which-key "Switch")
+    "bb" '(ivy-switch-buffer :which-key "Switch")
     "bk" '(kill-current-buffer :which-key "Kill current")
     "bl" '(evil-switch-to-windows-last-buffer :which-key "Latest buffer switch")
     "br" '(revert-buffer-with-fine-grain :which-key "Revert buffer"))
@@ -61,9 +66,10 @@
   (keys/leader
     "p" '(:ignore t :which-key "Project")
     "pa" '(projectile-add-known-project :which-key "Add project folder")
-    "pf" '(projectile-find-file :which-key "Find file")
+    "pf" '(projectile-find-file-dwim  :which-key "Find file")
     "pi" '(projectile-invalidate-cache :which-key "Add project folder")
     "pp" '(projectile-switch-project :which-key "Switch")
+    "pr" '(projectile-recentf  :which-key "Switch")
     "ps" '(counsel-projectile-rg :which-key "Search text"))
   ;;; Search keys
   (keys/leader

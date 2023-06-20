@@ -7,3 +7,12 @@
 (use-package tree-sitter-langs
   :straight t
   :after tree-sitter)
+(use-package tree-sitter-indent
+  :straight t
+  :after tree-sitter)
+(use-package csharp-mode
+  :commands (csharp-mode)
+  :straight t
+  :mode "\\.cs\\'"
+  :hook
+  ((csharp-mode) . tree-sitter-hl-mode))

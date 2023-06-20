@@ -15,26 +15,30 @@
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
 
 (use-package evil-surround
-  :hook prog-mode
+  :commands (evil-surround-mode)
+  :defines global-evil-surround-mode
   :straight t
-  :config (global-evil-surround-mode 1)
-  :after (evil))
+  :config
+  (global-evil-surround-mode 1)
+  :init
+  (add-hook 'evil-mode-hook 'evil-surround-mode))
+
 (use-package evil-smartparens
+  :straight t
   :requires smartparens
   :hook (smartparens-global-mode . evil-smart-parens)
   :after (:all (evil smartparens)))
 
 (use-package evil-collection
+  :straight t
   :after evil
   :config
   (evil-collection-init)
   :after evil)
-(use-package evil-nerd-commenter
-  :hook prog-mode
-  :init (evilnc-default-hotkeys)
-  :after evil)
+(straight-use-package 'evil-nerd-commenter)
 
 (use-package scroll-on-jump
+  :straight t
   :config
   (with-eval-after-load 'evil
     (scroll-on-jump-advice-add evil-undo)

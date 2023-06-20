@@ -1,10 +1,13 @@
 ;;; package -- Some non-related (between them) packages
 (use-package rg
+  :straight t
   :config
   (rg-enable-default-bindings))
 (use-package rainbow-delimiters
+  :straight t
   :hook (prog-mode . rainbow-delimiters-mode))
 (use-package which-key
+  :straight t
   :init (which-key-mode)
   :diminish which-key-mode
   :config
@@ -20,6 +23,7 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 (use-package smartparens
+  :straight t
   :hook (prog-mode . smartparens-mode)
   :config
   (require 'smartparens-config)
@@ -54,3 +58,6 @@
   :after undo-fu
   :config
   (undo-fu-session-global-mode))
+(use-package neotree
+  :straight t
+  :after projectile)

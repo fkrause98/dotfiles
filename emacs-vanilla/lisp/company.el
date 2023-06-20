@@ -1,8 +1,8 @@
 ;;; package --- Company (autocomplete) settings
 (use-package company
-  :commands (company-mode)
+  :straight t
   :after (lsp-mode)
-  :hook ((lsp-mode emacs-lisp-mode) . company-mode)
+  :commands (company-mode)
   :bind (:map company-active-map
          ("<tab>" . company-complete-selection))
         (:map lsp-mode-map
@@ -13,5 +13,15 @@
   (company-minimum-prefix-length 1)
   (company-idle-delay 0.0))
 (use-package company-box
+  :if (display-graphic-p)
+  :commands (company-box-mode)
+  :straight t
   :after company
   :hook (company-mode . company-box-mode))
+;; TODO:
+;; Put this under the use-package definition,
+;; for some reason it didn't work when I
+;; tried with :hook and :after.
+(add-hook 'prog-mode-hook #'company-mode)
+(when (display-graphic-p)
+  (add-hook 'company-mode #'company-box-mode))
