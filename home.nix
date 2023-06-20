@@ -40,8 +40,4 @@ in {
   programs.vim = import ./nix/vim.nix { };
   programs.fish = import ./nix/fish.nix { pkgs = pkgs; };
   programs.git = import ./nix/git.nix { };
-  home.activation.postSwitch = "
-      echo -e '\\033[36;49;1mRunning post switch commands!\\033[36;49;1m'
-      ${vars.home}/.config/emacs/bin/doom sync
-";
 }

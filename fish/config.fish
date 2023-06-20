@@ -2,6 +2,10 @@
       function ls --wraps=exa --description 'alias ls exa'
           exa $argv
       end
+      ## Alias em to emacs -nw 
+      function em --wraps="emacs -nw" --description 'alias "emacs -nw" em'
+	      emacs -nw $argv
+      end
       ## Vim aliases
       function vi --wraps=vim --description 'alias vi vim'
           vim $argv
