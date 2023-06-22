@@ -50,9 +50,11 @@
 ;;; Move backup files to another folder,
 ;;; instead of creating them everywhere
 (setq backup-directory-alist `(("." . "~/.saves")))
-
 ;;; Making sure people working with me don't kill me
 (setq-default tab-width 2)
 (setq-default evil-shift-width tab-width)
 (setq truncate-lines t)
 (setq-default truncate-lines t)
+;;; Disable annoying compile warnings
+(setq byte-compile-warnings nil)
+(setq warning-minimum-level :error)

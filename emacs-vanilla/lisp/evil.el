@@ -4,7 +4,7 @@
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil
-	evil-want-C-u-scroll t
+        evil-want-C-u-scroll t
         evil-undo-system 'undo-fu)
   :config
   (evil-mode 1)
@@ -41,7 +41,23 @@
   :config
   (evil-collection-init)
   :after evil)
-(straight-use-package 'evil-nerd-commenter)
+(use-package evil-surround
+  :straight t
+  :after evil-mode
+  :commands (global-evil-surround-mode
+             evil-surround-edit
+             evil-Surround-edit
+             evil-surround-region)
+  :config (global-evil-surround-mode 1))
+
+(defun funcs/enable-surround-mode nil
+  (global-evil-surround-mode 1))
+(add-hook 'after-init-hook #'funcs/enable-surround-mode)
+(use-package evil-nerd-commenter
+  :straight t
+  :after evil-mode
+  :config (evilnc-default-hotkeys))
+;; (straight-use-package 'evil-nerd-commenter)
 
 (use-package scroll-on-jump
   :straight t

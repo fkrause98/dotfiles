@@ -1,4 +1,4 @@
-;;; package -- Some keybinds
+;;; package -- Some general keybinds
 (use-package general
   :straight t
   :config
@@ -18,7 +18,7 @@
     "er" '(eval-region :which-key "Region"))
   (keys/local-leader
     :keymaps 'rustic-mode-map
-    "f" '(lsp-format-buffer :which-key "Format buffer")))
+    "f" '(lsp-format-buffer :which-key "Format buffer"))
   ;;; Evil motion binds
   (general-create-definer keys/motion-state
     :prefix "g"
@@ -41,10 +41,11 @@
   ;;; Buffer keys
   (keys/leader
     "b" '(:ignore t :which-key "Buffer")
-    "bb" '(ivy-switch-buffer :which-key "Switch")
+    "bb" '(buffers/switch-project-buffer :which-key "Switch")
+    "bB" '(buffers/switch-buffer :which-key "Switch")
     "bk" '(kill-current-buffer :which-key "Kill current")
     "bl" '(evil-switch-to-windows-last-buffer :which-key "Latest buffer switch")
-    "br" '(revert-buffer-with-fine-grain :which-key "Revert buffer"))
+    "br" '(funcs/revert-buffer-no-confirm :which-key "Revert buffer")
     "br" '(revert-buffer-with-fine-grain :which-key "Revert buffer")
     "bn" '(evil-buffer-new :which-key "New buffer"))
   ;;; Code keys
@@ -54,14 +55,14 @@
     "cd" '(lsp-find-definition :which-key "Find definition")
     "cD" '(lsp-find-references :which-key "Find references")
     "cr" '(lsp-rename :which-key "Rename")
-    "cx" '(counsel-flycheck :which-key "List errors"))
+    "cx" '(counsel-flycheck :which-key "List errors")
     "cx" '(counsel-flycheck :which-key "List errors")
     "ch" '(lsp-describe-thing-at-point :which-key "Help"))
   ;;; File keys
   (keys/leader
     "f" '(:ignore t :which-key "Files")
-    "ff" '(counsel-find-file :which-key "Find file")
-    "fr" '(counsel-recentf :which-key "Recent files"))
+    "ff" '(find-file :which-key "Find file")
+    "fr" '(files/recent :which-key "Recent files"))
   ;;; Helper keys
   (keys/leader
     "h" '(:ignore t :which-key "Help")
@@ -77,11 +78,12 @@
     "pi" '(projectile-invalidate-cache :which-key "Add project folder")
     "pp" '(projectile-switch-project :which-key "Switch")
     "pr" '(projectile-recentf  :which-key "Switch")
-    "ps" '(counsel-projectile-rg :which-key "Search text"))
+    "ps" '(search/project-text-search :which-key "Search text"))
   ;;; Search keys
   (keys/leader
     "s" '(:ignore t :which-key "Search")
-    "ss" '(swiper :which-key "Buffer"))
+    "ss" '(search/search-current-buffer :which-key "Buffer")
+    "si" '(counsel-imenu :which-key "Imenu"))
   ;;; Toggles
   (keys/leader
     "t"  '(:ignore t :which-key "Toggles")

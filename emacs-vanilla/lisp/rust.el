@@ -13,7 +13,7 @@
               ("C-c C-c Q" . lsp-workspace-shutdown)
               ("C-c C-c s" . lsp-rust-analyzer-status))
   :config
-  (setq rustic-format-on-save nil)
+  (setq-default rustic-format-on-save nil)
   (keys/local-leader
     :keymaps 'rustic-mode-map
     "f" '(rustic-format-buffer :which-key "rustic-format-buffer")

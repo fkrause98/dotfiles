@@ -33,15 +33,18 @@
   (sp-pair "(" nil :post-handlers '(("||\n[i]" "RET"))))
 
 (use-package popper
-  :straight t ; or :straight t
+  :straight t 
   :bind (("C-`"   . popper-toggle-latest)
          ("M-`"   . popper-cycle)
          ("C-M-`" . popper-toggle-type))
   :init
   (setq popper-reference-buffers
+         ; Make some buffers toggable
         '("\\*Messages\\*"
           "Output\\*$"
           "\\*Async Shell Command\\*"
+          "\\*Warnings\\*"
+	  "^\\*vterm.*\\*$"
           help-mode
           compilation-mode))
   (popper-mode +1)
@@ -61,3 +64,6 @@
 (use-package neotree
   :straight t
   :after projectile)
+(use-package doom-modeline
+  :straight t
+  :config (doom-modeline-mode 1))

@@ -6,3 +6,7 @@
                    (time-subtract after-init-time before-init-time)))
            gcs-done))
 ;; (add-hook 'emacs-startup-hook #'funs/display-startup-time)
+(defun funcs/revert-buffer-no-confirm ()
+  "Revert buffer without confirmation."
+  (interactive)
+  (revert-buffer t t))
