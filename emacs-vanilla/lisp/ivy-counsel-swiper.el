@@ -4,7 +4,7 @@
 (use-package swiper :straight t)
 (use-package counsel
   :after ivy
-  :bind (("M-x" . counsel-M-x)
+  :bind (
 	 ("C-x b" . counsel-ibuffer)
 	 :map minibuffer-local-map
 	 ("C-r" . 'counsel-minibuffer-history)))

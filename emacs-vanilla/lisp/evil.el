@@ -14,14 +14,13 @@
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
 
-(use-package evil-surround
-  :commands (evil-surround-mode)
-  :defines global-evil-surround-mode
-  :straight t
-  :config
-  (global-evil-surround-mode 1)
-  :init
-  (add-hook 'evil-mode-hook 'evil-surround-mode))
+;; (use-package evil-surround
+;;   :after evil
+;;   :commands (evil-surround-mode global-evil-surround-mode)
+;;   :defines (global-evil-surround-mode evil-surround-mode)
+;;   :straight t
+;;   :config
+;;   (global-evil-surround-mode 1))
 
 (use-package evil-smartparens
   :straight t
@@ -35,7 +34,23 @@
   :config
   (evil-collection-init)
   :after evil)
-(straight-use-package 'evil-nerd-commenter)
+(use-package evil-surround
+  :straight t
+  :after evil-mode
+  :commands (global-evil-surround-mode
+             evil-surround-edit
+             evil-Surround-edit
+             evil-surround-region)
+  :config (global-evil-surround-mode 1))
+
+(defun funcs/enable-surround-mode nil
+  (global-evil-surround-mode 1))
+(add-hook 'after-init-hook #'funcs/enable-surround-mode)
+(use-package evil-nerd-commenter
+  :straight t
+  :after evil-mode
+  :config (evilnc-default-hotkeys))
+;; (straight-use-package 'evil-nerd-commenter)
 
 (use-package scroll-on-jump
   :straight t

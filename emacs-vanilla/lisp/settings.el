@@ -50,3 +50,6 @@
 ;;; Move backup files to another folder,
 ;;; instead of creating them everywhere
 (setq backup-directory-alist `(("." . "~/.saves")))
+;;; Disable annoying compile warnings
+(setq byte-compile-warnings nil)
+(setq warning-minimum-level :error)
