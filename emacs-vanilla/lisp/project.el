@@ -7,7 +7,7 @@
   (let
       ((projects-folder (expand-file-name "~/Programming")))
     (when
-	(file-directory-p projects-folder))
+        (file-directory-p projects-folder))
     (setq projectile-project-search-path
           '(
             "~/Programming" . 2
