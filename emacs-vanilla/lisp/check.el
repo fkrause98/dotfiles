@@ -1,12 +1,10 @@
 ;;; summary -- flycheck settings and download
 
 (use-package flycheck
+  :straight t
   :config
-  (global-flycheck-mode))
-(use-package flycheck
-  :config
-  (global-flycheck-mode))
-
+  (global-flycheck-mode)
+  (setq flycheck-display-errors-function nil))
 (defun counsel-flycheck ()
   "Navigate to flycheck errors"
   (interactive)
@@ -32,6 +30,3 @@
 		     (pos (flycheck-error-pos the-error)) )
 		  (goto-char (flycheck-error-pos the-error))))
 	      :history 'counsel-flycheck-history)))
-
-
-

@@ -26,8 +26,6 @@
   :init
   ;; No initial input
   (setq ivy-initial-inputs-alist nil)
-  ;; Make ivy bigger, default
-  ;; is 10
   (setq ivy-height-alist 
         '((counsel-evil-registers . 15)
          (counsel-yank-pop . 15)
@@ -37,15 +35,22 @@
   (setq ivy-height 15)
   ;; Orderless matching
   (setq ivy-re-builders-alist
-        '((ivy-switch-buffer . ivy--regex-plus)
-          (t . ivy--regex-ignore-order)))
+        '((t. ivy--regex-ignore-order)))
   ;; Make the input selectable, to
   ;; be able to perform an action
   ;; when there is a single, perfect match
   ;; that has the same name as the input.
+  ;; Eg: You want to create a file named
+  ;; my_lib.rs, but lib.rs exists.
   (setq ivy-use-selectable-prompt t)
   :config
-  (ivy-mode 1))
+  (ivy-mode 1)
+  ;; Make ivy/counsel bigger, default
+  ;; is 10
+  (setf (alist-get 'counsel-projectile-ag ivy-height-alist) 15)
+  (setf (alist-get 'counsel-projectile-rg ivy-height-alist) 15)
+  (setf (alist-get 'swiper ivy-height-alist) 15)
+  (setf (alist-get 'counsel-switch-buffer ivy-height-alist) 15))
 ;; (use-package ivy-rich
   ;; :after ivy
   ;; :config

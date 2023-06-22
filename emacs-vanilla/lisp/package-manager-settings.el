@@ -21,5 +21,3 @@
   :straight t
   :config
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
-  
-  

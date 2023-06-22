@@ -16,6 +16,9 @@
     "ee" '(eval-last-sexp :which-key "Last sexp")
     "eb" '(eval-buffer :which-key "Buffer")
     "er" '(eval-region :which-key "Region"))
+  (keys/local-leader
+    :keymaps 'rustic-mode-map
+    "f" '(lsp-format-buffer :which-key "Format buffer")))
   ;;; Evil motion binds
   (general-create-definer keys/motion-state
     :prefix "g"
@@ -42,6 +45,8 @@
     "bk" '(kill-current-buffer :which-key "Kill current")
     "bl" '(evil-switch-to-windows-last-buffer :which-key "Latest buffer switch")
     "br" '(revert-buffer-with-fine-grain :which-key "Revert buffer"))
+    "br" '(revert-buffer-with-fine-grain :which-key "Revert buffer")
+    "bn" '(evil-buffer-new :which-key "New buffer"))
   ;;; Code keys
   (keys/leader
     "c"  '(:ignore t :which-key "Code")
@@ -50,6 +55,8 @@
     "cD" '(lsp-find-references :which-key "Find references")
     "cr" '(lsp-rename :which-key "Rename")
     "cx" '(counsel-flycheck :which-key "List errors"))
+    "cx" '(counsel-flycheck :which-key "List errors")
+    "ch" '(lsp-describe-thing-at-point :which-key "Help"))
   ;;; File keys
   (keys/leader
     "f" '(:ignore t :which-key "Files")
@@ -66,7 +73,7 @@
   (keys/leader
     "p" '(:ignore t :which-key "Project")
     "pa" '(projectile-add-known-project :which-key "Add project folder")
-    "pf" '(projectile-find-file-dwim  :which-key "Find file")
+    "pf" '(projectile-find-file  :which-key "Find file")
     "pi" '(projectile-invalidate-cache :which-key "Add project folder")
     "pp" '(projectile-switch-project :which-key "Switch")
     "pr" '(projectile-recentf  :which-key "Switch")

@@ -1,6 +1,9 @@
 ;;; package  -- Csharp
 (use-package csharp-mode
+  :commands (csharp-mode)
   :straight t
-  :mode ("\\.cs\\'" . chsarp-mode)
-  :config
-  (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode)))
+  :mode "\\.cs\\'"
+  :init
+  (add-hook 'csharp-mode-hook 'csharp-tree-sitter-mode)
+  :hook
+  ((csharp-mode) . tree-sitter-hl-mode))

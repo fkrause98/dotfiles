@@ -14,6 +14,12 @@
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
 
+(use-package evil-matchit
+  :straight t
+  :after evil
+  :config
+  (global-evil-matchit-mode 1))
+
 (use-package evil-surround
   :commands (evil-surround-mode)
   :defines global-evil-surround-mode

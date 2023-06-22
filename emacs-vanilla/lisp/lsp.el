@@ -12,4 +12,5 @@
   :hook (lsp-mode . lsp-ui-mode)
   :config
   (setq lsp-ui-doc-position 'bottom
-        lsp-ui-sideline-delay 0.5))
+        lsp-ui-sideline-delay 0.5
+        lsp-ui-sideline-enable nil))

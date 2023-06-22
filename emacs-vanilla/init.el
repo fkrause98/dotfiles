@@ -26,6 +26,8 @@
 (load "~/.emacs.d/lisp/lsp")
 ;;; Autocomplete
 (load "~/.emacs.d/lisp/company")
+;;; Checks
+(load "~/.emacs.d/lisp/check.el")
 ;;; Mac-os specific settings
 (load "~/.emacs.d/lisp/mac")
 ;;; Lang settings
