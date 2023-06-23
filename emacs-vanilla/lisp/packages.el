@@ -64,6 +64,18 @@
 (use-package neotree
   :straight t
   :after projectile)
+
 (use-package doom-modeline
   :straight t
-  :config (doom-modeline-mode 1))
+  :config
+  (setq doom-modeline-icon nil)
+  (doom-modeline-mode 1))
+
+(use-package highlight-indent-guides
+  :straight t
+  :hook
+  ((python-mode . highlight-indent-guides-mode)
+   (elixir-mode . highlight-indent-guides-mode)
+   (rust-mode . highlight-indent-guides-mode))
+  :config
+  (setq highlight-indent-guides-method 'column))

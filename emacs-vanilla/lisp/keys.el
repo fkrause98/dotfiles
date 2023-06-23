@@ -51,11 +51,12 @@
   ;;; Code keys
   (keys/leader
     "c"  '(:ignore t :which-key "Code")
-    "cs" '(lsp-ivy-workspace-symbol :which-key "LSP Symbols")
+    "cs" '(consult-lsp-file-symbols :which-key "LSP symbols")
+    "cw" '(consult-lsp-symbols :which-key "LSP Workspace symbols")
     "cd" '(lsp-find-definition :which-key "Find definition")
     "cD" '(lsp-find-references :which-key "Find references")
     "cr" '(lsp-rename :which-key "Rename")
-    "cx" '(counsel-flycheck :which-key "List errors")
+    "cx" '(consult-lsp-diagnostics :which-key "List errors")
     "cx" '(counsel-flycheck :which-key "List errors")
     "ch" '(lsp-describe-thing-at-point :which-key "Help"))
   ;;; File keys
@@ -74,20 +75,20 @@
   (keys/leader
     "p" '(:ignore t :which-key "Project")
     "pa" '(projectile-add-known-project :which-key "Add project folder")
-    "pf" '(projectile-find-file  :which-key "Find file")
+    "pf" '(consult-projectile-find-file  :which-key "Find file")
     "pi" '(projectile-invalidate-cache :which-key "Add project folder")
-    "pp" '(projectile-switch-project :which-key "Switch")
+    "pp" '(consult-projectile-switch-project :which-key "Switch")
     "pr" '(projectile-recentf  :which-key "Switch")
     "ps" '(search/project-text-search :which-key "Search text"))
   ;;; Search keys
   (keys/leader
     "s" '(:ignore t :which-key "Search")
     "ss" '(search/search-current-buffer :which-key "Buffer")
-    "si" '(counsel-imenu :which-key "Imenu"))
+    "si" '(imenu :which-key "Imenu"))
   ;;; Toggles
   (keys/leader
     "t"  '(:ignore t :which-key "Toggles")
-    "tt" '(counsel-load-theme :which-key "Choose theme"))
+    "tt" '(consult-theme :which-key "Choose theme"))
   ;;; Window keys
   (keys/leader
     "w" '(:ignore t :which-key "Window")

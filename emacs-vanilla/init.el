@@ -8,6 +8,8 @@
 (load "~/.emacs.d/lisp/settings")
 ;;; Load some libs
 (load "~/.emacs.d/lisp/utils")
+;;; Project management
+(load "~/.emacs.d/lisp/project")
 ;;; Interactive text sorting and filtering
 (load "~/.emacs.d/lisp/ivy-counsel-swiper")
 (load "~/.emacs.d/lisp/vertico")
@@ -19,8 +21,6 @@
 (load "~/.emacs.d/lisp/evil")
 ;;; General keybinds
 (load "~/.emacs.d/lisp/keys")
-;;; Project management
-(load "~/.emacs.d/lisp/project")
 ;;; Git management
 (load "~/.emacs.d/lisp/git")
 ;;; Lsp settings
@@ -38,6 +38,8 @@
 (load "~/.emacs.d/lisp/csharp")
 (load "~/.emacs.d/lisp/tree-sitter")
 (load "~/.emacs.d/lisp/webmode")
+;; Formatting for a wide arrange of langs.
+;; (load "~/.emacs.d/lisp/format")
 ;;; Terminals
 (load "~/.emacs.d/lisp/term")
 ;;; Github Copilot
@@ -45,3 +47,4 @@
 
 ;;; Send startup time as a message on startup.
 (funs/display-startup-time)
+

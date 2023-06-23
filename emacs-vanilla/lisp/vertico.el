@@ -24,13 +24,16 @@
          ("C-x C-b" . consult-buffer)
          ("C-x C-f" . consult-find))
   :init
-  (setq consult-project-root-function #'projectile-project-root))
+  ;; (setq consult-project-root-function #'project/get-project-root)
+  )
 (use-package consult-lsp
   :straight t
   :after (consult lsp-mode)
   :bind (:map lsp-mode-map
               ("C-c C-l" . consult-lsp-symbols)))
-
+(use-package consult-projectile
+  :straight t
+  :after (:all (consult projectile)))
 (defun search/search-current-buffer ()
   (interactive)
   (consult-line))
