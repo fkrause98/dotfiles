@@ -1,8 +1,8 @@
 ;;; package -- Some non-related (between them) packages
-(use-package rg
-  :straight t
-  :config
-  (rg-enable-default-bindings))
+;; (use-package rg
+;;   :straight t
+;;   :config
+;;   (rg-enable-default-bindings))
 (use-package rainbow-delimiters
   :straight t
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -79,3 +79,8 @@
    (rust-mode . highlight-indent-guides-mode))
   :config
   (setq highlight-indent-guides-method 'column))
+
+;; Despite what its name implies,
+;; it also works on wayland :-).
+(use-package xclip
+  :ensure t)
