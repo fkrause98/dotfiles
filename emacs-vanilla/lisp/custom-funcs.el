@@ -1,4 +1,5 @@
 ;;; package -- Custom functions
+;;;###autoload
 (defun funs/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
            (format "%.2f seconds"
@@ -6,6 +7,7 @@
                    (time-subtract after-init-time before-init-time)))
            gcs-done))
 ;; (add-hook 'emacs-startup-hook #'funs/display-startup-time)
+;;;###autoload
 (defun funcs/revert-buffer-no-confirm ()
   "Revert buffer without confirmation."
   (interactive)

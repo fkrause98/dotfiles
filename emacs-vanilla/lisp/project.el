@@ -14,17 +14,15 @@
     (when
         (file-directory-p projects-folder))
     (setq projectile-project-search-path
-          '(
-            ("~/Programming" . 2)
-            ("~/dotfiles" . 2)
-            )
-          ))
+          nil
+     ))
   (setq projectile-switch-project-action #'find-file
         projectile-sort-order 'recently-active
         projectile-enable-caching t
         projectile-generic-command "rg --files --hidden"
-        projectile-completion-system 'auto
-        projectile-indexing-method 'hybrid))
+        ;; Avoid projectile using ivy
+        projectile-completion-system nil
+	projectile-indexing-method 'hybrid))
 (add-hook 'after-init-hook 'projectile-mode)
 
 (use-package projectile-ripgrep

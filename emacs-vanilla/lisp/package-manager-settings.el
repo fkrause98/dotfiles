@@ -18,6 +18,9 @@
 (setq straight-use-package-by-default t)
 
 (use-package benchmark-init
-  :straight t
+  :straight (:host github
+                   :repo "dholm/benchmark-init-el"
+                   :commit "02435560415bbadbcf5051fb7042880549170e7e")
   :config
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
+

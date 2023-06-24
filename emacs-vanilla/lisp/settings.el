@@ -32,7 +32,7 @@
 ;; loading themes
 (setq custom-safe-themes t)
 (use-package ef-themes
-  :config (load-theme 'ef-dark)
+  :after (consult-load-theme)
   :straight t)
 (use-package doom-themes
   :config (load-theme 'doom-palenight)
@@ -42,6 +42,7 @@
 ;; Center text when only 1 window
 ;; is open
 (use-package perfect-margin
+  :hook (after-init . perfect-margin-mode)
   :config
   (perfect-margin-mode 1))
 ;;; Move this awful file somewhere else

@@ -16,7 +16,7 @@
 
 (use-package evil-matchit
   :straight t
-  :after evil
+  :hook prog-mode
   :config
   (global-evil-matchit-mode 1))
 
@@ -37,10 +37,9 @@
 
 (use-package evil-collection
   :straight t
-  :after evil
+  :hook prog-mode
   :config
-  (evil-collection-init)
-  :after evil)
+  (evil-collection-init))
 (use-package evil-surround
   :straight t
   :after evil-mode

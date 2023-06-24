@@ -1,3 +1,5 @@
+;; Avoid calling some emacs-regexes on startup
+(let ((file-name-handler-alist nil))
 ;;; Load package manager config
 (load "~/.emacs.d/lisp/package-manager-settings")
 ;;; Better GC for Emacs
@@ -30,7 +32,8 @@
 ;;; Checks
 (load "~/.emacs.d/lisp/check.el")
 ;;; Mac-os specific settings
-(load "~/.emacs.d/lisp/mac")
+(when (eq system-type 'darwin)
+  (load "~/.emacs.d/lisp/mac"))
 ;;; Lang settings
 (load "~/.emacs.d/lisp/elixir")
 (load "~/.emacs.d/lisp/rust")
@@ -46,5 +49,4 @@
 (load "~/.emacs.d/lisp/copilot")
 
 ;;; Send startup time as a message on startup.
-(funs/display-startup-time)
-
+(funs/display-startup-time))

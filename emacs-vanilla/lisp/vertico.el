@@ -22,10 +22,7 @@
   :bind (("C-s" . consult-line)
          ("C-x b" . consult-buffer)
          ("C-x C-b" . consult-buffer)
-         ("C-x C-f" . consult-find))
-  :init
-  ;; (setq consult-project-root-function #'project/get-project-root)
-  )
+         ("C-x C-f" . consult-find)))
 (use-package consult-lsp
   :straight t
   :after (consult lsp-mode)
