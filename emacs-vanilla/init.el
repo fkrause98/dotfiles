@@ -13,7 +13,7 @@
 ;;; Project management
 (load "~/.emacs.d/lisp/project")
 ;;; Interactive text sorting and filtering
-(load "~/.emacs.d/lisp/ivy-counsel-swiper")
+;;(load "~/.emacs.d/lisp/ivy-counsel-swiper")
 (load "~/.emacs.d/lisp/vertico")
 ;;; Customized sorting
 (load "~/.emacs.d/lisp/prescient")
