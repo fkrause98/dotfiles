@@ -14,12 +14,6 @@
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
 
-(use-package evil-matchit
-  :straight t
-  :after evil-mode
-  :config
-  (global-evil-matchit-mode 1))
-
 (use-package evil-surround
   :commands (evil-surround-mode)
   :defines global-evil-surround-mode
@@ -33,6 +27,12 @@
   :straight t
   :after evil-mode
   :config (evilnc-default-hotkeys))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
 
 (use-package scroll-on-jump
   :straight t

@@ -43,3 +43,8 @@
 (defun files/recent ()
   (interactive)
   (consult-recent-file))
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))

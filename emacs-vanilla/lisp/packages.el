@@ -83,4 +83,6 @@
 ;; Despite what its name implies,
 ;; it also works on wayland :-).
 (use-package xclip
-  :ensure t)
+  :defines xclip-mode
+  :init (xclip-mode)
+  :straight t)
