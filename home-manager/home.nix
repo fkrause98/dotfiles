@@ -3,9 +3,9 @@ let vars = import ./vars.nix;
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manager
-  # home.username = vars.user;
-  # home.username = "root";
-  # home.homeDirectory = vars.home;
+  # Use mkdefault to not clash with nixos settings
+  home.username = pkgs.lib.mkDefault vars.user;
+  home.homeDirectory = pkgs.lib.mkDefault vars.home;
   nixpkgs.config.allowUnfree = true;
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
