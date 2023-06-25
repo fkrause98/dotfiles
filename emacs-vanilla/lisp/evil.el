@@ -16,7 +16,7 @@
 
 (use-package evil-matchit
   :straight t
-  :hook prog-mode
+  :after evil-mode
   :config
   (global-evil-matchit-mode 1))
 
@@ -29,34 +29,10 @@
   :init
   (add-hook 'evil-mode-hook 'evil-surround-mode))
 
-(use-package evil-smartparens
-  :straight t
-  :requires smartparens
-  :hook (smartparens-global-mode . evil-smart-parens)
-  :after (:all (evil smartparens)))
-
-(use-package evil-collection
-  :straight t
-  :hook prog-mode
-  :config
-  (evil-collection-init))
-(use-package evil-surround
-  :straight t
-  :after evil-mode
-  :commands (global-evil-surround-mode
-             evil-surround-edit
-             evil-Surround-edit
-             evil-surround-region)
-  :config (global-evil-surround-mode 1))
-
-(defun funcs/enable-surround-mode nil
-  (global-evil-surround-mode 1))
-(add-hook 'after-init-hook #'funcs/enable-surround-mode)
 (use-package evil-nerd-commenter
   :straight t
   :after evil-mode
   :config (evilnc-default-hotkeys))
-;; (straight-use-package 'evil-nerd-commenter)
 
 (use-package scroll-on-jump
   :straight t
