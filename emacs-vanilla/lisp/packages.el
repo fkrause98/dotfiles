@@ -78,7 +78,7 @@
    (elixir-mode . highlight-indent-guides-mode)
    (rust-mode . highlight-indent-guides-mode))
   :config
-  (setq highlight-indent-guides-method 'column))
+  (setq highlight-indent-guides-method 'character))
 
 ;; Despite what its name implies,
 ;; it also works on wayland :-).
