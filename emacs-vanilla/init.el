@@ -1,5 +1,5 @@
 ;; Avoid calling some emacs-regexes on startup
-(let ((file-name-handler-alist nil))
+;; (let ((file-name-handler-alist nil))
 ;;; Load package manager config
 (load "~/.emacs.d/lisp/package-manager-settings")
 ;;; Better GC for Emacs
@@ -49,4 +49,5 @@
 (load "~/.emacs.d/lisp/copilot")
 
 ;;; Send startup time as a message on startup.
-(funs/display-startup-time))
+(funs/display-startup-time)
+;; )

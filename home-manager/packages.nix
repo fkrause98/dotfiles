@@ -23,7 +23,7 @@ let
     [ ];
   linuxPackages = if vars.isLinux then [
     xsel
-    (pkgs.callPackage ./arch/rate_mirrors.nix { inherit pkgs; })
+    # (pkgs.callPackage ./arch/rate_mirrors.nix { inherit pkgs; })
     emacs
   ] else
     [ ];
@@ -36,7 +36,7 @@ let
     "rustfmt"
   ];
   rustAnalyzer = fenix.latest.rust-analyzer;
-  devPackages = [ asdf rustComponents rustAnalyzer ];
+  devPackages = [ asdf rustComponents  rustAnalyzer ];
   basePackages = [
     htop
     statix

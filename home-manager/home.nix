@@ -1,17 +1,17 @@
 { config, pkgs, ... }:
-let
-  vars = import ./nix/vars.nix;
+let vars = import ./vars.nix;
 in {
   # Home Manager needs a bit of information about you and the paths it should
-  # managej
-  home.username = vars.user;
-  home.homeDirectory = vars.home;
+  # manager
+  # home.username = vars.user;
+  # home.username = "root";
+  # home.homeDirectory = vars.home;
   nixpkgs.config.allowUnfree = true;
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "22.11"; # Please read the comment before changing.
-  home.packages = import ./nix/packages.nix {
+  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home.packages = import ./packages.nix {
     config = config;
     pkgs = pkgs;
   };
@@ -22,9 +22,9 @@ in {
       recursive = true;
     };
     ".emacs.d" = {
-      source = ./emacs-vanilla;
+      source = ../emacs-vanilla;
       recursive = true;
-   };
+    };
   };
 
   home.sessionVariables = {
@@ -33,11 +33,11 @@ in {
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.tmux = import ./nix/tmux.nix {
+  programs.tmux = import ./tmux.nix {
     pkgs = pkgs;
     fishNixPath = vars.fishNixPath;
   };
-  programs.vim = import ./nix/vim.nix { };
-  programs.fish = import ./nix/fish.nix { pkgs = pkgs; };
-  programs.git = import ./nix/git.nix { };
+  programs.vim = import ./vim.nix { };
+  programs.fish = import ./fish.nix { pkgs = pkgs; };
+  programs.git = import ./git.nix { };
 }

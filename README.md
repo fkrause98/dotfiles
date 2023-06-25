@@ -3,11 +3,18 @@
 This repo contains my configuration files for the programs I use, managed with nix through home-manager.
 It should work both on Mac and Linux.
 
-## Setup
-## 🐧 Linux nix install:
+##  Setup
+## ❄️ NixOs
+Simply link the nixos config to /etc/nixos
+```
+sudo ln -s $(pwd)/nixos /etc/nixos
+```
+## 🐧 Linux  nix install:
 ```
 $ sh <(curl -L https://nixos.org/nix/install) --daemon --yes
 ```
+
+And now, follow the steps to install home manager.
 ## 🍎 Mac nix install:
 ```
 $ sh <(curl -L https://nixos.org/nix/install) --yes
@@ -18,7 +25,9 @@ backup file that nix creates:
 ```
 $ sudo find /etc/ -name '*nix*' -print0 | sudo xargs --null rm
 ```
-## ❄️  Nix
+And now, follow the steps to install home manager.
+
+## ❄️  Home Manager (non NixOs)
 After installing nix, restart the terminal, currently open sessions won't work properly.
 1. Check If this command runs without sudo, this means the setup is working
 ```
@@ -26,7 +35,7 @@ $ nix-instantiate '<nixpkgs>' -A hello
 ```
 2. Link this repo's config (make sure you're in the repo's local folder)
 ```
-$ mkdir -p ~/.config/home-manager && ln -s $(pwd)/home.nix ~/.config/home-manager/home.nix
+$ mkdir -p ~/.config/home-manager && ln -s $(pwd)/home-manager/home.nix ~/.config/home-manager/home.nix
 ```
 3. Install home-manager:
 ```

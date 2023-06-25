@@ -1,5 +1,6 @@
 ;;; package -- Emacs settings
 ;; Disable GUI elements
+(setq inhibit-startup-message nil)
 (setq inhibit-startup-message t)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -35,7 +36,9 @@
   :after (consult-load-theme)
   :straight t)
 (use-package doom-themes
-  :config (load-theme 'doom-palenight)
+  :config (if (eq system-type 'gnu/linux)
+                               (load-theme 'doom-gruvbox)
+                               (load-theme 'doom-palenight))
   :straight t)
 (setq ring-bell-function 'ignore) 
 
