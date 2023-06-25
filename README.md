@@ -47,14 +47,3 @@ $ nix-channel --add https://github.com/nix-community/home-manager/archive/master
 ```
 $ home-manager switch
 ```
-## 🐃 Emacs:
-The home.nix provides a convenient alias to install Emacs and Doom:
-```
-$  install-emacs
-```
-And then, remove the default config and link this repo's:
-```
-$ rm -rf ~/.config/doom &&
-ln -s $(pwd)/doom-emacs ~/.config/doom &&
-~/.config/emacs/bin/doom sync &&
-```
