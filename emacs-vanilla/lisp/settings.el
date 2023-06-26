@@ -19,6 +19,11 @@
 		eshell-mode-hook
                 vterm-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
+;; Open dired in the current folder
+;; if given no arguments.
+(setf initial-buffer-choice
+      (lambda ()
+        (dired (shell-command-to-string "pwd"))))
 ;; Space > Tabs
 (setq-default indent-tabs-mode nil)
 ;; List recent files
