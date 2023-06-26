@@ -97,9 +97,7 @@ in
     packages = with pkgs; [
       firefox-wayland
       kate
-      emacs
       geogebra
-      telegram-desktop
       gparted
     ];
   };

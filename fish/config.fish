@@ -11,10 +11,6 @@
           vim $argv
       end
 
-      function nvim --wraps=vim --description 'alias nvim vim'
-          vim $argv
-      end
-
       if test ! -d ~/.config/fish/completions
           mkdir -p ~/.config/fish/completions
       end
