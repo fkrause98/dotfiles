@@ -83,6 +83,8 @@
 ;; Despite what its name implies,
 ;; it also works on wayland :-).
 (use-package xclip
-  :defines xclip-mode
-  :init (xclip-mode)
+  :hook (after-init . xclip-mode)
+  :straight t)
+(use-package sudo-edit
+  :defines (sudo-edit sudo-edit-find-file)
   :straight t)
