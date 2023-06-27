@@ -93,7 +93,7 @@ in {
     isNormalUser = true;
     description = "Francisco Krause Arnim";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ firefox-wayland kate geogebra gparted ];
+    packages = with pkgs; [ firefox-wayland kate geogebra gparted wl-clipboard evince];
   };
   # Import my own home-manager config
   home-manager.users.fran = import /home/fran/dotfiles/home-manager/home.nix {

@@ -17,3 +17,9 @@
   "Delete the file corresponding to the current buffer, if any"
   (interactive)
   (delete-file (expand-file-name (buffer-name))))
+
+;;;###autoload
+(defun files/sudo-this-file ()
+  "Open the current file as super user"
+  (interactive)
+  (sudo-edit))

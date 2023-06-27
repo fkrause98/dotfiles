@@ -41,6 +41,7 @@
                      (if (eq system-type 'gnu/linux)
                                (load-theme 'doom-gruvbox)
                                (load-theme 'doom-palenight)))))
+
 (setq ring-bell-function 'ignore) 
 
 ;; Center text when only 1 window
