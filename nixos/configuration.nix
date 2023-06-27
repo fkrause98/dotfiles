@@ -3,18 +3,17 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-let 
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
-in
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # Include home manager
-      # home-manager
-      (import "${home-manager}/nixos")
-    ];
-  
+let
+  home-manager = builtins.fetchTarball
+    "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
+in {
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    # Include home manager
+    # home-manager
+    (import "${home-manager}/nixos")
+  ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -94,16 +93,13 @@ in
     isNormalUser = true;
     description = "Francisco Krause Arnim";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox-wayland
-      kate
-      geogebra
-      gparted
-    ];
+    packages = with pkgs; [ firefox-wayland kate geogebra gparted ];
   };
   # Import my own home-manager config
-  home-manager.users.fran = import /home/fran/dotfiles/home-manager/home.nix {config = config; pkgs = pkgs;};
-  
+  home-manager.users.fran = import /home/fran/dotfiles/home-manager/home.nix {
+    config = config;
+    pkgs = pkgs;
+  };
   # Nvidia config
   # Make sure opengl is enabled
   hardware.opengl = {
@@ -114,12 +110,10 @@ in
 
   # NVIDIA drivers are unfree.
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkgs.lib.getName pkg) [
-      "nvidia-x11"
-    ];
+    builtins.elem (pkgs.lib.getName pkg) [ "nvidia-x11" ];
 
   # Tell Xorg to use the nvidia driver
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
 
@@ -141,12 +135,7 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  vim
-  wget
-  curl
-  git
-  ];
+  environment.systemPackages = with pkgs; [ vim wget curl git gcc ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
