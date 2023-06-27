@@ -6,6 +6,11 @@
       function em --wraps="emacs -nw" --description 'alias "emacs -nw" em'
 	      emacs -nw $argv
       end
+      ## Alias ec to emacs client
+      function ec --wraps="emacsclient -a=vim" --description 'alias "emacs -nw" em'
+        emacsclient -nw -a=vim $argv
+      end
+      
       ## Vim aliases
       function vi --wraps=vim --description 'alias vi vim'
           vim $argv

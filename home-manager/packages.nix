@@ -36,7 +36,7 @@ let
     "rustfmt"
   ];
   rustAnalyzer = fenix.latest.rust-analyzer;
-  devPackages = [ asdf rustComponents  rustAnalyzer ];
+  devPackages = [ asdf rustComponents rustAnalyzer ];
   basePackages = [
     htop
     statix
@@ -57,6 +57,7 @@ let
     fira-code
     nil
     jetbrains-mono
+    fzf
     nodejs
   ];
   doomEmacsDeps = [
