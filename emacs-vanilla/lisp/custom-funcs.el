@@ -12,3 +12,8 @@
   "Revert buffer without confirmation."
   (interactive)
   (revert-buffer t t))
+;;;###autoload
+(defun files/delete-this-file ()
+  "Delete the file corresponding to the current buffer, if any"
+  (interactive)
+  (delete-file (expand-file-name (buffer-name))))

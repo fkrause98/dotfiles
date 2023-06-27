@@ -63,7 +63,8 @@
   (keys/leader
     "f" '(:ignore t :which-key "Files")
     "ff" '(find-file :which-key "Find file")
-    "fr" '(files/recent :which-key "Recent files"))
+    "fr" '(files/recent :which-key "Recent files")
+    "fd" '(files/delete-this-file :which-key "Delete this file"))
   ;;; Helper keys
   (keys/leader
     "h" '(:ignore t :which-key "Help")

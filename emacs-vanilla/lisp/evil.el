@@ -15,13 +15,13 @@
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
 
 (use-package evil-surround
+  :after evil-mode
   :commands (evil-surround-mode)
   :defines global-evil-surround-mode
   :straight t
+  :hook (evil-mode . global-evil-surround-mode)
   :config
-  (global-evil-surround-mode 1)
-  :init
-  (add-hook 'evil-mode-hook 'evil-surround-mode))
+  (global-evil-surround-mode 1))
 
 (use-package evil-nerd-commenter
   :straight t

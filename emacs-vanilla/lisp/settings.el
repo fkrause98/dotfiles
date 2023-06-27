@@ -35,10 +35,12 @@
   :after (consult-load-theme)
   :straight t)
 (use-package doom-themes
-  :config (if (eq system-type 'gnu/linux)
+  :straight t
+  :init (add-hook 'after-make-frame-functions
+                  #'(lambda (frame)
+                     (if (eq system-type 'gnu/linux)
                                (load-theme 'doom-gruvbox)
-                               (load-theme 'doom-palenight))
-  :straight t)
+                               (load-theme 'doom-palenight)))))
 (setq ring-bell-function 'ignore) 
 
 ;; Center text when only 1 window
