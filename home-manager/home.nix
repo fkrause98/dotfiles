@@ -26,7 +26,6 @@ in {
       recursive = true;
     };
   };
-
   home.sessionVariables = {
     # The best $EDITOR
     EDITOR = "vim";
@@ -40,4 +39,10 @@ in {
   programs.vim = import ./vim.nix { };
   programs.fish = import ./fish.nix { pkgs = pkgs; };
   programs.git = import ./git.nix { };
+  services = {
+    emacs = {
+      enable = vars.isLinux;
+      startWithUserSession = vars.isLinux;
+    };
+  };
 }
