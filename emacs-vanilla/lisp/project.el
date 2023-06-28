@@ -1,43 +1,38 @@
 ;;; package -- Projectile related config.
 (use-package projectile
   :diminish projectile-mode
-  :commands (
-             projectile-mode
+  :hook after-init-hook
+  :defines (projectile-mode
              projectile-find-file
              projectile-switch-project
              projectile-project-root
-             )
+             projectile-completing-read)
   :straight t
-  :init
-  (let
-      ((projects-folder (expand-file-name "~/Programming")))
-    (when
-        (file-directory-p projects-folder))
-    (setq projectile-project-search-path
-          nil
-     ))
-  (setq projectile-switch-project-action #'find-file
+  :config
+  (setq projects-folder nil)
+  (setq projectile-switch-project-action #'project/find-file
         projectile-sort-order 'recently-active
         projectile-enable-caching t
         projectile-generic-command "rg --files --hidden"
-        ;; Avoid projectile using ivy
-        projectile-completion-system nil
-	projectile-indexing-method 'hybrid))
-(add-hook 'after-init-hook 'projectile-mode)
+        projectile-indexing-method 'hybrid))
 
 (use-package projectile-ripgrep
   :diminish projectile-ripgrep-mode
   :after projectile
   :straight t)
 
+
+;;;###autoload
 (defun search/project-text-search nil
   (interactive)
   (consult-ripgrep (projectile-project-root)))
 
+;;;###autoload
 (defun project/find-file nil
   (interactive)
   (projectile-find-file))
 
+;;;###autoload
 (defun project/get-project-root ()
   (interactive)
   (if (fboundp 'projectile-project-root)
