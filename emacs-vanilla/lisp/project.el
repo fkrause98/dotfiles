@@ -1,7 +1,7 @@
 ;;; package -- Projectile related config.
 (use-package projectile
   :diminish projectile-mode
-  :hook after-init
+  :hook (after-init . projectile-mode)
   :defines (projectile-mode
              projectile-find-file
              projectile-switch-project
