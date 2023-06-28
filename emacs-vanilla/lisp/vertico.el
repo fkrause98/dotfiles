@@ -1,6 +1,7 @@
 ;;; package -- Vertico related config
 (use-package vertico
   :straight t
+  :config (setq vertico-count 15)
   :init
   (vertico-mode))
 (use-package marginalia
@@ -19,6 +20,7 @@
    consult-ripgrep
    consult-recent-file)
   :straight t
+  :config
   :bind (("C-s" . consult-line)
          ("C-x b" . consult-buffer)
          ("C-x C-b" . consult-buffer)
@@ -28,6 +30,7 @@
   :after (consult lsp-mode)
   :bind (:map lsp-mode-map
               ("C-c C-l" . consult-lsp-symbols)))
+(setq vertico-count 15)
 (use-package consult-projectile
   :straight t
   :after (:all (consult projectile)))

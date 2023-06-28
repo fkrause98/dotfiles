@@ -36,7 +36,7 @@
   :straight t)
 (use-package doom-themes
   :straight t)
-(add-hook 'after-init-hook (lambda () (load-theme 'doom-tokyo-night t)))
+(add-hook 'emacs-startup-hook #'(lambda () (load-theme 'doom-tokyo-night t)))
 (setq ring-bell-function 'ignore) 
 
 ;; Center text when only 1 window
