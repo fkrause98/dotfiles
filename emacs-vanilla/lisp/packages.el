@@ -45,7 +45,7 @@
   (popper-echo-mode +1))                ; For echo area hints
 
 (use-package flycheck
-  :hook lsp-mode
+  :hook (lsp-mode . flycheck-mode)
   :config
   (global-flycheck-mode))
 

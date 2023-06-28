@@ -3,7 +3,9 @@
   :straight t
   :config (setq vertico-count 15)
   :init
-  (vertico-mode))
+  (vertico-mode)
+  :bind (("C-j" . vertico-next)
+         ("C-k" . vertico-previous)))
 (use-package marginalia
   :after vertico
   :ensure t
@@ -34,6 +36,11 @@
 (use-package consult-projectile
   :straight t
   :after (:all (consult projectile)))
+(use-package consult-flycheck
+  :defines (consult-flycheck)
+  :commands (consult-flycheck)
+  :straight t
+  :after (:all (consult flycheck)))
 (defun search/search-current-buffer ()
   (interactive)
   (consult-line))

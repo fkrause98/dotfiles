@@ -31,12 +31,12 @@
 ;; Do not ask for confirmation when
 ;; loading themes
 (setq custom-safe-themes t)
+(use-package modus-themes)
 (use-package ef-themes
   :after (consult-load-theme)
   :straight t)
 (use-package doom-themes
   :straight t)
-(add-hook 'emacs-startup-hook #'(lambda () (load-theme 'doom-tokyo-night t)))
 (setq ring-bell-function 'ignore) 
 
 ;; Center text when only 1 window
@@ -59,3 +59,7 @@
 ;;; Disable annoying compile warnings
 (setq byte-compile-warnings nil)
 (setq warning-minimum-level :error)
+
+
+(add-hook 'after-init-hook #'server-start)
+(add-hook 'after-init-hook #'(lambda () (load-theme 'doom-solarized-dark-high-contrast)))
