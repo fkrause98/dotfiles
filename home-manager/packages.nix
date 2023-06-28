@@ -28,15 +28,15 @@ let
   ] else
     [ ];
   rustUtils = [ bacon mprocs ];
-  rustComponents = fenix.stable.withComponents [
-    "cargo"
-    "clippy"
-    "rust-src"
-    "rustc"
-    "rustfmt"
-  ];
-  rustAnalyzer = fenix.latest.rust-analyzer;
-  devPackages = [ asdf rustComponents rustAnalyzer ];
+  # rustComponents = fenix.stable.withComponents [
+  #   "cargo"
+  #   "clippy"
+  #   "rust-src"
+  #   "rustc"
+  #   "rustfmt"
+  # ];
+  # rustAnalyzer = fenix.latest.rust-analyzer;
+  devPackages = [ asdf rustup];
   basePackages = [
     htop
     statix

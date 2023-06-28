@@ -28,10 +28,7 @@
     "ee" '(eval-last-sexp :which-key "Last sexp")
     "eb" '(eval-buffer :which-key "Buffer")
     "er" '(eval-region :which-key "Region")
-    "p" '(check-parens :which-key "Check parens"))
-  (keys/local-leader
-    :keymaps 'rustic-mode-map
-    "f" '(lsp-format-buffer :which-key "Format buffer"))
+    "p" '(check-parens :which-key "Check parens balance"))
   ;;; Evil motion binds
   (general-create-definer keys/motion-state
     :prefix "g"
@@ -45,9 +42,11 @@
   ;;; Git binds
   (keys/leader
     "g" '(:ignore t :which-key "Git")
-    "gg" '(magit-status-quick :which-key "Status")
+    "gg" '(magit-project-status :which-key "Status")
     "gc" '(magit-checkout :which-key "Checkout")
     "gb" '(magit-branch-create :which-key "Create branch")
+    "gp" '(magit-pull :which-key "Pull")
+    "gm" '(magit-merge :which-key "Merge")
     "gff" '(magit-find-file :which-key "Find file")
     "gku" '(smerge-keep-upper :which-key "Keep upper variant")
     "gkl" '(smerge-keep-lower :which-key "Keep lower variant"))

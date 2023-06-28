@@ -14,14 +14,16 @@
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
 
+(use-package evil-matchit
+  :straight t
+  :hook (evil-mode . global-evil-matchit-mode))
+
 (use-package evil-surround
   :after evil-mode
-  :commands (evil-surround-mode)
+  :commands global-evil-surround-mode
   :defines global-evil-surround-mode
   :straight t
-  :hook (evil-mode . global-evil-surround-mode)
-  :config
-  (global-evil-surround-mode 1))
+  :hook (evil-mode . global-evil-surround-mode))
 
 (use-package evil-nerd-commenter
   :straight t

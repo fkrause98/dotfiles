@@ -1,7 +1,7 @@
 ;;; package -- Vertico related config
 (use-package vertico
   :straight t
-  :config (setq vertico-count 15)
+  :config (setq vertico-count 17)
   :init
   (vertico-mode)
   :bind (("C-j" . vertico-next)
