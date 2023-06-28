@@ -23,3 +23,19 @@
   "Open the current file as super user"
   (interactive)
   (sudo-edit))
+;;;###autoload
+(defun search/project-text-search nil
+  (interactive)
+  (consult-ripgrep (projectile-project-root)))
+
+;;;###autoload
+(defun project/find-file nil
+  (interactive)
+  (projectile-find-file))
+
+;;;###autoload
+(defun project/get-project-root ()
+  (interactive)
+  (if (fboundp 'projectile-project-root)
+      (projectile-project-root)
+    (message "Project root function not defined -- Maybe projectile is missing?")))

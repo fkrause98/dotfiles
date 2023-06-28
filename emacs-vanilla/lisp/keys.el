@@ -1,4 +1,16 @@
 ;;; package -- Some general keybinds
+(use-package which-key
+  :straight t
+  :hook (after-init . which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-sort-order #'which-key-key-order-alpha
+        which-key-sort-uppercase-first nil
+        which-key-add-column-padding 1
+        which-key-max-display-columns nil
+        which-key-min-display-lines 6
+        which-key-side-window-slot -10
+        which-key-idle-delay 0.3))
 (use-package general
   :straight t
   :config
@@ -15,7 +27,8 @@
     "e" '(:ignore t :which-key "Eval")
     "ee" '(eval-last-sexp :which-key "Last sexp")
     "eb" '(eval-buffer :which-key "Buffer")
-    "er" '(eval-region :which-key "Region"))
+    "er" '(eval-region :which-key "Region")
+    "p" '(check-parens :which-key "Check parens"))
   (keys/local-leader
     :keymaps 'rustic-mode-map
     "f" '(lsp-format-buffer :which-key "Format buffer"))
@@ -73,7 +86,7 @@
     "hf" '(helpful-callable :which-key "Describe function")
     "hk" '(helpful-key :which-key "Describe key")
     "hp" '(helpful-at-point :which-key "Help from text in point")
-    "hv" '(counsel-describe-variable :which-key "Describe variable"))
+    "hv" '(helpful-variable :which-key "Describe variable"))
   ;;; Project keys
   (keys/leader
     "p" '(:ignore t :which-key "Project")
@@ -99,4 +112,4 @@
     "wl" '(evil-window-left :which-key "Switch right")
     "wh" '(evil-window-right :which-key "Switch left")
     "wk" '(evil-window-up :which-key "Switch up")
-    "wj" '(evil-window-down :which-key "Switch down")))
+    "wj" '(evil-window-down :which-key "Switch down"))
