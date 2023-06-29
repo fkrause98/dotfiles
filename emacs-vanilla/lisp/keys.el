@@ -28,7 +28,12 @@
     "ee" '(eval-last-sexp :which-key "Last sexp")
     "eb" '(eval-buffer :which-key "Buffer")
     "er" '(eval-region :which-key "Region")
-    "p" '(check-parens :which-key "Check parens balance"))
+    "p" '(check-parens :which-key "Check parens balance")
+    "h" '(:ignore t :which-key "Help")
+    "hf" '(helpful-callable :which-key "Describe function")
+    "hk" '(helpful-key :which-key "Describe key")
+    "hp" '(helpful-at-point :which-key "Help from text in point")
+    "hv" '(helpful-variable :which-key "Describe variable")))
   ;;; Evil motion binds
   (general-create-definer keys/motion-state
     :prefix "g"
@@ -77,15 +82,8 @@
     "ff" '(find-file :which-key "Find file")
     "fr" '(files/recent :which-key "Recent files")
     "fd" '(files/delete-this-file :which-key "Delete this file")
-    "fs" '(files/sudo-this-file :which-key "Open this file as sudo"))
+    "fs" '(files/sudo-this-file :which-key "Open this file as sudo")
     "fp" '(find-file-at-point :which-key "File at point"))
-  ;;; Helper keys
-  (keys/leader
-    "h" '(:ignore t :which-key "Help")
-    "hf" '(helpful-callable :which-key "Describe function")
-    "hk" '(helpful-key :which-key "Describe key")
-    "hp" '(helpful-at-point :which-key "Help from text in point")
-    "hv" '(helpful-variable :which-key "Describe variable"))
   ;;; Project keys
   (keys/leader
     "p" '(:ignore t :which-key "Project")
