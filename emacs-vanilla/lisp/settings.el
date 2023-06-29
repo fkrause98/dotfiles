@@ -20,6 +20,10 @@
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 ;; Space > Tabs
 (setq-default indent-tabs-mode nil)
+;; Making sure my faculty companions
+;; don't kill me :-)
+(setq-default c-basic-offset 4
+              c-default-style "k&r")
 ;; List recent files
 (recentf-mode 1)
 ;; Remember last place on file
