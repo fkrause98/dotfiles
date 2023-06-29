@@ -22,6 +22,7 @@
     :states '(normal insert visual emacs)
     :prefix "SPC m"
     :global-prefix "C-SPC m")
+  ;;; Emacs lisp mode keybinds
   (keys/local-leader
     :keymaps 'emacs-lisp-mode-map
     "e" '(:ignore t :which-key "Eval")
@@ -30,11 +31,16 @@
     "er" '(eval-region :which-key "Region")
     "p" '(check-parens :which-key "Check parens balance")
     "h" '(:ignore t :which-key "Help")
+    "hp" '(helpful-at-point :which-key "Help from text in point"))
+  (keys/leader
+    "h" '(:ignore t :which-key "Help")
     "hf" '(helpful-callable :which-key "Describe function")
     "hk" '(helpful-key :which-key "Describe key")
-    "hp" '(helpful-at-point :which-key "Help from text in point")
     "hv" '(helpful-variable :which-key "Describe variable")))
-  ;;; Evil motion binds
+  (keys/local-leader
+    :keymaps 'nix-mode-map
+    "f" '(nix-format-buffer :which-key "Format current buffer"))
+  ;;; Evil motion keybinds
   (general-create-definer keys/motion-state
     :prefix "g"
     :states 'motion)
