@@ -47,6 +47,5 @@
 (load "~/.emacs.d/lisp/term")
 ;;; Github Copilot
 (load "~/.emacs.d/lisp/copilot")
-
 ;;; Send startup time as a message on startup.
 (funs/display-startup-time))

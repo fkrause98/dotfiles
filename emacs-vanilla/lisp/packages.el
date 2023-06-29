@@ -35,7 +35,7 @@
           "Output\\*$"
           "\\*Async Shell Command\\*"
           "\\*Warnings\\*"
-          "^\\*vterm.*\\*$"
+          ;; "^\\*vterm.*\\*$"
           "\\*rustic-compilation\\*"
           help-mode
           compilation-mode
@@ -77,13 +77,13 @@
 ;; Despite what its name implies,
 ;; it also works on wayland and mac.
 (use-package xclip
-  :hook (after-init . xclip-mode)
   :straight t
   :config
-  (lambda ()
-    (if *is-mac*
-        'pbpaste
-        'wl-copy)))
+  (unless *is-mac*
+    (setq xclip-method 'wl-copy)))
+
+(use-package clipetty
+  :straight t)
 
 (use-package sudo-edit
   :defines (sudo-edit sudo-edit-find-file)
@@ -101,3 +101,6 @@
                     :background nil
                     :height 140
                     :italic t))))
+(use-package fish-mode
+  :straight t
+  :mode ("\\.fish\\'" . fish-mode))
