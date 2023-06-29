@@ -1,4 +1,6 @@
 ;;; package -- Emacs settings
+;; Check if we're on a mac
+(defvar *is-mac* (eq system-type 'darwin))
 ;; Disable GUI elements
 (setq inhibit-startup-message nil)
 (scroll-bar-mode -1)

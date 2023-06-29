@@ -1,8 +1,4 @@
 ;;; package -- Some non-related (between them) packages
-;; (use-package rg
-;;   :straight t
-;;   :config
-;;   (rg-enable-default-bindings))
 (use-package rainbow-delimiters
   :straight t
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -22,6 +18,7 @@
   :config
   (require 'smartparens-config)
   (smartparens-global-mode)
+  ;; Rules to add new lines after brackets and parens
   (sp-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
   (sp-pair "[" nil :post-handlers '(("||\n[i]" "RET")))
   (sp-pair "(" nil :post-handlers '(("||\n[i]" "RET"))))
@@ -78,10 +75,15 @@
   (setq highlight-indent-guides-method 'character))
 
 ;; Despite what its name implies,
-;; it also works on wayland :-).
+;; it also works on wayland and mac.
 (use-package xclip
   :hook (after-init . xclip-mode)
-  :straight t)
+  :straight t
+  :config
+  (lambda ()
+    (if *is-mac*
+        'pbpaste
+        'wl-copy)))
 
 (use-package sudo-edit
   :defines (sudo-edit sudo-edit-find-file)
