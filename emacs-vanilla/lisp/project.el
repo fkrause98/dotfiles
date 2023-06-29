@@ -10,7 +10,7 @@
   :straight t
   :config
   (setq projects-folder nil)
-  (setq projectile-switch-project-action #'project/find-file
+  (setq projectile-switch-project-action 'find-file
         projectile-sort-order 'recently-active
         projectile-enable-caching t
         projectile-generic-command "rg --files --hidden"
