@@ -23,7 +23,6 @@ let
     [ ];
   linuxPackages = if vars.isLinux then [
     xsel
-    # (pkgs.callPackage ./arch/rate_mirrors.nix { inherit pkgs; })
     emacs
   ] else
     [ ];

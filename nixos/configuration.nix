@@ -48,8 +48,9 @@ in {
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
+  services.xserver.enable = false;
+  # Use wayland by default
+  services.xserver.displayManager.defaultSession = "plasmawayland";
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
@@ -93,7 +94,16 @@ in {
     isNormalUser = true;
     description = "Francisco Krause Arnim";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ firefox-wayland kate geogebra gparted wl-clipboard evince];
+    packages = with pkgs; [
+      firefox-wayland
+      kate
+      geogebra
+      gparted
+      wl-clipboard
+      cmake
+      clang
+      libtool
+    ];
   };
   # Import my own home-manager config
   home-manager.users.fran = import /home/fran/dotfiles/home-manager/home.nix {

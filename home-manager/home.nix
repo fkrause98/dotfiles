@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
-let vars = import ./vars.nix;
+let
+  vars = import ./vars.nix;
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manager
@@ -21,10 +22,10 @@ in {
       source = vars.emacsConfig;
       recursive = true;
     };
-    # ".emacs.d" = {
-    #   source = ../emacs-vanilla;
-    #   recursive = true;
-    # };
+    ".emacs.d" = {
+      source = ../emacs-vanilla;
+      recursive = true;
+    };
   };
   home.sessionVariables = {
     # The best $EDITOR
