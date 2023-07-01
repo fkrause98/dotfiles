@@ -78,14 +78,9 @@
 ;; it also works on wayland and mac.
 (use-package xclip
   :straight t
-  :config
-  (unless *is-mac*
-    (setq xclip-method 'wl-copy)))
-
-(use-package clipetty
-  :straight t)
-
+  :hook (after-init . xclip-mode))
 (use-package sudo-edit
+  :commands (sudo-edit sudo-edit-find-file)
   :defines (sudo-edit sudo-edit-find-file)
   :straight t)
 
