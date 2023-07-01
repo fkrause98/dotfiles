@@ -79,10 +79,12 @@
 (use-package xclip
   :straight t
   :hook (after-init . xclip-mode))
+
 (use-package sudo-edit
   :commands (sudo-edit sudo-edit-find-file)
   :defines (sudo-edit sudo-edit-find-file)
   :straight t)
+
 (use-package fish-mode
   :straight t
   :mode ("\\.fish\\'" . fish-mode))

@@ -9,10 +9,9 @@
   :straight t
   :commands (blamer-mode global-blamer-mode)
   :defer 20
-  :custom
+  :config
   (blamer-idle-time 0.3)
   (blamer-min-offset 70)
-  :custom-face
   (blamer-face ((t :foreground "#7a88cf"
                     :background nil
                     :height 140
