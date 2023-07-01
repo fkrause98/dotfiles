@@ -19,11 +19,10 @@
   :hook (evil-mode . global-evil-matchit-mode))
 
 (use-package evil-surround
-  :after evil-mode
   :commands global-evil-surround-mode
   :defines global-evil-surround-mode
   :straight t
-  :hook (evil-mode . global-evil-surround-mode))
+  :hook (after-init . global-evil-surround-mode))
 
 (use-package evil-nerd-commenter
   :straight t
