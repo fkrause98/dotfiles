@@ -37,9 +37,6 @@
     "hf" '(helpful-callable :which-key "Describe function")
     "hk" '(helpful-key :which-key "Describe key")
     "hv" '(helpful-variable :which-key "Describe variable")))
-  (keys/local-leader
-    :keymaps 'nix-mode-map
-    "f" '(nix-format-buffer :which-key "Format current buffer"))
   ;;; Evil motion keybinds
   (general-create-definer keys/motion-state
     :prefix "g"
@@ -90,15 +87,6 @@
     "fd" '(files/delete-this-file :which-key "Delete this file")
     "fs" '(files/sudo-this-file :which-key "Open this file as sudo")
     "fp" '(find-file-at-point :which-key "File at point"))
-  ;;; Project keys
-  (keys/leader
-    "p" '(:ignore t :which-key "Project")
-    "pa" '(projectile-add-known-project :which-key "Add project folder")
-    "pf" '(consult-projectile-find-file  :which-key "Find file")
-    "pi" '(projectile-invalidate-cache :which-key "Add project folder")
-    "pp" '(consult-projectile-switch-project :which-key "Switch")
-    "pr" '(projectile-recentf  :which-key "Switch")
-    "ps" '(search/project-text-search :which-key "Search text"))
   ;;; Search keys
   (keys/leader
     "s" '(:ignore t :which-key "Search")

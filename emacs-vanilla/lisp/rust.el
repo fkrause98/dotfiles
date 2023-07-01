@@ -4,7 +4,8 @@
   :straight t
   :mode ("\\.rs\\'" . rustic-mode)
   :config
-  (setq-default rustic-format-on-save nil)
+  (setq-default rustic-format-on-save nil))
+(with-eval-after-load "keys"
   (keys/local-leader
     :keymaps 'rustic-mode-map
     "b" '(rustic-cargo-build :which-key "rustic-cargo-build")
