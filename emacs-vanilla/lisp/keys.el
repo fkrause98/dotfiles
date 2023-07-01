@@ -36,7 +36,8 @@
     "h" '(:ignore t :which-key "Help")
     "hf" '(helpful-callable :which-key "Describe function")
     "hk" '(helpful-key :which-key "Describe key")
-    "hv" '(helpful-variable :which-key "Describe variable")))
+    "hv" '(helpful-variable :which-key "Describe variable")
+    "hp" '(helpful-at-point :which-key "Describe variable"))
   ;;; Evil motion keybinds
   (general-create-definer keys/motion-state
     :prefix "g"

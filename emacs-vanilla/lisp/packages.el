@@ -4,13 +4,14 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 (use-package helpful
   :straight t
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-function-variable #'helpful-variable)
+  :after consult
+  ;; :custom
+  ;; (counsel-describe-function-function #'helpful-callable)
+  ;; (counsel-describe-function-variable #'helpful-variable)
   :bind
-  ([remap describe-function] . counsel-describe-function)
-  ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-function] . consult-describe-function)
+  ([remap describe-command] . consult-describe-command)
+  ([remap describe-variable] . consult-describe-variable)
   ([remap describe-key] . helpful-key))
 (use-package smartparens
   :straight t
@@ -66,11 +67,11 @@
 
 (use-package highlight-indent-guides
   :straight t
-  :hook
-  ((python-mode . highlight-indent-guides-mode)
-   (elixir-mode . highlight-indent-guides-mode)
-   (rust-mode . highlight-indent-guides-mode)
-   (csharp-tree-sitter-mode . highlight-indent-guides-mode))
+  ;; :hook
+  ;; ((python-mode . highlight-indent-guides-mode)
+  ;;  (elixir-mode . highlight-indent-guides-mode)
+  ;;  (rust-mode . highlight-indent-guides-mode)
+  ;;  (csharp-tree-sitter-mode . highlight-indent-guides-mode))
   :config
   (setq highlight-indent-guides-method 'character))
 

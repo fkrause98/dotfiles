@@ -33,8 +33,8 @@
   :after evil
   :ensure t
   :config
-  (evil-collection-init))
-
+  (evil-collection-init)
+  (evil-collection-consult-setup))
 (use-package scroll-on-jump
   :straight t
   :config
