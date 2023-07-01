@@ -5,7 +5,22 @@
   :init
   (vertico-mode)
   :bind (("C-j" . vertico-next)
-         ("C-k" . vertico-previous)))
+         ("C-k" . vertico-previous)
+         ("DEL" . vertico-directory-del)))
+;; Configure directory extension.
+(use-package vertico-directory
+  :after vertico
+  :straight
+  (:host github :repo "minad/vertico" :files ("extensions/vertico-directory.el"))
+  :ensure nil
+  ;; More convenient directory navigation commands
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word))
+  ;; Tidy shadowed file names
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+
 (use-package marginalia
   :after vertico
   :ensure t
