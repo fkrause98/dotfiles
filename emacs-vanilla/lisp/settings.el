@@ -69,3 +69,6 @@
 
 (add-hook 'after-init-hook #'server-start)
 (add-hook 'after-init-hook #'(lambda () (load-theme 'doom-solarized-dark-high-contrast)))
+
+;;; Better scrolling
+(setq scroll-conservatively 101)
