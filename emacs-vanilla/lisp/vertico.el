@@ -6,15 +6,19 @@
   (vertico-mode)
   :bind (("C-j" . vertico-next)
          ("C-k" . vertico-previous)
-         ("DEL" . vertico-directory-del)))
+         ))
 ;; Configure directory extension.
 (use-package vertico-directory
-  :after vertico
+  :commands
+  (vertico-directory-enter
+   vertico-directory-delete-char
+   vertico-directory-delete-word)
   :straight
   (:host github :repo "minad/vertico" :files ("extensions/vertico-directory.el"))
   :ensure nil
   ;; More convenient directory navigation commands
   :bind (:map vertico-map
+              ("DEL" . vertico-directory-del)
               ("RET" . vertico-directory-enter)
               ("DEL" . vertico-directory-delete-char)
               ("M-DEL" . vertico-directory-delete-word))

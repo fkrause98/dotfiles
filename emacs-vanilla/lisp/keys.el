@@ -104,4 +104,4 @@
     "wl" '(evil-window-left :which-key "Switch right")
     "wh" '(evil-window-right :which-key "Switch left")
     "wk" '(evil-window-up :which-key "Switch up")
-    "wj" '(evil-window-down :which-key "Switch down"))
+    "wj" '(evil-window-down :which-key "Switch down")))
