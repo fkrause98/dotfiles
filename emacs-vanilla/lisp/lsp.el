@@ -2,6 +2,7 @@
 (use-package lsp-mode
   :defer t
   :straight t
+  :hook (nix-mode rustic-mode elixir-mode)
   :commands (lsp lsp-deferred)
   :config
   (lsp-enable-which-key-integration t))
