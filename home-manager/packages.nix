@@ -39,6 +39,7 @@ let
       "rust-src"
       "rustc"
       "rustfmt"
+      "rust-analyzer"
     ];
   # rustAnalyzer = fenix.latest.rust-analyzer;
   devPackages = [ asdf rustComponents ];
