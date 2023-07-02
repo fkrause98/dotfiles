@@ -40,4 +40,5 @@ in {
   programs.vim = import ./vim.nix { };
   programs.fish = import ./fish.nix { pkgs = pkgs; };
   programs.git = import ./git.nix { };
+  programs.direnv = import ./direnv.nix;
 }
