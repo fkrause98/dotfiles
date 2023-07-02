@@ -66,8 +66,7 @@
 (setq byte-compile-warnings nil)
 (setq warning-minimum-level :error)
 
-
-(add-hook 'after-init-hook #'server-start)
+;;; Load theme after init
 (add-hook 'after-init-hook #'(lambda () (load-theme 'doom-solarized-dark-high-contrast)))
 
 ;;; Better scrolling

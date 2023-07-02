@@ -24,6 +24,7 @@
   (sp-pair "[" nil :post-handlers '(("||\n[i]" "RET")))
   (sp-pair "(" nil :post-handlers '(("||\n[i]" "RET"))))
 
+;;; Tame emacs pop buffers!
 (use-package popper
   :straight t 
   :bind (("C-`"   . popper-toggle-latest)
@@ -41,6 +42,7 @@
           help-mode
           compilation-mode
           rustic-compilation-mode))
+  (setq popper-window-height 20)
   (popper-mode +1)
   (popper-echo-mode +1))                ; For echo area hints
 
@@ -89,3 +91,10 @@
 (use-package fish-mode
   :straight t
   :mode ("\\.fish\\'" . fish-mode))
+
+(use-package direnv
+  :after projectile
+  :straight t
+  :config
+  (setq direnv-always-show-summary nil)
+  (direnv-mode))
