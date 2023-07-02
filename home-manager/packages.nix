@@ -21,21 +21,27 @@ let
     dotnet-sdk_7
   ] else
     [ ];
-  linuxPackages = if vars.isLinux then [
-    xsel
-    emacs
-  ] else
-    [ ];
+  linuxPackages = if vars.isLinux then [ xsel emacs ] else [ ];
   rustUtils = [ bacon mprocs ];
-  # rustComponents = fenix.stable.withComponents [
-  #   "cargo"
-  #   "clippy"
-  #   "rust-src"
-  #   "rustc"
-  #   "rustfmt"
-  # ];
+  rustComponents = if vars.isMac then
+    fenix.stable.withComponents [
+      "cargo"
+      "clippy"
+      "rust-src"
+      "rustc"
+      "rustfmt"
+      "rust-analyzer"
+    ]
+  else
+    fenix.latest.withComponents [
+      "cargo"
+      "clippy"
+      "rust-src"
+      "rustc"
+      "rustfmt"
+    ];
   # rustAnalyzer = fenix.latest.rust-analyzer;
-  devPackages = [ asdf rustup];
+  devPackages = [ asdf rustComponents ];
   basePackages = [
     htop
     statix
@@ -45,7 +51,6 @@ let
     bat
     tealdeer
     tmux
-    direnv
     gnumake
     neofetch
     jq
