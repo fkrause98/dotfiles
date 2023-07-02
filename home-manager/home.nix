@@ -31,6 +31,8 @@ in {
     # The best $EDITOR
     EDITOR = "vim";
   };
+  # Manage XDG env variables for Linux programs.
+  targets.genericLinux.enable = vars.isLinux;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.tmux = import ./tmux.nix {
