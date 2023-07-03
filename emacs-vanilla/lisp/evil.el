@@ -19,6 +19,12 @@
   :defines global-evil-surround-mode
   :hook (after-init . global-evil-matchit-mode))
 
+(use-package evil-snipe
+  :straight t
+  :defines (evil-snipe-mode evil-snipe-override-mode)
+  :commands (evil-snipe-mode evil-snipe-override-mode)
+  :hook (after-init . evil-snipe-override-mode))
+
 (use-package evil-surround
   :commands global-evil-surround-mode
   :defines global-evil-surround-mode
