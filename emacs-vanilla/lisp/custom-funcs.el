@@ -23,6 +23,17 @@
   "Open the current file as super user"
   (interactive)
   (sudo-edit))
+
+;;;###autoload
+(defun files/get-current-file-name ()
+  (interactive)
+  (buffer-file-name nil))
+
+;;;###autoload
+(defun evil/yank-file-name ()
+  (interactive)
+  (evil-set-register ?\" (files/get-current-file-name)))
+
 ;;;###autoload
 (defun search/project-text-search nil
   (interactive)
@@ -39,3 +50,4 @@
   (if (fboundp 'projectile-project-root)
       (projectile-project-root)
     (message "Project root function not defined -- Maybe projectile is missing?")))
+;;;###autoload
