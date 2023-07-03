@@ -43,7 +43,8 @@
   :straight t
   :config
   (setq x-ref-show-xrefs-function #'consult-xref
-        xref-show-xrefs-function #'consult-xref)
+        xref-show-xrefs-function #'consult-xref
+        consult-preview-key nil)
   :bind (("C-s" . consult-line)
          ("C-x b" . consult-buffer)
          ("C-x C-b" . consult-buffer)

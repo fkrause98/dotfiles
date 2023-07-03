@@ -10,4 +10,5 @@
     :keymaps 'rustic-mode-map
     "b" '(rustic-cargo-build :which-key "rustic-cargo-build")
     "c" '(rustic-cargo-check :which-key "rustic-cargo-check")
-    "f" '(lsp-format-buffer :which-key "Format buffer")))
+    "f" '(lsp-format-buffer :which-key "Format buffer")
+    "r" '(rustic-cargo-run :which-key "rustic-cargo-run")))
