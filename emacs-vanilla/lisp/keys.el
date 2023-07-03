@@ -58,6 +58,7 @@
     "gm" '(magit-merge :which-key "Merge")
     "gff" '(magit-find-file :which-key "Find file")
     "gku" '(smerge-keep-upper :which-key "Keep upper variant")
+    "gkb" '(smerge-keep-all :which-key "Keep both variants")
     "gkl" '(smerge-keep-lower :which-key "Keep lower variant"))
   ;;; Buffer keys
   (keys/leader

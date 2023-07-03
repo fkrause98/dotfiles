@@ -16,7 +16,8 @@
 
 (use-package evil-matchit
   :straight t
-  :hook (evil-mode . global-evil-matchit-mode))
+  :defines global-evil-surround-mode
+  :hook (after-init . global-evil-matchit-mode))
 
 (use-package evil-surround
   :commands global-evil-surround-mode

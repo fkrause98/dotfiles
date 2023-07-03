@@ -6,7 +6,8 @@
 
 (use-package mix
   :after elixir-mode
-  :hook (elixir-mode 'mix-minor-mode)
+  :commands (mix-mode)
+  :hook (elixir-mode . 'mix-minor-mode)
   :config
   (setq compilation-scroll-output 'first-error))
 

@@ -98,3 +98,8 @@
   :config
   (setq direnv-always-show-summary nil)
   (direnv-mode))
+(use-package exec-path-from-shell
+  :if *is-mac*
+  :straight t
+  :config
+  (exec-path-from-shell-initialize))
