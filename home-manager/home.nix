@@ -2,6 +2,7 @@
 let
   vars = import ./vars.nix;
 in {
+
   # Home Manager needs a bit of information about you and the paths it should
   # manager
   # Use mkdefault to not clash with nixos settings
@@ -43,4 +44,7 @@ in {
   programs.fish = import ./fish.nix { pkgs = pkgs; };
   programs.git = import ./git.nix { };
   programs.direnv = import ./direnv.nix;
+  home.activation.postSwitch = "
+      echo -e '\\033[36;49;1mRunning post switch commands!\\033[36;49;1m'
+  ";
 }

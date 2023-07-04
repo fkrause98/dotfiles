@@ -6,9 +6,6 @@
   :commands (lsp lsp-deferred)
   :config
   (lsp-enable-which-key-integration t))
-(use-package lsp-ivy
-  :defer t
-  :commands lsp-ivy-workspace-symbol)
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
   :config

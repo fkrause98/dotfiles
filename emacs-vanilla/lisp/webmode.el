@@ -5,7 +5,9 @@
          ("\\.jsx\\'" . web-mode)
          ("\\.tsx\\'" . web-mode)
          ("\\.ts\\'" . web-mode)
-         ("\\.vue\\'" . web-mode))
+         ("\\.vue\\'" . web-mode)
+         ("\\.html.leex\\'" . web-mode)
+         ("\\.html.heex\\'" . web-mode))
   :config
   (setq web-mode-markup-indent-offset 2
         web-mode-css-indent-offset 2
@@ -40,5 +42,5 @@
         web-mode-engines-alist
         '(("php"    . "\\.phtml\\'")
           ("blade"  . "\\.blade\\.")
-          ("elixir" . "\\.html.eex\\'")
+          ("elixir" . "\\.html.heex\\'")
           ("elixir" . "\\.html.leex\\'")))) 

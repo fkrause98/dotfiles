@@ -5,9 +5,12 @@ let
   fenix = import
     (fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz")
     { };
+  # elixir-ls = pkgs.callPackage ./elixir-ls.nix {};
 in with pkgs;
 let
   macPackages = if vars.isMac then [
+    elixir_1_14
+    erlang
     elixir-ls
     iterm2
     ngrok
@@ -42,7 +45,10 @@ let
       "rust-analyzer"
     ];
   # rustAnalyzer = fenix.latest.rust-analyzer;
-  devPackages = [ asdf rustComponents ];
+  devPackages = [
+    # asdf-vm
+    rustComponents
+  ];
   basePackages = [
     htop
     statix
