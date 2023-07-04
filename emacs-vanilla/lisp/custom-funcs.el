@@ -16,7 +16,9 @@
 (defun files/delete-this-file ()
   "Delete the file corresponding to the current buffer, if any"
   (interactive)
-  (delete-file (expand-file-name (buffer-name))))
+  (when (yes-or-no-p "Are you sure you want to delete this file?")
+    (delete-file
+     (expand-file-name (buffer-name)))))
 
 ;;;###autoload
 (defun files/sudo-this-file ()
