@@ -54,6 +54,8 @@
       end
       ## Add doom binary to path
       fish_add_path $HOME/.config/emacs/bin/
+      ## Make iex remember command history
+      set -x ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
       # Defined via `source`
       function nix-shell --description 'alias nix-shell nix-shell --run fish'
           command nix-shell --run fish $argv
