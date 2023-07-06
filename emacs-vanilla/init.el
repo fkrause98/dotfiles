@@ -39,6 +39,7 @@
 (load "~/.emacs.d/lisp/rust")
 (load "~/.emacs.d/lisp/nix")
 (load "~/.emacs.d/lisp/csharp")
+(load "~/.emacs.d/lisp/yml")
 (load "~/.emacs.d/lisp/tree-sitter")
 (load "~/.emacs.d/lisp/webmode")
 ;; Formatting for a wide arrange of langs.
