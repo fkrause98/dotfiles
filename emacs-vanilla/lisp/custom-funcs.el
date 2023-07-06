@@ -6,12 +6,13 @@
                    (float-time
                    (time-subtract after-init-time before-init-time)))
            gcs-done))
-;; (add-hook 'emacs-startup-hook #'funs/display-startup-time)
+
 ;;;###autoload
 (defun funcs/revert-buffer-no-confirm ()
   "Revert buffer without confirmation."
   (interactive)
   (revert-buffer t t))
+
 ;;;###autoload
 (defun files/delete-this-file ()
   "Delete the file corresponding to the current buffer, if any"
@@ -33,6 +34,7 @@
 
 ;;;###autoload
 (defun evil/yank-file-name ()
+  "Copy the current file's name"
   (interactive)
   (evil-set-register ?\" (files/get-current-file-name)))
 
@@ -43,6 +45,7 @@
 
 ;;;###autoload
 (defun project/find-file nil
+  "Find file in project"
   (interactive)
   (projectile-find-file))
 

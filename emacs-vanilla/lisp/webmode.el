@@ -44,3 +44,10 @@
           ("blade"  . "\\.blade\\.")
           ("elixir" . "\\.html.heex\\'")
           ("elixir" . "\\.html.leex\\'")))) 
+
+(use-package emmet-mode
+  :straight t
+  :after web-mode
+  :hook (web-mode . emmet-mode)
+  :config
+  (setq emmet-move-cursor-between-quotes t))

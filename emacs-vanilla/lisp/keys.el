@@ -89,7 +89,8 @@
     "fd" '(files/delete-this-file :which-key "Delete this file")
     "fs" '(files/sudo-this-file :which-key "Open this file as sudo")
     "fp" '(find-file-at-point :which-key "File at point")
-    "fy" '(evil/yank-file-name :which-key "Copy file path"))
+    "fy" '(evil/yank-file-name :which-key "Copy file path")
+    "fd" '(files/delete-this-file :which-key "Delete this file"))
   ;;; Search keys
   (keys/leader
     "s" '(:ignore t :which-key "Search")
