@@ -81,6 +81,7 @@
 ;; it also works on wayland and mac.
 (use-package xclip
   :straight t
+  :commands (xclip-mode)
   :hook (after-init . xclip-mode))
 
 (use-package sudo-edit
