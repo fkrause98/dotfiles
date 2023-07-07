@@ -5,7 +5,9 @@
   (setq evil-want-integration t
         evil-want-keybinding nil
         evil-want-C-u-scroll t
-        evil-undo-system 'undo-fu)
+        evil-undo-system 'undo-fu
+        evil-want-C-i-jump t
+        evil-want-C-u-delete t)
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
