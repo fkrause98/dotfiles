@@ -15,8 +15,7 @@
 
 (use-package mix
   :defines mix-mode
-  :commands mix-mode
-  :hook (elixir-mode . 'mix-minor-mode)
+  :commands (mix-test-current-test mix-test-current-buffer mix-mode)
   :config
   (setq compilation-scroll-output 'first-error))
 
