@@ -20,8 +20,10 @@
     :global-prefix "C-SPC")
   (general-create-definer keys/local-leader
     :states '(normal insert visual emacs)
+    :which-key "Local leader"
     :prefix "SPC m"
-    :global-prefix "C-SPC m")
+    :global-prefix "C-SPC m"
+    "" '(:ignore t :which-key "Local leader"))
   ;;; Emacs lisp mode keybinds
   (keys/local-leader
     :keymaps 'emacs-lisp-mode-map
@@ -104,8 +106,8 @@
   (keys/leader
     "w" '(:ignore t :which-key "Window")
     "ww" '(evil-window-next :which-key "Switch next")
-    "wl" '(evil-window-left :which-key "Switch right")
-    "wh" '(evil-window-right :which-key "Switch left")
+    "wl" '(evil-window-right :which-key "Switch right")
+    "wh" '(evil-window-left :which-key "Switch left")
     "wk" '(evil-window-up :which-key "Switch up")
     "wj" '(evil-window-down :which-key "Switch down"))
   ;;; Insert text

@@ -90,7 +90,8 @@
   :straight t
 
   :bind
-  (("C-a" . embark-export)         ;; pick some comfortable binding
+  (("C-." . embark-act)
+   ("C-a" . embark-export)         ;; pick some comfortable binding
    ("C-;" . embark-dwim)        ;; good alternative: M-.
    ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
 

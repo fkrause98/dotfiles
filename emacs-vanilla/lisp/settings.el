@@ -37,20 +37,7 @@
 ;; Do not ask for confirmation when
 ;; loading themes
 (setq custom-safe-themes t)
-(use-package modus-themes)
-(use-package ef-themes
-  :after (consult-load-theme)
-  :straight t)
-(use-package doom-themes
-  :straight t)
 (setq ring-bell-function 'ignore) 
-
-;; Center text when only 1 window
-;; is open
-(use-package perfect-margin
-  :hook (after-init . perfect-margin-mode)
-  :config
-  (perfect-margin-mode 1))
 ;;; Move this awful file somewhere else
 (setq custom-file
       (concat user-emacs-directory "~/.emacs/.custom.el"))
