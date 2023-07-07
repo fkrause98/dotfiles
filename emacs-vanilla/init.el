@@ -40,13 +40,14 @@
 (load "~/.emacs.d/lisp/nix")
 (load "~/.emacs.d/lisp/csharp")
 (load "~/.emacs.d/lisp/yml")
+(load "~/.emacs.d/lisp/make")
 (load "~/.emacs.d/lisp/tree-sitter")
 (load "~/.emacs.d/lisp/webmode")
-;; Formatting for a wide arrange of langs.
-;; (load "~/.emacs.d/lisp/format")
 ;;; Terminals
 (load "~/.emacs.d/lisp/term")
 ;;; Github Copilot
 (load "~/.emacs.d/lisp/copilot")
+;;; UI
+(load "~/.emacs.d/lisp/ui")
 ;;; Send startup time as a message on startup.
 (funs/display-startup-time))
