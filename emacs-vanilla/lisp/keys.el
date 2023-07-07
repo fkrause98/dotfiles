@@ -16,6 +16,7 @@
   :config
   (general-create-definer keys/leader
     :states '(normal insert visual emacs)
+    :keymaps 'override
     :prefix "SPC"
     :global-prefix "C-SPC")
   (general-create-definer keys/local-leader
