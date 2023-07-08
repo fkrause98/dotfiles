@@ -33,7 +33,14 @@ After installing nix, restart the terminal, currently open sessions won't work p
 ```
 $ nix-instantiate '<nixpkgs>' -A hello
 ```
-2. Link this repo's config (make sure you're in the repo's local folder)
+You migh need to add a channel first, this one adds the unstable one:
+```
+$ nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+```
+Here are the available [channel](https://channels.nixos.org/)
+
+2. Link this repo's config (make s
+ure you're in the repo's local folder)
 ```
 $ mkdir -p ~/.config/home-manager && ln -s $(pwd)/home-manager/home.nix ~/.config/home-manager/home.nix
 ```
