@@ -55,4 +55,20 @@
   (if (fboundp 'projectile-project-root)
       (projectile-project-root)
     (message "Project root function not defined -- Maybe projectile is missing?")))
+
 ;;;###autoload
+(defun search/search-current-buffer ()
+  (interactive)
+  (consult-line))
+;;;###autoload
+(defun buffers/switch-project-buffer ()
+  (interactive)
+  (consult-project-buffer))
+;;;###autoload
+(defun buffers/switch-buffer ()
+  (interactive)
+  (consult-buffer))
+;;;###autoload
+(defun files/recent ()
+  (interactive)
+  (consult-recent-file))

@@ -1,12 +1,14 @@
 ;;; package -- Vertico related config
 (use-package vertico
   :straight t
-  :config (setq vertico-count 17)
+  :config
+  (setq vertico-resize nil ; Fixed size for vertico
+        vertico-count 17 ; Number of lines to display
+        vertico-cycle t)
   :init
   (vertico-mode)
   :bind (("C-j" . vertico-next)
-         ("C-k" . vertico-previous)
-         ))
+         ("C-k" . vertico-previous)))
 ;; Configure directory extension.
 (use-package vertico-directory
   :commands
@@ -49,32 +51,25 @@
          ("C-x b" . consult-buffer)
          ("C-x C-b" . consult-buffer)
          ("C-x C-f" . consult-find)))
+
 (use-package consult-lsp
   :straight t
   :after (consult lsp-mode)
   :bind (:map lsp-mode-map
               ("C-c C-l" . consult-lsp-symbols)))
-(setq vertico-count 15)
+
 (use-package consult-projectile
   :straight t
-  :after (:all (consult projectile)))
+  :after (:all (consult projectile))
+  :config
+  (setq consult-projectile-use-projectile-switch-project t))
+
 (use-package consult-flycheck
   :defines (consult-flycheck)
   :commands (consult-flycheck)
   :straight t
   :after (:all (consult flycheck)))
-(defun search/search-current-buffer ()
-  (interactive)
-  (consult-line))
-(defun buffers/switch-project-buffer ()
-  (interactive)
-  (consult-project-buffer))
-(defun buffers/switch-buffer ()
-  (interactive)
-  (consult-buffer))
-(defun files/recent ()
-  (interactive)
-  (consult-recent-file))
+
 (use-package orderless
   :ensure t
   :custom
