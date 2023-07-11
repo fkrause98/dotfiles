@@ -7,7 +7,8 @@
         evil-want-C-u-scroll t
         evil-undo-system 'undo-fu
         evil-want-C-i-jump t
-        evil-want-C-u-delete t)
+        evil-want-C-u-delete t
+        evil-kill-on-visual-paste nil)
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
@@ -25,7 +26,9 @@
   :straight t
   :defines (evil-snipe-mode evil-snipe-override-mode)
   :commands (evil-snipe-mode evil-snipe-override-mode)
-  :hook (after-init . evil-snipe-override-mode))
+  :hook (after-init . evil-snipe-override-mode)
+  :config
+  (setq evil-snipe-smart-case t))
 
 (use-package evil-surround
   :commands global-evil-surround-mode
