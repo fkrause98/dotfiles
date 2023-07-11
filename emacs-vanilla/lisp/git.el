@@ -5,6 +5,8 @@
   :custom (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   :config
   (setq magit-save-repository-buffers 'dontask))
+(use-package forge
+  :after magit)
 (use-package blamer
   :straight t
   :commands (blamer-mode global-blamer-mode)
