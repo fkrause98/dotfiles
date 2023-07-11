@@ -46,7 +46,7 @@
 ;;; Terminals
 (load "~/.emacs.d/lisp/term")
 ;;; Github Copilot
-(load "~/.emacs.d/lisp/copilot")
+;; (load "~/.emacs.d/lisp/copilot")
 ;;; UI
 (load "~/.emacs.d/lisp/ui")
 ;;; Send startup time as a message on startup.
