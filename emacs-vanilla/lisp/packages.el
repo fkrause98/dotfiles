@@ -39,6 +39,7 @@
           "\\*Warnings\\*"
           ;; "^\\*vterm.*\\*$"
           "\\*rustic-compilation\\*"
+          "\\*exunit-compilation\\*"
           help-mode
           compilation-mode
           rustic-compilation-mode))
