@@ -110,7 +110,11 @@
     "wl" '(evil-window-right :which-key "Switch right")
     "wh" '(evil-window-left :which-key "Switch left")
     "wk" '(evil-window-up :which-key "Switch up")
-    "wj" '(evil-window-down :which-key "Switch down"))
+    "wj" '(evil-window-down :which-key "Switch down")
+    "wL" '(evil-window-move-far-right :which-key "Switch right")
+    "wH" '(evil-window-move-far-left :which-key "Switch left")
+    "wK" '(evil-window-move-very-top :which-key "Switch up")
+    "wJ" '(evil-window-move-very-bottom :which-key "Switch down"))
   ;;; Insert text
   (keys/leader
     "i" '(:ignore t :which-key "Insert")
