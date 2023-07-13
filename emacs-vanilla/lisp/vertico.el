@@ -20,10 +20,10 @@
   :ensure nil
   ;; More convenient directory navigation commands
   :bind (:map vertico-map
-              ("DEL" . vertico-directory-del)
               ("RET" . vertico-directory-enter)
               ("DEL" . vertico-directory-delete-char)
-              ("M-DEL" . vertico-directory-delete-word))
+              ("M-DEL" . vertico-directory-delete-word)
+              ("C-u" . vertico-directory-delete-word))
   ;; Tidy shadowed file names
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
