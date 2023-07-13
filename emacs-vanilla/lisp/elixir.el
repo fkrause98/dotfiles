@@ -2,7 +2,9 @@
 (use-package elixir-mode
   :mode
   (("\\.ex\\'" . elixir-mode)
-	 ("\\.exs\\'" . elixir-mode)))
+	 ("\\.exs\\'" . elixir-mode))
+  :hook
+  (elixir-mode . aggressive-indent-mode))
 
 (use-package exunit
   :commands
@@ -34,6 +36,7 @@
 ;;   (define-polymode poly-elixir-web-mode
 ;;     :hostmode 'poly-elixir-hostmode
 ;;     :innermodes '(poly-liveview-expr-elixir-innermode)))
+
 (with-eval-after-load "keys"
   (keys/local-leader
     :keymaps 'elixir-mode-map

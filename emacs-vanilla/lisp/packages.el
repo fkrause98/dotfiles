@@ -105,3 +105,7 @@
   :straight t
   :config
   (exec-path-from-shell-initialize))
+
+(use-package aggressive-indent
+  :straight t
+  :commands (aggressive-indent-mode))
