@@ -5,7 +5,6 @@ let
   fenix = import
     (fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz")
     { };
-  # elixir-ls = pkgs.callPackage ./elixir-ls.nix {};
 in with pkgs;
 let
   macPackages = if vars.isMac then [
@@ -24,7 +23,7 @@ let
     dotnet-sdk_7
   ] else
     [ ];
-  linuxPackages = if vars.isLinux then [ xsel emacs ] else [ ];
+  linuxPackages = if vars.isLinux then [ xsel emacs29 ] else [ ];
   rustUtils = [ bacon mprocs ];
   rustComponents = if vars.isMac then
     fenix.stable.withComponents [
