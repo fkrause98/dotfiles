@@ -8,6 +8,7 @@
          ("\\.vue\\'" . web-mode)
          ("\\.html.leex\\'" . web-mode)
          ("\\.html.heex\\'" . web-mode))
+  :init  (add-hook 'web-mode-hook 'my-web-mode-hook)
   :config
   (setq web-mode-markup-indent-offset 2
         web-mode-css-indent-offset 2
@@ -15,7 +16,6 @@
         web-mode-enable-auto-pairing t
         web-mode-enable-auto-closing t
         web-mode-enable-auto-opening t
-        web-mode-enable-auto-indentation t
         web-mode-enable-auto-quoting t
         web-mode-enable-auto-expanding t
         web-mode-enable-auto-tag-face t
@@ -45,6 +45,11 @@
           ("elixir" . "\\.html.heex\\'")
           ("elixir" . "\\.html.leex\\'")))) 
 
+;;;###autoload
+(defun my-web-mode-hook ()
+  (setq web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2))
 (use-package emmet-mode
   :straight t
   :after web-mode
