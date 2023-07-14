@@ -56,6 +56,7 @@
     "g" '(:ignore t :which-key "Git")
     "gg" '(magit-project-status :which-key "Status")
     "gc" '(magit-checkout :which-key "Checkout")
+    "gC" '(smerge-vc-next-conflict :which-key "Next Conflict")
     "gb" '(magit-branch-create :which-key "Create branch")
     "gp" '(magit-pull :which-key "Pull")
     "gm" '(magit-merge :which-key "Merge")
