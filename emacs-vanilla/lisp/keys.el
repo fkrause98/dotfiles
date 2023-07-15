@@ -77,6 +77,7 @@
   ;;; Code keys
   (keys/leader
     "c"  '(:ignore t :which-key "Code")
+    "ca" '(lsp-execute-code-action :which-key "LSP Code Action")
     "cs" '(consult-lsp-file-symbols :which-key "LSP symbols")
     "cw" '(consult-lsp-symbols :which-key "LSP Workspace symbols")
     "cd" '(lsp-find-definition :which-key "Find definition")
