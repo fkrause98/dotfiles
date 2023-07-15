@@ -72,3 +72,10 @@
 (defun files/recent ()
   (interactive)
   (consult-recent-file))
+
+;;;###autoload
+(defun code/show-errors-with-consult ()
+  (interactive)
+  (if lsp-mode
+      (consult-lsp-diagnostics nil)
+    (consult-flycheck)))

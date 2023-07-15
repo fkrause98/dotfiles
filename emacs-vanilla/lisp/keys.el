@@ -82,8 +82,7 @@
     "cd" '(lsp-find-definition :which-key "Find definition")
     "cD" '(lsp-find-references :which-key "Find references")
     "cr" '(lsp-rename :which-key "Rename")
-    "cx" '(consult-lsp-diagnostics :which-key "List errors")
-    "cx" '(consult-flycheck :which-key "List errors")
+    "cx" '(code/show-errors-with-consult :which-key "List errors")
     "ch" '(lsp-describe-thing-at-point :which-key "Help"))
   ;;; File keys
   (keys/leader
