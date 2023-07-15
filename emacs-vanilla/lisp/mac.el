@@ -1,7 +1,4 @@
 ;;; package --- Summary: Macos specific settings
-;;; Macos-copy-paste
-(use-package pbcopy)
-(turn-on-pbcopy)
 ;;; Get env from shell
 (use-package exec-path-from-shell
   :defer t
