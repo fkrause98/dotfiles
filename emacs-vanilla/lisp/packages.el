@@ -25,34 +25,6 @@
   (sp-pair "[" nil :post-handlers '(("||\n[i]" "RET")))
   (sp-pair "(" nil :post-handlers '(("||\n[i]" "RET"))))
 
-;;; Tame emacs pop buffers!
-(use-package popper
-  :straight t 
-  :bind (("C-`"   . popper-toggle-latest)
-         ("M-`"   . popper-cycle)
-         ("C-M-`" . popper-toggle-type))
-  :init
-  (setq popper-reference-buffers
-         ; Make some buffers toggable
-        '("\\*Messages\\*"
-          "\\*Shell Command Output\\*"
-          "Output\\*$"
-          "\\*Async Shell Command\\*"
-          "\\*Warnings\\*"
-          ;; "^\\*vterm.*\\*$"
-          "\\*rustic-compilation\\*"
-          "\\*exunit-compilation\\*"
-          help-mode
-          compilation-mode
-          rustic-compilation-mode))
-  (setq popper-window-height 20)
-  (popper-mode +1)
-  (popper-echo-mode +1)
-  (with-eval-after-load "keys"
-    (general-define-key
-     :keymaps 'local
-     :states 'normal
-     "q" 'evil/record-macro-or-kill-popper-buffer)))                ; For echo area hints
 
 (use-package flycheck
   :hook (lsp-mode . flycheck-mode)
