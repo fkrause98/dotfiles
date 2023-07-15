@@ -79,3 +79,10 @@
   (if lsp-mode
       (consult-lsp-diagnostics nil)
     (consult-flycheck)))
+
+;;;###autoload
+(defun evil/record-macro-or-kill-popper-buffer ()
+  (interactive)
+  (if (popper-popup-p (current-buffer))
+      (call-interactively #'popper-kill-latest-popup)
+    (call-interactively #'evil-record-macro)))

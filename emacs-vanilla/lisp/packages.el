@@ -35,6 +35,7 @@
   (setq popper-reference-buffers
          ; Make some buffers toggable
         '("\\*Messages\\*"
+          "\\*Shell Command Output\\*"
           "Output\\*$"
           "\\*Async Shell Command\\*"
           "\\*Warnings\\*"
@@ -46,7 +47,12 @@
           rustic-compilation-mode))
   (setq popper-window-height 20)
   (popper-mode +1)
-  (popper-echo-mode +1))                ; For echo area hints
+  (popper-echo-mode +1)
+  (with-eval-after-load "keys"
+    (general-define-key
+     :keymaps 'local
+     :states 'normal
+     "q" 'evil/record-macro-or-kill-popper-buffer)))                ; For echo area hints
 
 (use-package flycheck
   :hook (lsp-mode . flycheck-mode)
