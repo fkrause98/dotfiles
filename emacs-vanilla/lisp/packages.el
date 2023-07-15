@@ -13,6 +13,7 @@
   ([remap describe-command] . consult-describe-command)
   ([remap describe-variable] . consult-describe-variable)
   ([remap describe-key] . helpful-key))
+
 (use-package smartparens
   :straight t
   :hook (prog-mode . smartparens-mode)
@@ -109,3 +110,12 @@
 (use-package aggressive-indent
   :straight t
   :commands (aggressive-indent-mode))
+
+(use-package ranger
+  :commands (ranger)
+  :config
+  (with-eval-after-load "keys"
+    (keys/leader
+      "od" '(ranger :which-key "Dired")))
+  (setq ranger-dont-show-binary t
+        ranger-show-literal nil))
