@@ -70,6 +70,17 @@
   :straight t
   :after (:all (consult flycheck)))
 
+(use-package consult-tramp
+  :commands (consult-tramp)
+  :straight (:host github
+                   :repo "Ladicle/consult-tramp"))
+(use-package docker-tramp
+  :commands (
+             docker-tramp-cleanup
+             docker-tramp-add-method
+             docker-tramp--running-containers
+             docker-tramp--parse-running-containers))
+
 (use-package orderless
   :ensure t
   :custom
@@ -85,7 +96,7 @@
   :straight t
 
   :bind
-  (("C-." . embark-act)
+  (("C-b" . embark-act)
    ("C-a" . embark-export)         ;; pick some comfortable binding
    ("C-;" . embark-dwim)        ;; good alternative: M-.
    ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
