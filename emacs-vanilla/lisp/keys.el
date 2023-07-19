@@ -51,6 +51,8 @@
   (keys/leader
     "o" '(:ignore t :which-key "Open")
     "ot" '(vterm :which-key "Terminal"))
+    "ot" '(vterm :which-key "Terminal")
+    "oe" '(eshell :which-key "Eshell"))
   ;;; Git binds
   (keys/leader
     "g" '(:ignore t :which-key "Git")
