@@ -4,7 +4,17 @@
   (("\\.ex\\'" . elixir-mode)
 	 ("\\.exs\\'" . elixir-mode))
   :hook
-  (elixir-mode . aggressive-indent-mode))
+  (elixir-mode . aggressive-indent-mode)
+  :config
+  (add-hook 'elixir-mode-hook  'elixir/hooks))
+
+;;;###autoload
+(defun elixir/hooks nil
+  (add-hook 'before-save-hook 'elixir/before-save-hook))
+;;;###autoload
+(defun elixir/before-save-hook nil
+  (when (eq major-mode 'elixir-mode)
+    (elixir-format)))
 
 (use-package exunit
   :commands
@@ -46,3 +56,4 @@
     "td" '(exunit-debug :which-key "Debug")
     "tr" '(exunit-debug :which-key "Re-run")
     "tt" '(exunit-verify-single :which-key "At point")))
+
