@@ -11,6 +11,7 @@
           "\\*Shell Command Output\\*"
           "Output\\*$"
           "\\*Async Shell Command\\*"
+          "\\*Command Line\\*"
           "\\*Warnings\\*"
           ;; "^\\*vterm.*\\*$"
           "\\*rustic-compilation\\*"

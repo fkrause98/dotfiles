@@ -8,7 +8,8 @@ let
 in with pkgs;
 let
   macPackages = if vars.isMac then [
-    elixir_1_14
+    elixir_1_15
+    # asdf-vm
     erlang
     elixir-ls
     iterm2
