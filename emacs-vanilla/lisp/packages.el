@@ -97,3 +97,8 @@
       "od" '(ranger :which-key "Dired")))
   (setq ranger-dont-show-binary t
         ranger-show-literal nil))
+
+(use-package wgrep
+  :commands (wgrep-change-to-wgrep-mode)
+  :config
+  (setq wgrep-change-readonly-file t))
