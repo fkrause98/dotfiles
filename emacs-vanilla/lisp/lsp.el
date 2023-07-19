@@ -6,7 +6,9 @@
   :commands (lsp lsp-deferred)
   :config
   (lsp-enable-which-key-integration t)
-  (setq lsp-lens-enable t))
+  (setq lsp-lens-enable t
+        lsp-elixir-local-server-command  (expand-file-name "~/.nix-profile/bin/elixir-ls")))
+
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
   :config
