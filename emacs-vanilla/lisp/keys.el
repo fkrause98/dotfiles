@@ -52,7 +52,7 @@
     "o" '(:ignore t :which-key "Open")
     "ot" '(vterm :which-key "Terminal"))
     "ot" '(vterm :which-key "Terminal")
-    "oe" '(eshell :which-key "Eshell"))
+    "oe" '(eshell :which-key "Eshell")
   ;;; Git binds
   (keys/leader
     "g" '(:ignore t :which-key "Git")
@@ -121,4 +121,13 @@
   ;;; Insert text
   (keys/leader
     "i" '(:ignore t :which-key "Insert")
-    "ik" '(consult-yank-from-kill-ring :which-key "From kill-ring")))
+    "ik" '(consult-yank-from-kill-ring :which-key "From kill-ring"))
+;;; Project keybinds
+(keys/leader
+    "p" '(:ignore t :which-key "Project")
+    "pa" '(projectile-add-known-project :which-key "Add project folder")
+    "pf" '(consult-projectile-find-file :which-key "Find file")
+    "pi" '(projectile-invalidate-cache :which-key "Add project folder")
+    "pp" '(consult-projectile-switch-project :which-key "Switch")
+    "pr" '(projectile-recentf  :which-key "Switch")
+    "ps" '(search/project-text-search :which-key "Search text")))
