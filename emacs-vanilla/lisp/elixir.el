@@ -4,18 +4,7 @@
   (("\\.ex\\'" . elixir-mode)
 	 ("\\.exs\\'" . elixir-mode))
   :hook
-  (elixir-mode . aggressive-indent-mode)
-  :config
-  ;; (add-hook 'elixir-mode-hook  'elixir/hooks))
-  )
-
-;;;###autoload
-(defun elixir/hooks nil
-  (add-hook 'before-save-hook 'elixir/before-save-hook))
-;;;###autoload
-(defun elixir/before-save-hook nil
-  (when (eq major-mode 'elixir-mode)
-    (elixir-format)))
+  (elixir-mode . aggressive-indent-mode))
 
 (use-package exunit
   :commands
