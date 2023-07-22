@@ -18,7 +18,9 @@
           "\\*exunit-compilation\\*"
           help-mode
           compilation-mode
-          rustic-compilation-mode))
+          rustic-compilation-mode
+          occur-mode
+          grep-mode))
   (setq popper-window-height 20)
   (popper-mode +1)
   (popper-echo-mode +1)

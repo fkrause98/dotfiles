@@ -45,8 +45,7 @@
   :straight t
   :config
   (setq x-ref-show-xrefs-function #'consult-xref
-        xref-show-xrefs-function #'consult-xref
-        consult-preview-key nil)
+        xref-show-xrefs-function #'consult-xref)
   :bind (("C-s" . consult-line)
          ("C-x b" . consult-buffer)
          ("C-x C-b" . consult-buffer)
@@ -117,7 +116,10 @@
   (add-to-list 'display-buffer-alist
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
                  nil
-                 (window-parameters (mode-line-format . none)))))
+                 (window-parameters (mode-line-format . none)))
+(consult-customize
+ consult-ripgrep consult-git-grep consult-grep search/project-text-search
+ :preview-key nil))
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult
