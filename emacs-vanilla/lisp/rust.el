@@ -11,4 +11,7 @@
     "b" '(rustic-cargo-build :which-key "rustic-cargo-build")
     "c" '(rustic-cargo-check :which-key "rustic-cargo-check")
     "f" '(lsp-format-buffer :which-key "Format buffer")
-    "r" '(rustic-cargo-run :which-key "rustic-cargo-run")))
+    "r" '(rustic-cargo-run :which-key "Cargo run")
+    "t" '(:ignore t :which-key "Test")
+    "tt" '(rustic-cargo-current-test :which-key "Point")
+    "ta" '(rustic-cargo-current-test :which-key "Everything")))
