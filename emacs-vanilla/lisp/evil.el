@@ -5,7 +5,7 @@
   (setq evil-want-integration t
         evil-want-keybinding nil
         evil-want-C-u-scroll t
-        evil-undo-system 'undo-fu
+        evil-undo-system 'undo-tree
         evil-want-C-i-jump t
         evil-want-C-u-delete t
         evil-kill-on-visual-paste nil)
@@ -16,6 +16,10 @@
 
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
+
+(use-package evil-visualstar
+  :after evil
+  :config (global-evil-visualstar-mode))
 
 (use-package evil-matchit
   :straight t
