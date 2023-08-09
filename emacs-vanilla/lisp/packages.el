@@ -31,12 +31,10 @@
   :config
   (global-flycheck-mode))
 
-(use-package undo-fu
-  :after evil-mode)
-(use-package undo-fu-session
-  :after undo-fu
-  :config
-  (undo-fu-session-global-mode))
+(use-package undo-tree
+  :after evil-mode
+  :config (setq undo-tree-auto-save-history t))
+
 (use-package neotree
   :straight t
   :after projectile)
