@@ -32,9 +32,15 @@
      :states 'normal                                 
      "q" 'evil/record-macro-or-kill-popper-buffer)))
 
-;; Nice themes 
 (use-package doom-themes
-  :straight t)
+  :init
+  (add-hook 'after-init-hook '(lambda () (load-theme 'doom-gruvbox))))
+
+(use-package doom-modeline
+  :straight t
+  :config
+  (setq doom-modeline-icon nil)
+  (doom-modeline-mode 1))
 
 ;; Center text when only 1 window
 ;; is open

@@ -3,12 +3,13 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 
-(when (eq system-type 'gnu/linux)
-  (setq doom-theme 'doom-gruvbox))
-(when (eq system-type 'darwin)
-  (setq doom-theme 'doom-palenight))
-(setq doom-themes-enable-bold t
-      doom-themes-enable-italic t)
+;; Nice themes 
+(use-package doom-themes
+  :straight t)
+
+;;; Load theme after init
+(add-hook 'after-init-hook #'(lambda () (load-theme 'doom-gruvbox)))
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 ;; (setq display-line-numbers-type 'relative)
@@ -38,3 +39,4 @@
 
 ;;; Indent chars
 (setq highlight-indent-guides-method 'character)
+

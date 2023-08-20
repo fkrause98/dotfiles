@@ -31,19 +31,16 @@
   :config
   (global-flycheck-mode))
 
+(setq undo-tree-auto-save-history t
+      undo-tree-history-directory-alist '(("." . "~/.emacs-undo")))
 (use-package undo-tree
   :after evil-mode
-  :config (setq undo-tree-auto-save-history t))
+  :commands (turn-on-undo-tree-mode global-undo-tree-mode undo-tree-mode))
 
 (use-package neotree
   :straight t
   :after projectile)
 
-(use-package doom-modeline
-  :straight t
-  :config
-  (setq doom-modeline-icon nil)
-  (doom-modeline-mode 1))
 
 (use-package highlight-indent-guides
   :straight t
