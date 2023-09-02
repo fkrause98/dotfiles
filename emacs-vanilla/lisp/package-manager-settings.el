@@ -25,4 +25,4 @@
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
