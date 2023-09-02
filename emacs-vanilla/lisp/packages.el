@@ -33,10 +33,10 @@
 
 (setq undo-tree-auto-save-history t
       undo-tree-history-directory-alist '(("." . "~/.emacs-undo")))
+
 (use-package undo-tree
   :after evil-mode
   :commands (turn-on-undo-tree-mode global-undo-tree-mode undo-tree-mode))
-
 (use-package neotree
   :straight t
   :after projectile)
