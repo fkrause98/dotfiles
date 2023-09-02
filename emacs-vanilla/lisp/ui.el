@@ -16,9 +16,12 @@
           ;; "^\\*vterm.*\\*$"
           "\\*rustic-compilation\\*"
           "\\*exunit-compilation\\*"
+          "\\*nix-fmt\\*"
+          "\\*cargo-test\\*"
           help-mode
           compilation-mode
           rustic-compilation-mode
+          rustic-cargo-test-mode
           occur-mode
           grep-mode))
   (setq popper-window-height 20)
