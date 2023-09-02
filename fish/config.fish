@@ -20,11 +20,6 @@
           mkdir -p ~/.config/fish/completions
       end
 
-      ## Add asdf completions
-      set asdf_completions =
-      if test -d ~/.asdf/completions/asdf.fish
-          ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
-      end
       # To test python packages without installing them
       function pythonEnv --description 'start a nix-shell with the given python packages' --argument pythonVersion
           if set -q argv[2]
@@ -56,6 +51,14 @@
       fish_add_path $HOME/.config/emacs/bin/
       ## Make iex remember command history
       set -x ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
+      ## Add asdf completions
+      if test -d ~/.asdf/completions/asdf.fish
+          ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+      end
+
+      ## Loads asdf definitions
+      source "$HOME/.nix-profile/share/asdf-vm/asdf.fish"
+
       # Defined via `source`
       function nix-shell --description 'alias nix-shell nix-shell --run fish'
           command nix-shell --run fish $argv
