@@ -82,10 +82,10 @@
     "ca" '(lsp-execute-code-action :which-key "LSP Code Action")
     "cs" '(consult-lsp-file-symbols :which-key "LSP symbols")
     "cw" '(consult-lsp-symbols :which-key "LSP Workspace symbols")
-    "cd" '(lsp-find-definition :which-key "Find definition")
-    "cD" '(lsp-find-references :which-key "Find references")
+    "cd" '(code/find-definition :which-key "Find definition")
+    "cD" '(code/find-references :which-key "Find references")
     "cr" '(lsp-rename :which-key "Rename")
-    "cx" '(code/show-errors-with-consult :which-key "List errors")
+    "cx" '(code/show-errors :which-key "List errors")
     "ch" '(lsp-describe-thing-at-point :which-key "Help"))
   ;;; File keys
   (keys/leader

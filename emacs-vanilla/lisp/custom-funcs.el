@@ -76,11 +76,23 @@
   (consult-recent-file))
 
 ;;;###autoload
-(defun code/show-errors-with-consult ()
+(defun code/show-errors ()
+  (interactive)
+    (call-interactively #'consult-flycheck))
+
+;;;###autoload
+(defun code/find-definition ()
   (interactive)
   (if lsp-mode
-      (consult-lsp-diagnostics nil)
-    (consult-flycheck)))
+      (call-interactively #'lsp-find-definition)
+    (call-interactively #'xref-find-definitions)))
+
+;;;###autoload
+(defun code/find-references ()
+  (interactive)
+  (if lsp-mode
+      (call-interactively #'lsp-find-references)
+    (call-interactively #'xref-find-references)))
 
 ;;;###autoload
 (defun evil/record-macro-or-kill-popper-buffer ()
