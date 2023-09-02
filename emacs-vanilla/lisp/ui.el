@@ -45,6 +45,7 @@
 ;; Center text when only 1 window
 ;; is open
 (use-package perfect-margin
+  :straight t
   :hook (after-init . perfect-margin-mode)
   :config
   (perfect-margin-mode 1))
@@ -60,3 +61,6 @@
   (add-hook 'dashboard-after-initialize-hook 'dashboard-jump-to-projects)
   (dashboard-setup-startup-hook))
 
+
+(when *is-mac*
+  (set-face-attribute 'default nil :family "JetBrains Mono"))

@@ -23,3 +23,6 @@
                    :commit "02435560415bbadbcf5051fb7042880549170e7e")
   :config
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
+
+
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)

@@ -60,6 +60,7 @@
 (defun search/search-current-buffer ()
   (interactive)
   (consult-line))
+
 ;;;###autoload
 (defun buffers/switch-project-buffer ()
   (interactive)
@@ -68,6 +69,7 @@
 (defun buffers/switch-buffer ()
   (interactive)
   (consult-buffer))
+
 ;;;###autoload
 (defun files/recent ()
   (interactive)

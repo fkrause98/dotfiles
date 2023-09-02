@@ -23,5 +23,3 @@
 ;; for some reason it didn't work when I
 ;; tried with :hook and :after.
 (add-hook 'prog-mode-hook #'company-mode)
-(when (display-graphic-p)
-  (add-hook 'company-mode #'company-box-mode))
