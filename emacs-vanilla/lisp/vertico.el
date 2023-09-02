@@ -119,7 +119,7 @@
                  (window-parameters (mode-line-format . none)))
 (consult-customize
  consult-ripgrep consult-git-grep consult-grep search/project-text-search
- :preview-key nil))
+ :preview-key nil)))
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult
