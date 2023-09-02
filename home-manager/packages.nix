@@ -8,9 +8,9 @@ let
 in with pkgs;
 let
   macPackages = if vars.isMac then [
-    elixir_1_15
-    #asdf-vm
-    erlang
+    asdf-vm
+    erlang_25
+    wxGTK32
     elixir-ls
     iterm2
     ngrok
@@ -22,32 +22,31 @@ let
     # https://github.com/NixOS/nixpkgs/issues/127902
     #emacsMacPort
     dotnet-sdk_7
+    rustup
   ] else
     [ ];
   linuxPackages = if vars.isLinux then [ xsel emacs29 ] else [ ];
   rustUtils = [ bacon mprocs ];
-  rustComponents = if vars.isMac then
-    fenix.stable.withComponents [
-      "cargo"
-      "clippy"
-      "rust-src"
-      "rustc"
-      "rustfmt"
-      "rust-analyzer"
-    ]
-  else
-    fenix.latest.withComponents [
-      "cargo"
-      "clippy"
-      "rust-src"
-      "rustc"
-      "rustfmt"
-      "rust-analyzer"
-    ];
-  # rustAnalyzer = fenix.latest.rust-analyzer;
+  # rustComponents = if vars.isMac then
+  #   fenix.stable.withComponents [
+  #     "cargo"
+  #     "clippy"
+  #     "rust-src"
+  #     "rustc"
+  #     "rustfmt"
+  #     "rust-analyzer"
+  #   ]
+  # else
+  #   fenix.latest.withComponents [
+  #     "cargo"
+  #     "clippy"
+  #     "rust-src"
+  #     "rustc"
+  #     "rustfmt"
+  #     "rust-analyzer"
+  #   ];
+  rustAnalyzer = fenix.latest.rust-analyzer;
   devPackages = [
-    # asdf-vm
-    rustComponents
   ];
   basePackages = [
     htop
@@ -69,23 +68,21 @@ let
     nil
     jetbrains-mono
     fzf
-    nodejs
   ];
-  doomEmacsDeps = [
-    binutils
-    (ripgrep.override { withPCRE2 = true; })
-    gnutls
-    fd
-    imagemagick
-    zstd
-    nodePackages.javascript-typescript-langserver
-    sqlite
-    editorconfig-core-c
-  ];
+  # doomEmacsDeps = [
+  #   binutils
+  #   (ripgrep.override { withPCRE2 = true; })
+  #   gnutls
+  #   fd
+  #   imagemagick
+  #   zstd
+  #   # nodePackages.javascript-typescript-langserver
+  #   # sqlite
+  #   editorconfig-core-c
+  # ];
 
 in builtins.concatLists [
-  doomEmacsDeps
-  devPackages
+  # doomEmacsDeps
   basePackages
   macPackages
   linuxPackages
