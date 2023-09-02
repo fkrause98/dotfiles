@@ -34,7 +34,7 @@
 
 (use-package doom-themes
   :init
-  (add-hook 'after-init-hook '(lambda () (load-theme 'doom-gruvbox))))
+  (add-hook 'after-init-hook '(lambda () (load-theme 'doom-solarized-dark-high-contrast))))
 
 (use-package doom-modeline
   :straight t
@@ -62,5 +62,6 @@
   (dashboard-setup-startup-hook))
 
 
+;; Set font for mac
 (when *is-mac*
   (set-face-attribute 'default nil :family "JetBrains Mono"))
