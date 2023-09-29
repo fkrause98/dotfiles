@@ -36,7 +36,9 @@
 (defun evil/yank-file-name ()
   "Copy the current file's name"
   (interactive)
-  (evil-set-register ?\" (files/get-current-file-name)))
+  (let ((file-name (files/get-current-file-name)))
+    (message (format "Yanked file name: %s" file-name))
+    (evil-set-register ?\" file-name)))
 
 ;;;###autoload
 (defun search/project-text-search nil
