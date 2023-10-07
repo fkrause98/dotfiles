@@ -46,10 +46,17 @@
   (consult-ripgrep (projectile-project-root)))
 
 ;;;###autoload
+(defun project/run-project ()
+  (interactive)
+  (if (bound-and-true-p projectile-mode)
+      (call-interactively #'projectile-run-project)
+    (message "Projectile mode is not running!")))
+
+;;;###autoload
 (defun project/find-file nil
   "Find file in project"
   (interactive)
-  (projectile-find-file))
+  (consult-projectile-find-file))
 
 ;;;###autoload
 (defun project/get-project-root ()
@@ -57,6 +64,11 @@
   (if (fboundp 'projectile-project-root)
       (projectile-project-root)
     (message "Project root function not defined -- Maybe projectile is missing?")))
+
+;;;###autoload
+(defun project/switch-to-project ()
+  (interactive)
+  (call-interactively 'consult-projectile-switch-project))
 
 ;;;###autoload
 (defun search/search-current-buffer ()
@@ -102,3 +114,5 @@
   (if (popper-popup-p (current-buffer))
       (call-interactively #'popper-kill-latest-popup)
     (call-interactively #'evil-record-macro)))
+
+

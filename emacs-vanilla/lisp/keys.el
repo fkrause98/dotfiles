@@ -50,9 +50,10 @@
   ;;; Commands that open special new buffers
   (keys/leader
     "o" '(:ignore t :which-key "Open")
-    "ot" '(vterm :which-key "Terminal"))
+    "ot" '(vterm :which-key "Terminal")
     "ot" '(vterm :which-key "Terminal")
     "oe" '(eshell :which-key "Eshell")
+    "op" '(neotree-projectile-action :which-key "Tree file"))
   ;;; Git binds
   (keys/leader
     "g" '(:ignore t :which-key "Git")
@@ -117,7 +118,9 @@
     "wL" '(evil-window-move-far-right :which-key "Switch right")
     "wH" '(evil-window-move-far-left :which-key "Switch left")
     "wK" '(evil-window-move-very-top :which-key "Switch up")
-    "wJ" '(evil-window-move-very-bottom :which-key "Switch down"))
+    "wJ" '(evil-window-move-very-bottom :which-key "Switch down")
+    "w=" '(balance-windows :which-key "Balance windows")
+    "wm" '(maximize-window :which-key "Maximize focused window"))
   ;;; Insert text
   (keys/leader
     "i" '(:ignore t :which-key "Insert")
@@ -126,8 +129,25 @@
 (keys/leader
     "p" '(:ignore t :which-key "Project")
     "pa" '(projectile-add-known-project :which-key "Add project folder")
-    "pf" '(consult-projectile-find-file :which-key "Find file")
+    "pf" '(project-find-file :which-key "Find file")
     "pi" '(projectile-invalidate-cache :which-key "Add project folder")
-    "pp" '(consult-projectile-switch-project :which-key "Switch")
+    "pp" '(project/switch-to-project :which-key "Switch")
     "pr" '(projectile-recentf  :which-key "Switch")
-    "ps" '(search/project-text-search :which-key "Search text")))
+    "ps" '(search/project-text-search :which-key "Search text")
+    "pr" '(project/run-project :which-key "Run project")))
+
+(defmacro generate-tab-switching-commands (n prefix)
+  (let ((code '()))
+    (dotimes (i n)
+      (push `(general-define-key
+               :keymaps 'override
+               ,(format "%s-%d" prefix (1+ i))
+               (lambda ()
+                 (interactive)
+                 (tab-bar-select-tab ,(+ i 1))))
+            code))
+    `(progn ,@code)))
+
+(if *is-mac*
+    (generate-tab-switching-commands 5 "C")
+    (generate-tab-switching-commands 5 "M"))
