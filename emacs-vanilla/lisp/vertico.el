@@ -93,9 +93,10 @@
 
 (use-package embark
   :straight t
-
+  :after vertico
   :bind
-  (("C-b" . embark-act)
+  (
+   ;; ("C-b" . embark-act)
    ("C-a" . embark-export)         ;; pick some comfortable binding
    ("C-;" . embark-dwim)        ;; good alternative: M-.
    ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
@@ -115,11 +116,8 @@
   ;; Hide the mode line of the Embark live/completions buffers
   (add-to-list 'display-buffer-alist
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-                 nil
-                 (window-parameters (mode-line-format . none)))
-(consult-customize
- consult-ripgrep consult-git-grep consult-grep search/project-text-search
- :preview-key nil)))
+                 nil)))
+
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult
@@ -127,3 +125,4 @@
   :after (embark consult)
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
+;; (consult-customize consult--source-buffer :hidden t :default nil)

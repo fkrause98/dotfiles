@@ -13,7 +13,6 @@
           "\\*Async Shell Command\\*"
           "\\*Command Line\\*"
           "\\*Warnings\\*"
-          ;; "^\\*vterm.*\\*$"
           "\\*rustic-compilation\\*"
           "\\*exunit-compilation\\*"
           "\\*nix-fmt\\*"
@@ -23,7 +22,8 @@
           rustic-compilation-mode
           rustic-cargo-test-mode
           occur-mode
-          grep-mode))
+          grep-mode
+          helpful-mode))
   (setq popper-window-height 20)
   (popper-mode +1)
   (popper-echo-mode +1)
@@ -32,9 +32,9 @@
      :states 'normal                                 
      "q" 'evil/record-macro-or-kill-popper-buffer)))
 
-(use-package doom-themes
-  :init
-  (add-hook 'after-init-hook '(lambda () (load-theme 'doom-solarized-dark-high-contrast))))
+(use-package doom-themes)
+
+(use-package color-theme-sanityinc-tomorrow)
 
 (use-package doom-modeline
   :straight t
@@ -61,7 +61,17 @@
   (add-hook 'dashboard-after-initialize-hook 'dashboard-jump-to-projects)
   (dashboard-setup-startup-hook))
 
+(use-package modus-themes)
+
+(use-package standard-themes)
 
 ;; Set font for mac
 (when *is-mac*
   (set-face-attribute 'default nil :family "JetBrains Mono"))
+
+;;;###autoload
+(defun custom-ui-after-init-hook ()
+  (load-theme 'modus-vivendi)
+  (tab-bar-mode))
+
+(add-hook 'after-init-hook '(lambda () (load-theme 'doom-tokyo-night)))

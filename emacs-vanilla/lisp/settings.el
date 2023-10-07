@@ -55,3 +55,7 @@
 
 ;;; Better scrolling
 (setq scroll-conservatively 101)
+(when (display-graphic-p)
+  (tab-bar-mode))
+
+(setq compilation-scroll-output 'first-error)

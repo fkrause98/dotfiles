@@ -4,7 +4,13 @@
   :straight t
   :mode ("\\.rs\\'" . rustic-mode)
   :config
-  (setq-default rustic-format-on-save nil))
+  (setq-default rustic-format-on-save nil)
+  (setq-default rustic-default-test-arguments "--benches --tests --all-features -- --nocapture")
+  (add-hook 'rustic-compilation-mode-hook 'rustic-compilation-mode-hook-setup))
+
+(defun rustic-compilation-mode-hook-setup ()
+  (setq compilation-scroll-output 'first-error))
+
 (with-eval-after-load "keys"
   (keys/local-leader
     :keymaps 'rustic-mode-map

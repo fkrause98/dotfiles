@@ -97,3 +97,16 @@
   :commands (wgrep-change-to-wgrep-mode)
   :config
   (setq wgrep-change-readonly-file t))
+
+
+
+(use-package yul-mode
+  :mode
+  (("\\.yul\\'" . yul-mode))
+  :config
+  (add-hook 'yul-mode-hook
+            (lambda ()
+              (setq indent-line-function 'indent-relative))))
+
+(use-package string-inflection
+  :commands (string-inflection-java-style-cycle))
