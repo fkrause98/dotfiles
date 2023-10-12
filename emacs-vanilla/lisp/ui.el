@@ -66,8 +66,10 @@
 (use-package standard-themes)
 
 ;; Set font for mac
-(when *is-mac*
-  (set-face-attribute 'default nil :family "JetBrains Mono"))
+(let ((font-to-use  "FiraCode Nerd Font Mono"))
+  (if *is-mac*
+      (set-face-attribute 'default nil :family font-to-use)
+    (message (format "Missing font: %s" font-to-use))))
 
 ;;;###autoload
 (defun custom-ui-after-init-hook ()
