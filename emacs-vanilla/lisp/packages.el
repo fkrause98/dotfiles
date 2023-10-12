@@ -33,7 +33,8 @@
 
 ;;; Compile + Linting Checks.
 (use-package flycheck
-  :hook (lsp-mode . flycheck-mode)
+  :hook ((lsp-mode . flycheck-mode)
+         (prog-mode . flycheck-mode))
   :config
   (global-flycheck-mode))
 
