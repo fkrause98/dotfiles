@@ -1,4 +1,4 @@
-;;; package -- Some non-related (between them) packages
+;;; Commentary: package -- Some non-related (between them) packages
 
 ;;; Colorful brackets.
 (use-package rainbow-delimiters
@@ -40,8 +40,8 @@
 
 
 ;;; Complex undo and redo functionality.
-(setq undo-tree-auto-save-history t
-      undo-tree-history-directory-alist '(("." . "~/.emacs-undo")))
+(defvar undo-tree-auto-save-history t)
+(defvar undo-tree-history-directory-alist '(("." . "~/.emacs-undo")))
 (use-package undo-tree
   :after evil-mode
   :commands (turn-on-undo-tree-mode global-undo-tree-mode undo-tree-mode))
@@ -106,7 +106,7 @@
 (use-package wgrep
   :commands (wgrep-change-to-wgrep-mode)
   :config
-  (setq wgrep-change-readonly-file t))
+  (defvar wgrep-change-readonly-file t))
 
 ;;; Yul language support.
 (use-package yul-mode
@@ -114,7 +114,7 @@
   (("\\.yul\\'" . yul-mode))
   :config
   (add-hook 'yul-mode-hook
-            '(lambda ()
+            #'(lambda ()
               (setq indent-line-function 'indent-relative))))
 
 ;;; Determine indent of file
@@ -122,7 +122,7 @@
   :after yul-mode
   :config
   (add-hook 'yul-mode
-            '(lambda ()
+            #'(lambda ()
               (dtrt-indent-mode))))
 
 ;;; Toggle string cases
@@ -140,6 +140,5 @@
 
 ;;; Some more colors for dired
 (use-package diredfl
-  :hook dired-mode
+  :hook (dired-mode . diredfl-mode)
   :commands diredfl-mode)
-
