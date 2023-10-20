@@ -74,7 +74,7 @@
     "bB" '(buffers/switch-buffer :which-key "Switch")
     "bk" '(kill-current-buffer :which-key "Kill current")
     "bl" '(evil-switch-to-windows-last-buffer :which-key "Latest buffer switch")
-    "br" '(funcs/revert-buffer-no-confirm :which-key "Revert buffer")
+    "br" '(funs/revert-buffer-no-confirm :which-key "Revert buffer")
     "br" '(revert-buffer-with-fine-grain :which-key "Revert buffer")
     "bn" '(evil-buffer-new :which-key "New buffer"))
   ;;; Code keys
