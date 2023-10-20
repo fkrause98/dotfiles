@@ -40,7 +40,12 @@
   :straight t
   :config
   (setq doom-modeline-icon nil)
+  (setq doom-themes-enable-bold nil)
   (doom-modeline-mode 1))
+
+(add-hook 'after-init-hook
+          #'(lambda ()
+             (load-theme 'doom-tokyo-night)))
 
 ;; Center text when only 1 window
 ;; is open
@@ -65,15 +70,21 @@
 
 (use-package standard-themes)
 
+;;; Darker contrast, works
+;;; well with doom-themes.
+(use-package solaire-mode
+  :if (display-graphic-p)
+  :hook (after-init . solaire-global-mode))
+
+(use-package all-the-icons
+  :if (display-graphic-p))
+
+(use-package all-the-icons-dired
+  :if (display-graphic-p)
+  :hook (dired-mode . all-the-icons-dired-mode))
+
 ;; Set font for mac
 (let ((font-to-use  "FiraCode Nerd Font Mono"))
   (if *is-mac*
       (set-face-attribute 'default nil :family font-to-use)
     (message (format "Missing font: %s" font-to-use))))
-
-;;;###autoload
-(defun custom-ui-after-init-hook ()
-  (load-theme 'modus-vivendi)
-  (tab-bar-mode))
-
-(add-hook 'after-init-hook '(lambda () (load-theme 'doom-tokyo-night)))
