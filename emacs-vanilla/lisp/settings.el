@@ -59,3 +59,5 @@
   (tab-bar-mode))
 
 (setq compilation-scroll-output 'first-error)
+
+(setq indicate-empty-lines t)
