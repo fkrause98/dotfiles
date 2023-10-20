@@ -8,10 +8,25 @@
            gcs-done))
 
 ;;;###autoload
-(defun funcs/revert-buffer-no-confirm ()
+(defun funs/revert-buffer-no-confirm ()
   "Revert buffer without confirmation."
   (interactive)
   (revert-buffer t t))
+
+;;;###autoload
+(defun funs/hex-to-dec (hex-number)
+  (interactive "sNumber in hex to convert: ")
+  (require 's)
+  (when (s-starts-with? "0x" hex-number)
+     (setq hex-number (string-remove-prefix "0x" hex-number)))
+  (message (format "%d" (string-to-number hex-number 16))))
+
+;;;###autoload
+(defun funs/remove-ansi-color ()
+  (interactive)
+  (save-excursion
+   (mark-whole-buffer)
+   (ansi-color-filter-region (region-beginning) (region-end))))
 
 ;;;###autoload
 (defun files/delete-this-file ()
