@@ -53,7 +53,7 @@ let
     statix
     ripgrep
     fd
-    exa
+    eza
     bat
     tealdeer
     tmux
