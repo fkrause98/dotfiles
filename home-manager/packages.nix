@@ -9,19 +9,15 @@ in with pkgs;
 let
   macPackages = if vars.isMac then [
     asdf-vm
-    erlang_25
+    erlang_26
     wxGTK32
     elixir-ls
     iterm2
     ngrok
     protobuf
     libiconv
-    omnisharp-roslyn
-    # TODO: Use emacs-mac port when this
-    # issue is closed!
-    # https://github.com/NixOS/nixpkgs/issues/127902
-    #emacsMacPort
-    dotnet-sdk_7
+    # omnisharp-roslyn
+    # dotnet-sdk_7
     rustup
   ] else
     [ ];
