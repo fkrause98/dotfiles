@@ -46,8 +46,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "lewisacidic";
         repo = "fish-git-abbr";
-        rev = "abe95203b7fcb1eaa685bd5b75796b52bb7be884";
-        sha256 = "UP+bk5luk6bNrMzI4eQkt9TzU8dkjEqGoEnlEh4fEK4=";
+        rev = "dc590a5b9d9d2095f95f7d90608b48e55bea0b0e";
+        sha256 = "6z3Wr2t8CP85xVEp6UCYaM2KC9PX4MDyx19f/wjHkb0=";
       };
     }
     {
