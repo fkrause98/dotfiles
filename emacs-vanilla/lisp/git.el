@@ -4,7 +4,8 @@
   :commands (magit-status magit-get-current-branch)
   :custom (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   :config
-  (setq magit-save-repository-buffers 'dontask))
+  (setq magit-save-repository-buffers 'dontask)
+  (transient-append-suffix 'magit-pull "-r" '("-R" "No rebase" "--no-rebase")))
 (use-package forge
   :after magit)
 (use-package blamer
