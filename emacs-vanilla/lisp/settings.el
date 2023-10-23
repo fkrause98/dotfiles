@@ -61,3 +61,6 @@
 (setq compilation-scroll-output 'first-error)
 
 (setq indicate-empty-lines t)
+
+;;; For better readability
+(setq line-spacing 4)
