@@ -102,7 +102,8 @@
   (keys/leader
     "s" '(:ignore t :which-key "Search")
     "ss" '(search/search-current-buffer :which-key "Buffer")
-    "si" '(consult-imenu-multi :which-key "Imenu"))
+    "si" '(consult-imenu-multi :which-key "Imenu")
+    "sj" '(evil-collection-consult-jump-list :which-key "Jump list"))
   ;;; Toggles
   (keys/leader
     "t"  '(:ignore t :which-key "Toggles")
