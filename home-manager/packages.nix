@@ -42,8 +42,7 @@ let
   #     "rust-analyzer"
   #   ];
   rustAnalyzer = fenix.latest.rust-analyzer;
-  devPackages = [
-  ];
+  devPackages = [ ];
   basePackages = [
     htop
     statix

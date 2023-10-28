@@ -26,15 +26,15 @@
 
     # Ingnoring tide until I get an answer here:
     # https://github.com/IlanCosman/tide/issues/457
-    # {
-    #   name = "tide";
-    #   src = pkgs.fetchFromGitHub {
-    #     owner = "IlanCosman";
-    #     repo = "tide";
-    #     rev = "96635fbfd3448ca2a7bead773537e91e86913614";
-    #     sha256 = "WA+4JOcbQncy52iSe7Tp4KeFbrQKV+5nFJYRoQbfsvs=";
-    #   };
-    # }
+   {
+     name = "tide";
+     src = pkgs.fetchFromGitHub {
+       owner = "IlanCosman";
+       repo = "tide";
+       rev = "96635fbfd3448ca2a7bead773537e91e86913614";
+       sha256 = "WA+4JOcbQncy52iSe7Tp4KeFbrQKV+5nFJYRoQbfsvs=";
+     };
+   }
 
     {
       name = "done";
