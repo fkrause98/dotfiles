@@ -27,6 +27,9 @@
   ;; Tidy shadowed file names
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
+(use-package vertico-multiform
+  :straight
+  (:host github :repo "minad/vertico" :files ("extensions/vertico-multiform.el")))
 (use-package marginalia
   :after vertico
   :ensure t
@@ -84,7 +87,13 @@
   :ensure t
   :custom
   (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+  (completion-category-overrides
+   '((file (styles basic basic-remote partial-completion))))
+  (orderless-matching-styles
+   '(orderless-literal
+     orderless-prefixes
+     orderless-initialism
+     orderless-regexp)))
 
 (use-package marginalia
   :ensure t
