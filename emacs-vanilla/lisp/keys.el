@@ -135,7 +135,8 @@
     "pp" '(project/switch-to-project :which-key "Switch")
     "pr" '(projectile-recentf  :which-key "Switch")
     "ps" '(search/project-text-search :which-key "Search text")
-    "pr" '(project/run-project :which-key "Run project")))
+    "pr" '(project/run-project :which-key "Run project")
+    "pc" '(projectile-compile-project :which-key "Compile project")))
 
 (defmacro generate-tab-switching-commands (n prefix)
   (let ((code '()))
