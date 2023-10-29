@@ -14,27 +14,16 @@
       name = "autopair";
       inherit (autopair) src;
     }
-     {
-       name = "fzf";
-       src = pkgs.fetchFromGitHub {
-         owner = "PatrickF1";
-         repo = "fzf";
-         rev = "f9e2e48a54199fe7c6c846556a12003e75ab798e";
-         sha256 = "UP+bk5luk6bNrMzI4eQkt9TzU8dkjEqGoEnlEh4fEK4=";
-       };
-     }
 
-    # Ingnoring tide until I get an answer here:
-    # https://github.com/IlanCosman/tide/issues/457
-   {
-     name = "tide";
-     src = pkgs.fetchFromGitHub {
-       owner = "IlanCosman";
-       repo = "tide";
-       rev = "96635fbfd3448ca2a7bead773537e91e86913614";
-       sha256 = "WA+4JOcbQncy52iSe7Tp4KeFbrQKV+5nFJYRoQbfsvs=";
-     };
-   }
+    {
+      name = "fzf";
+      inherit (fzf) src;
+    }
+
+    # {
+    #   name = "tide";
+    #   inherit (tide) src;
+    # }
 
     {
       name = "done";
