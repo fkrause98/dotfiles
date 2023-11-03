@@ -2,4 +2,5 @@
   :mode
   (("\\.yul\\'" . yul)))
 
-(use-package emacs-solidity)
+(use-package solidity-mode
+  :mode (("\\.sol\\'" . solidity-mode)))
