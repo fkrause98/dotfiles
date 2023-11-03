@@ -50,7 +50,7 @@
   ;;; Commands that open special new buffers
   (keys/leader
     "o" '(:ignore t :which-key "Open")
-    "ot" '(vterm :which-key "Terminal")
+    "od" '(dired-jump :which-key "Dired")
     "ot" '(vterm :which-key "Terminal")
     "oe" '(eshell :which-key "Eshell")
     "op" '(neotree-projectile-action :which-key "Tree file"))
@@ -153,3 +153,4 @@
 (if *is-mac*
     (generate-tab-switching-commands 5 "C")
     (generate-tab-switching-commands 5 "M"))
+
