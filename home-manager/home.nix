@@ -40,6 +40,10 @@ in {
     pkgs = pkgs;
     fishNixPath = vars.fishNixPath;
   };
+    nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
   programs.vim = import ./vim.nix { };
   programs.fish = import ./fish.nix { pkgs = pkgs; };
   programs.git = import ./git.nix { };
