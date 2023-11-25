@@ -1,6 +1,8 @@
 ;;; package -- For the evil you need in your life :-)
 (use-package evil
-  :straight t
+  :straight (:host github
+                   :repo "emacs-evil/evil"
+                   :commit "c4f95fd9ec284a8284405f84102bfdb74f0ee22f")
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil
