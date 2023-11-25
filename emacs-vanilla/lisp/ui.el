@@ -41,12 +41,12 @@
 
 (use-package color-theme-sanityinc-tomorrow)
 
-;; (use-package doom-modeline
-;;   :straight t
-;;   :config
-;;   (setq doom-modeline-icon nil)
-;;   (setq doom-themes-enable-bold nil)
-;;   (doom-modeline-mode 1))
+(use-package doom-modeline
+  :straight t
+  :config
+  (setq doom-modeline-icon nil)
+  (setq doom-themes-enable-bold nil)
+  (doom-modeline-mode 1))
 
 
 ;; Center text when only 1 window
@@ -99,17 +99,17 @@
       (set-face-attribute 'default nil :family font-to-use)
     (message (format "Missing font: %s" font-to-use))))
 
-(use-package mini-echo
-  :commands (mini-echo-mode)
-  :hook (after-init . mini-echo-mode)
-  :straight (:host github
-                   :repo "liuyinz/mini-echo.el"
-                   :commit "a8b30a91986be60e718963e2c78cae3c3a3c3b76")
-  :config
-;; set default segments of long/short style
-(setq mini-echo-default-segments
-  '(:long ("major-mode" "buffer-name" "vcs" "buffer-position"
-           "buffer-size" "flymake" "process" "selection-info"
-           "narrow" "macro" "profiler")
-    :short ("buffer-name-short" "buffer-position" "process"
-            "profiler" "selection-info" "narrow" "macro"))))
+;; (use-package mini-echo
+;;   :commands (mini-echo-mode)
+;;   :hook (after-init . mini-echo-mode)
+;;   :straight (:host github
+;;                    :repo "liuyinz/mini-echo.el"
+;;                    :commit "a8b30a91986be60e718963e2c78cae3c3a3c3b76")
+;;   :config
+;; ;; set default segments of long/short style
+;; (setq mini-echo-default-segments
+;;   '(:long ("major-mode" "buffer-name" "vcs" "buffer-position"
+;;            "buffer-size" "flymake" "process" "selection-info"
+;;            "narrow" "macro" "profiler")
+;;     :short ("buffer-name-short" "buffer-position" "process"
+;;             "profiler" "selection-info" "narrow" "macro"))))

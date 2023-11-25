@@ -63,7 +63,7 @@
 (setq indicate-empty-lines t)
 
 ;;; For better readability
-(setq line-spacing 4)
+(setq-default line-spacing 4)
 
 ;;; Numbers for tab bar
 (setq tab-bar-tab-hints t)
