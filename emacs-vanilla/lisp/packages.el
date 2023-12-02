@@ -142,3 +142,5 @@
 (use-package diredfl
   :hook (dired-mode . diredfl-mode)
   :commands diredfl-mode)
+
+(use-package 'no-littering)

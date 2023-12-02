@@ -44,6 +44,7 @@
 (load "~/.emacs.d/lisp/tree-sitter")
 (load "~/.emacs.d/lisp/webmode")
 (load "~/.emacs.d/lisp/ethereum")
+(load "~/.emacs.d/lisp/ruby")
 ;;; Terminals
 (load "~/.emacs.d/lisp/term")
 ;;; Github Copilot
