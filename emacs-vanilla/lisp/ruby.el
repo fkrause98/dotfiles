@@ -2,8 +2,7 @@
   :commands (inf-ruby))
 
 (use-package rubocopfmt
-  :hook
-  (ruby-mode . rubocopfmt-mode))
+  :commands (rubocopfmt))
 
 (use-package rake
   :commands (rake))
