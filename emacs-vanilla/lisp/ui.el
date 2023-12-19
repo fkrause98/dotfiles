@@ -76,7 +76,9 @@
 ;;; well with doom-themes.
 (use-package solaire-mode
   :if (display-graphic-p)
-  :hook (after-init . solaire-global-mode))
+  :hook (after-init . solaire-global-mode)
+  :config
+  (add-hook 'find-file-hook 'solaire-mode))
 
 (use-package all-the-icons
   :if (display-graphic-p))
