@@ -9,7 +9,7 @@ in with pkgs;
 let
   macPackages = if vars.isMac then [
     asdf-vm
-    erlang_26
+#    erlang_26
     wxGTK32
     elixir-ls
     iterm2
