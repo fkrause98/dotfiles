@@ -143,7 +143,6 @@
   :hook (dired-mode . diredfl-mode)
   :commands diredfl-mode)
 
-
 (use-package unfill
   :commands
   (unfill-region

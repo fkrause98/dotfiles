@@ -41,9 +41,10 @@ let
   #     "rustfmt"
   #     "rust-analyzer"
   #   ];
-  rustAnalyzer = fenix.latest.rust-analyzer;
+  # rustAnalyzer = fenix.latest.rust-analyzer;
   devPackages = [ ];
   basePackages = [
+    flameshot
     htop
     statix
     ripgrep
