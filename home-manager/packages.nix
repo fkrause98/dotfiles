@@ -44,6 +44,7 @@ let
   # rustAnalyzer = fenix.latest.rust-analyzer;
   devPackages = [ ];
   basePackages = [
+    lazygit
     flameshot
     htop
     statix

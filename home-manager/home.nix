@@ -12,21 +12,21 @@ in {
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home.stateVersion = "24.05"; # Please read the comment before changing.
   home.packages = import ./packages.nix {
     config = config;
     pkgs = pkgs;
   };
 
   home.file = {
-    ".config/doom" = {
-      source = vars.emacsConfig;
-      recursive = true;
-    };
-    ".emacs.d" = {
-      source = ../emacs-vanilla;
-      recursive = true;
-    };
+  #  ".config/doom" = {
+  #    source = vars.emacsConfig;
+  #    recursive = true;
+  #  };
+   # ".emacs.d" = {
+   #   source = ../emacs-vanilla;
+   #   recursive = true;
+   # };
   };
   home.sessionVariables = {
     # The best $EDITOR
