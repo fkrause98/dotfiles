@@ -3,6 +3,14 @@ _: {
     [merge]
       conflictstyle = diff3
     [pull]
-      rebase = false
+      rebase = true
+    [diff]
+        tool = difftastic
+    [difftool]
+         prompt = false
+    [difftool "difftastic"]
+         cmd = difft "$LOCAL" "$REMOTE"
+    [pager]
+         difftool = true
   '';
 }

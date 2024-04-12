@@ -9,7 +9,6 @@ in with pkgs;
 let
   macPackages = if vars.isMac then [
     asdf-vm
-#    erlang_26
     wxGTK32
     elixir-ls
     iterm2
@@ -23,25 +22,6 @@ let
     [ ];
   linuxPackages = if vars.isLinux then [ xsel emacs29 ] else [ ];
   rustUtils = [ bacon mprocs ];
-  # rustComponents = if vars.isMac then
-  #   fenix.stable.withComponents [
-  #     "cargo"
-  #     "clippy"
-  #     "rust-src"
-  #     "rustc"
-  #     "rustfmt"
-  #     "rust-analyzer"
-  #   ]
-  # else
-  #   fenix.latest.withComponents [
-  #     "cargo"
-  #     "clippy"
-  #     "rust-src"
-  #     "rustc"
-  #     "rustfmt"
-  #     "rust-analyzer"
-  #   ];
-  # rustAnalyzer = fenix.latest.rust-analyzer;
   devPackages = [ ];
   basePackages = [
     lazygit
@@ -65,6 +45,8 @@ let
     nil
     jetbrains-mono
     fzf
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    difftastic
   ];
   # doomEmacsDeps = [
   #   binutils
