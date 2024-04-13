@@ -47,6 +47,7 @@ let
     fzf
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     difftastic
+    cargo-nextest
   ];
   # doomEmacsDeps = [
   #   binutils
