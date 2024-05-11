@@ -71,7 +71,7 @@
       end
       ## Makes emacs use p-lists for faster lsp mode
       set -x LSP_USE_PLISTS true
-      set -x DOOMDIR "~/dotfiles/doom"
+      set -x DOOMDIR "~/dotfiles/doom/"
       # Defined via `source`
       function nix-shell --description 'alias nix-shell nix-shell --run fish'
           command nix-shell --run fish $argv

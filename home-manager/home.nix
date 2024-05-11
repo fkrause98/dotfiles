@@ -18,12 +18,7 @@ in {
     pkgs = pkgs;
   };
 
-  home.file = {
-    ".config/doom" = {
-      source = vars.emacsConfig;
-      recursive = true;
-    };
-  };
+  home.file = {};
   home.sessionVariables = {
     # The best $EDITOR
     EDITOR = "vim";
