@@ -35,7 +35,7 @@ let
     tealdeer
     tmux
     gnumake
-    neofetch
+    fastfetch
     jq
     nixfmt
     git
@@ -45,7 +45,7 @@ let
     nil
     jetbrains-mono
     fzf
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono"]; })
     difftastic
     cargo-nextest
   ];
