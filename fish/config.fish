@@ -66,7 +66,7 @@
       end
 
       ## Opens matching files on vim
-      function fd-vim
+      function fdv
 	      fd $argv -X vim
       end
       ## Makes emacs use p-lists for faster lsp mode
