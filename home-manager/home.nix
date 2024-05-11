@@ -19,14 +19,10 @@ in {
   };
 
   home.file = {
-  #  ".config/doom" = {
-  #    source = vars.emacsConfig;
-  #    recursive = true;
-  #  };
-   # ".emacs.d" = {
-   #   source = ../emacs-vanilla;
-   #   recursive = true;
-   # };
+    ".config/doom" = {
+      source = vars.emacsConfig;
+      recursive = true;
+    };
   };
   home.sessionVariables = {
     # The best $EDITOR

@@ -3,6 +3,6 @@ rec {
   isLinux = builtins.currentSystem == "x86_64-linux";
   home = builtins.getEnv "HOME";
   user = builtins.getEnv "USER";
-  emacsConfig = ../doom-emacs;
+  emacsConfig = ../doom;
   fishNixPath = home + "/.nix-profile/bin/fish";
 }
