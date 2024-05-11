@@ -5,6 +5,7 @@ let
   fenix = import
     (fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz")
     { };
+  lsp-booster = import ./lsp-booster.nix { pkgs = pkgs; };
 in with pkgs;
 let
   macPackages = if vars.isMac then [
@@ -24,6 +25,7 @@ let
   rustUtils = [ bacon mprocs ];
   devPackages = [ ];
   basePackages = [
+    lsp-booster
     lazygit
     flameshot
     htop

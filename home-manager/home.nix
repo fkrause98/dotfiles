@@ -40,6 +40,7 @@ in {
   programs.git = import ./git.nix { };
   programs.direnv = import ./direnv.nix;
   programs.emacs = {
+    package = pkgs.emacs;
     enable = true;
     extraPackages = epkgs: [ epkgs.vterm ];
   };
