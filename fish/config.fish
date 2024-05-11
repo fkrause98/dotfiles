@@ -59,6 +59,19 @@
       ## Loads asdf definitions
       source "$HOME/.nix-profile/share/asdf-vm/asdf.fish"
 
+      ## Makes emacs use p-lists for faster lsp mode
+      set -x LSP_USE_PLISTS true
+      ## 
+      function install-doom-emacs --description 'Install doom emacs' 
+	      rm -rf $HOME/.emacs.d
+	      git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+	    ~/.config/emacs/bin/doom install
+      end
+
+      ## Opens matching files on vim
+      function fd-vim
+	      fd $argv -X vim
+      end
       # Defined via `source`
       function nix-shell --description 'alias nix-shell nix-shell --run fish'
           command nix-shell --run fish $argv
