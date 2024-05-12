@@ -49,3 +49,5 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 (package! yul-mode)
+(package! eglot-booster
+  :recipe (:host github :repo "jdtsmith/eglot-booster" :files ("eglot-booster.el")))

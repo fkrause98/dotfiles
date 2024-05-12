@@ -17,11 +17,15 @@ in {
     config = config;
     pkgs = pkgs;
   };
-
-  home.file = {};
+  home.file = {
+	  ".config/doom" = {
+		  source = vars.emacsConfig;
+		  recursive = true;
+	  };
+  };
   home.sessionVariables = {
     # The best $EDITOR
-    EDITOR = "vim";
+    EDITOR = "ec";
   };
   # Manage XDG env variables for Linux programs.
   targets.genericLinux.enable = vars.isLinux;

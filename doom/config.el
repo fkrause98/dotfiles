@@ -106,3 +106,6 @@
             (cons "emacs-lsp-booster" orig-result))
         orig-result)))
   (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command))
+
+(after! eglot
+  (eglot-booster-mode))

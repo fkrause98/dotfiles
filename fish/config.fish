@@ -10,7 +10,10 @@
       function ec --wraps="emacsclient -a=vim" --description 'alias "emacs -nw" em'
         emacsclient -nw -a=vim $argv
       end
-      
+
+      set emacs_server_socket_path (emacsclient --eval '(setq server-socket-dir (expand-file-name server-socket-dir)) (message server-socket-dir)' 2>/dev/null)
+
+
       ## Vim aliases
       function vi --wraps=vim --description 'alias vi vim'
           vim $argv
@@ -33,6 +36,7 @@
           nix-shell -p $ppkgs
       end
       if [ (uname -s) = Darwin ]
+          # Increase file descriptors limit
           ulimit -n 200000
           ulimit -u 2048
       end
@@ -69,9 +73,15 @@
       function fdv
 	      fd $argv -X vim
       end
+
       ## Makes emacs use p-lists for faster lsp mode
       set -x LSP_USE_PLISTS true
       set -x DOOMDIR "~/dotfiles/doom/"
+      if not test -n "$emacs_server_socket_path"
+        echo "Emacs server not running. Starting..."
+        emacs --bg-daemon >/dev/null 2>&1
+      end
+
       # Defined via `source`
       function nix-shell --description 'alias nix-shell nix-shell --run fish'
           command nix-shell --run fish $argv
