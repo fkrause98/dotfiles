@@ -50,6 +50,7 @@ let
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono"]; })
     difftastic
     cargo-nextest
+    nodejs
   ];
   # doomEmacsDeps = [
   #   binutils

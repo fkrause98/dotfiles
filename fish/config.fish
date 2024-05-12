@@ -53,6 +53,8 @@
       end
       ## Add doom binary to path
       fish_add_path $HOME/.config/emacs/bin/
+      ## Add lldb-mi binary to path for dap-mode debugging
+      fish_add_path $HOME/.config/emacs/.local/etc/dap-extension/vscode/cpptools/extension/debugAdapters/lldb-mi/bin
       ## Make iex remember command history
       set -x ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
       ## Add asdf completions

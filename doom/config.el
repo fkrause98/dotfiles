@@ -109,3 +109,8 @@
 
 (after! eglot
   (eglot-booster-mode))
+
+(add-hook! rustic-mode
+  (require 'dap-lldb)
+  (require 'dap-cpptools)
+  (require 'dap-gdb-lldb))
