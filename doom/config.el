@@ -77,7 +77,7 @@
 
 (add-hook! 'find-file-hook 'solaire-mode)
 
-(after! lsp
+(after! lsp-mode
   (defun lsp-booster--advice-json-parse (old-fn &rest args)
     "Try to parse bytecode instead of json."
     (or
