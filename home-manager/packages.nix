@@ -71,4 +71,5 @@ in builtins.concatLists [
   macPackages
   linuxPackages
   rustUtils
+  devPackages
 ]
