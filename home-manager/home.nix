@@ -25,7 +25,7 @@ in {
   };
   home.sessionVariables = {
     # The best $EDITOR
-    EDITOR = "ec";
+    EDITOR = "vim";
   };
   # Manage XDG env variables for Linux programs.
   targets.genericLinux.enable = vars.isLinux;
