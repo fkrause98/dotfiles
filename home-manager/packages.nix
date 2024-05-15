@@ -9,6 +9,7 @@ let
 in with pkgs;
 let
   macPackages = if vars.isMac then [
+    colima
     asdf-vm
     wxGTK32
     elixir-ls
@@ -23,7 +24,7 @@ let
     [ ];
   linuxPackages = if vars.isLinux then [ xsel emacs29 ] else [ ];
   rustUtils = [ bacon mprocs ];
-  devPackages = [ ];
+  devPackages = [ nodePackages_latest.typescript-language-server ];
   basePackages = [
     lsp-booster
     lazygit
