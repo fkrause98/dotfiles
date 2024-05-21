@@ -24,7 +24,7 @@ let
     [ ];
   linuxPackages = if vars.isLinux then [ xsel emacs29 ] else [ ];
   rustUtils = [ bacon mprocs ];
-  devPackages = [ nodePackages_latest.typescript-language-server ];
+  devPackages = [ nodePackages_latest.typescript-language-server cmake];
   basePackages = [
     lsp-booster
     lazygit
@@ -52,6 +52,7 @@ let
     difftastic
     cargo-nextest
     nodejs
+    pyright
   ];
   # doomEmacsDeps = [
   #   binutils
