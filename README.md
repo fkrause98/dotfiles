@@ -23,7 +23,7 @@ And now, follow the steps to install home manager.
 If for some reason the install fails, be sure to remove every
 backup file that nix creates:
 ```
-$ sudo find /etc/ -name '*nix*' -print0 | sudo xargs --null rm
+# sudo find /etc/ -name '*nix*' -print0 | sudo xargs --null rm
 ```
 And now, follow the steps to install home manager.
 
