@@ -154,3 +154,9 @@ _r_: Restart
     ("r" #'dape-restart)
     ("q" nil "Quit" :color blue)
     ("Q" #'dape-quit :color blue)))
+
+
+
+(after! magit
+  (map! :map magit-mode-map
+        :nv "g$" #'magit-process-buffer))
