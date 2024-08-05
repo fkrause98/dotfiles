@@ -24,7 +24,7 @@ let
     [ ];
   linuxPackages = if vars.isLinux then [ xsel emacs29 ] else [ ];
   rustUtils = [ bacon mprocs ];
-  devPackages = [ nodePackages_latest.typescript-language-server cmake];
+  devPackages = [ nodePackages_latest.typescript-language-server ];
   basePackages = [
     lsp-booster
     lazygit

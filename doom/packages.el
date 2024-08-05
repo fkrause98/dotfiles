@@ -51,3 +51,13 @@
 (package! yul-mode)
 (package! eglot-booster
   :recipe (:host github :repo "jdtsmith/eglot-booster" :files ("eglot-booster.el")))
+
+(package! copilot
+  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+
+(package! fancy-compilation)
+
+(package! bash-completion
+  :disable t)
+
+(package! dape)
