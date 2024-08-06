@@ -20,13 +20,13 @@ let
     # omnisharp-roslyn
     # dotnet-sdk_7
     rustup
+    lsp-booster
   ] else
     [ ];
-  linuxPackages = if vars.isLinux then [ xsel emacs29 ] else [ ];
+  linuxPackages = if vars.isLinux then [ xsel ] else [ ];
   rustUtils = [ bacon mprocs ];
   devPackages = [ nodePackages_latest.typescript-language-server ];
   basePackages = [
-    lsp-booster
     lazygit
     flameshot
     htop
@@ -48,7 +48,7 @@ let
     nil
     jetbrains-mono
     fzf
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono"]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     difftastic
     cargo-nextest
     nodejs
