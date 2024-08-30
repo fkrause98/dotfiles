@@ -54,3 +54,7 @@ nix-channel --add https://github.com/nix-community/home-manager/archive/master.t
 ```
 home-manager switch
 ```
+
+## Some useful Nix references:
+
+- [CPP Flake Template](https://github.com/nkoturovic/cpp-nix-project-template)  
