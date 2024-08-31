@@ -11,13 +11,13 @@ sudo ln -s $(pwd)/nixos /etc/nixos
 ```
 ## 🐧 Linux  nix install:
 ```
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix >> nix.sh && sh nix.sh rm nix.sh
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix >> nix.sh && sh nix.sh install && rm nix.sh
 ```
 
 And now, follow the steps to install home manager.
 ## 🍎 Mac nix install:
 ```
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix >> nix.sh && sh nix.sh rm nix.sh
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix >> nix.sh && sh nix.sh install && rm nix.sh
 ```
 
 If for some reason the install fails, be sure to remove every
