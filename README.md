@@ -51,9 +51,13 @@ nix-channel --add https://nixos.org/channels/nixpkgs-unstable && nix-channel --u
 ```sh
    sudo scutil --set LocalHostName muaddib
 ```
-5. 
+5. Install nix-darwin
 ```sh
 nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake ~/dotfiles
+```
+6. Setup fish's prompt
+```sh
+fish && tide-setup
 ```
 
 ## Some useful Nix references:
