@@ -42,16 +42,17 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ```sh
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable && nix-channel --update
 ```
-3. As of yet, nix-darwin does not support installing homebrew but can manage its packages, let's add it:
+3. Install brew manually since nix-darwin needs it:
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &&    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/fran/.zprofile
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \ && 
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/fran/.zprofile \ && 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
-5. Update the mac's host-name to match with the one expected on the config
-   ```sh
+4. Update the mac's host-name to match with the one expected on the config
+```sh
    sudo scutil --set LocalHostName muaddib
 ```
-6. 
+5. 
 ```sh
 nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake ~/dotfiles
 ```
