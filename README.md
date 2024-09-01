@@ -55,9 +55,9 @@ nix-channel --add https://nixos.org/channels/nixpkgs-unstable && nix-channel --u
 ```sh
 nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake ~/dotfiles
 ```
-6. Setup fish's prompt
+6. Setup fish's prompt, install doom emacs:
 ```sh
-fish && tide-setup
+fish && tide-setup && install-doom-emacs
 ```
 
 ## Some useful Nix references:
