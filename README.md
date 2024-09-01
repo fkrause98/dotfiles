@@ -40,7 +40,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ```
 2. Add unstable channel
 ```sh
-nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable && nix-channel --update
 ```
 3. As of yet, nix-darwin does not support installing homebrew but can manage its packages, let's add it:
 ```sh
