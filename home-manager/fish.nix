@@ -20,10 +20,10 @@
       inherit (fzf) src;
     }
 
-    # {
-    #   name = "tide";
-    #   inherit (tide) src;
-    # }
+    {
+      name = "tide";
+      inherit (tide) src;
+    }
 
     {
       name = "done";

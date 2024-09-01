@@ -40,7 +40,6 @@
 
         # Create /etc/zshrc that loads the nix-darwin environment.
         programs.zsh.enable = true;
-        programs.fish.enable = true;
         services.emacs = {
           enable = true;
           package = pkgs.emacs-macport;
