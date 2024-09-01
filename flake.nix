@@ -58,7 +58,12 @@
         };
         security.pam.enableSudoTouchIdAuth = true;
         # Enable tap to click
-        system.defaults.NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
+        system.defaults.trackpad.Clicking = true;
+        # system.defaults.trackpad.Clicking = true;
+        # Enable Rosetta 2
+        system.activationScripts.extraActivation.text = ''
+          softwareupdate --isntall-rosetta --agree-to-license
+        '';
       };
     in {
       darwinConfigurations."fran-mbp" = nix-darwin.lib.darwinSystem {
