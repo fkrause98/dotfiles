@@ -47,9 +47,13 @@ nix-channel --add https://nixos.org/channels/nixpkgs-unstable && nix-channel --u
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
  && eval "$(/opt/homebrew/bin/brew shellenv)" 
 ```
-4. Update the mac's host-name to match with the one expected on the config
+4. Update the mac's host-name to match with the one expected on the config, use
+one of these two:
 ```sh
    sudo scutil --set LocalHostName muaddib
+```
+```sh
+   sudo scutil --set LocalHostName arrakis
 ```
 5. Install nix-darwin
 ```sh
