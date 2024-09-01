@@ -39,11 +39,6 @@
   programs.fish = import ./fish.nix { pkgs = pkgs; };
   programs.git = import ./git.nix { };
   programs.direnv = import ./direnv.nix;
-  programs.emacs = {
-    package = pkgs.emacs;
-    enable = true;
-    extraPackages = epkgs: [ epkgs.vterm ];
-  };
   home.activation = {
     # This will make nix-installed applications on mac
     # available on spotlight.

@@ -17,9 +17,7 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
     let
-      pkgs = (import nixpkgs) { allowUnfree = true; };
-
-      configuration = { pkgs, ... }: {
+      configuration = { pkgs, ... }: rec {
         services.nix-daemon.enable = true;
         # Necessary for using flakes on this system.
         nix.settings.experimental-features = "nix-command flakes";
@@ -43,21 +41,28 @@
         # Create /etc/zshrc that loads the nix-darwin environment.
         programs.zsh.enable = true;
         programs.fish.enable = true;
-	services.emacs.enable = true;
-	
+        services.emacs = {
+          enable = true;
+          package = pkgs.emacs-macport;
+        };
 
-        environment.systemPackages = [
-          pkgs.fastfetch
-          pkgs.vim
-          pkgs.darwin.CF
+        environment.systemPackages = with pkgs; [
+          ((emacsPackagesFor emacs-macport).emacsWithPackages
+            (epkgs: [ epkgs.vterm ]))
+          fastfetch
+          vim
+          darwin.CF
+
           pkgs.darwin.apple_sdk.frameworks.SystemConfiguration
         ];
+
         homebrew = {
           enable = true;
           taps = [ ];
           brews = [ "docker" ];
           casks = [ "rectangle" "tg-pro" "iterm2" ];
         };
+
         security.pam.enableSudoTouchIdAuth = true;
         # Enable tap to click
         system.defaults.trackpad.Clicking = true;
