@@ -1,6 +1,5 @@
-{ config, pkgs, ... }:
+{ config, pkgs, vars, ... }:
 let
-  vars = import ./vars.nix;
   # Rust packages overlay
   fenix = import
     (fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz")
@@ -23,12 +22,12 @@ let
     lsp-booster
   ] else
     [ ];
-  linuxPackages = if vars.isLinux then [ xsel ] else [ ];
+  linuxPackages = if vars.isLinux then [ xsel flameshot ] else [ ];
   rustUtils = [ bacon mprocs ];
   devPackages = [ nodePackages_latest.typescript-language-server ];
   basePackages = [
+    fzf
     lazygit
-    flameshot
     htop
     statix
     ripgrep

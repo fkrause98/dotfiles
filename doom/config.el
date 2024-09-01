@@ -110,8 +110,7 @@
 (after! eglot
   (eglot-booster-mode))
 
-(setq shell-file-name
-      (expand-file-name "~/.nix-profile/bin/fish"))
+(setq shell-file-name "fish")
 
 (after! dape
   (setq dape-cwd-fn 'projectile-project-root)
@@ -137,15 +136,15 @@
   (require 'hydra)
   (defhydra hydra-dap (:color pink :hint nil)
     "
-^Dape Hydra^
-------------------------------------------------
-_n_: Next       _e_: Eval    _Q_: Disconnect
-_i_: Step In
-_o_: Step Out
-_c_: Continue
-_r_: Restart
+        ^Dape Hydra^
+        ------------------------------------------------
+        _n_: Next       _e_: Eval    _Q_: Disconnect
+        _i_: Step In
+        _o_: Step Out
+        _c_: Continue
+        _r_: Restart
 
-"
+        "
     ("n" #'dape-next)
     ("i" #'dape-step-in)
     ("o" #'dape-step-out)

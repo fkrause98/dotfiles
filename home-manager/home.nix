@@ -1,7 +1,6 @@
-{ config, lib, pkgs, ... }:
-let
-  vars = import ./vars.nix;
-in {
+{ config, lib, pkgs, vars, ... }:
+
+{
 
   # Home Manager needs a bit of information about you and the paths it should
   # manager
@@ -16,6 +15,7 @@ in {
   home.packages = import ./packages.nix {
     config = config;
     pkgs = pkgs;
+    vars = vars;
   };
   home.file = {
 	  ".config/doom" = {
@@ -34,10 +34,6 @@ in {
   programs.tmux = import ./tmux.nix {
     pkgs = pkgs;
     fishNixPath = vars.fishNixPath;
-  };
-    nix = {
-    package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
   };
   programs.vim = import ./vim.nix { };
   programs.fish = import ./fish.nix { pkgs = pkgs; };
