@@ -44,7 +44,8 @@ nix-channel --add https://nixos.org/channels/nixpkgs-unstable && nix-channel --u
 ```
 3. As of yet, nix-darwin does not support installing homebrew but can manage its packages, let's add it:
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &&    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/fran/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 5. Update the mac's host-name to match with the one expected on the config
    ```sh
