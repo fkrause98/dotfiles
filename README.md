@@ -46,7 +46,11 @@ nix-channel --add https://nixos.org/channels/nixpkgs-unstable && nix-channel --u
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-4. Install nix-darwin
+5. Update the mac's host-name to match with the one expected on the config
+   ```sh
+   sudo scutil --set LocalHostName muaddib
+```
+6. 
 ```sh
 nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake ~/dotfiles
 ```
