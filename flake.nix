@@ -43,6 +43,8 @@
         # Create /etc/zshrc that loads the nix-darwin environment.
         programs.zsh.enable = true;
         programs.fish.enable = true;
+	services.emacs.enable = true;
+	
 
         environment.systemPackages = [
           pkgs.fastfetch
@@ -62,7 +64,7 @@
         # system.defaults.trackpad.Clicking = true;
         # Enable Rosetta 2
         system.activationScripts.extraActivation.text = ''
-          softwareupdate --isntall-rosetta --agree-to-license
+          softwareupdate --install-rosetta --agree-to-license
         '';
       };
     in {
