@@ -13,4 +13,6 @@ _: {
     [pager]
          difftool = true
   '';
+  userEmail = "fkrausear@gmail.com";
+  userName = "fkrause98";
 }

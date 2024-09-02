@@ -46,13 +46,25 @@
         };
 
         environment.systemPackages = with pkgs; [
+
           ((emacsPackagesFor emacs-macport).emacsWithPackages
             (epkgs: [ epkgs.vterm ]))
           fastfetch
           vim
           darwin.CF
-
-          pkgs.darwin.apple_sdk.frameworks.SystemConfiguration
+          darwin.apple_sdk.frameworks.SystemConfiguration
+          colima
+          asdf-vm
+          wxGTK32
+          elixir-ls
+          iterm2
+          ngrok
+          protobuf
+          libiconv
+          # omnisharp-roslyn
+          # dotnet-sdk_7
+          rustup
+          (import ./home-manager/lsp-booster.nix { pkgs = pkgs; })
         ];
 
         homebrew = {
@@ -72,7 +84,7 @@
         '';
       };
     in {
-      darwinConfigurations."fran-mbp" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations."muaddib" = nix-darwin.lib.darwinSystem {
         modules = [
           configuration
           home-manager.darwinModules.home-manager

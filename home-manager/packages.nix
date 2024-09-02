@@ -7,21 +7,7 @@ let
   lsp-booster = import ./lsp-booster.nix { pkgs = pkgs; };
 in with pkgs;
 let
-  macPackages = if vars.isMac then [
-    colima
-    asdf-vm
-    wxGTK32
-    elixir-ls
-    iterm2
-    ngrok
-    protobuf
-    libiconv
-    # omnisharp-roslyn
-    # dotnet-sdk_7
-    rustup
-    lsp-booster
-  ] else
-    [ ];
+  macPackages = if vars.isMac then [ ] else [ ];
   linuxPackages = if vars.isLinux then [ xsel flameshot ] else [ ];
   rustUtils = [ bacon mprocs ];
   devPackages = [ nodePackages_latest.typescript-language-server ];
