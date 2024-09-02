@@ -46,7 +46,6 @@
         };
 
         environment.systemPackages = with pkgs; [
-
           ((emacsPackagesFor emacs-macport).emacsWithPackages
             (epkgs: [ epkgs.vterm ]))
           fastfetch
@@ -67,6 +66,7 @@
           (import ./home-manager/lsp-booster.nix { pkgs = pkgs; })
           nodejs_18
           yarn
+          sqlx-cli
         ];
 
         homebrew = {

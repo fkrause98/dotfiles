@@ -60,7 +60,8 @@ if test -d ~/.asdf/completions/asdf.fish
 end
 
 ## Loads asdf definitions
-source "$HOME/.nix-profile/share/asdf-vm/asdf.fish"
+# source "$HOME/.nix-profile/share/asdf-vm/asdf.fish"
+source (dirname (dirname (readlink -f (which asdf))))/share/asdf-vm/asdf.fish
 
 function install-doom-emacs --description 'Install doom emacs'
     rm -rf $HOME/.emacs.d
