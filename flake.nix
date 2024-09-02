@@ -65,13 +65,15 @@
           # dotnet-sdk_7
           rustup
           (import ./home-manager/lsp-booster.nix { pkgs = pkgs; })
+          nodejs_18
+          yarn
         ];
 
         homebrew = {
           enable = true;
           taps = [ ];
-          brews = [ "docker" ];
-          casks = [ "rectangle" "tg-pro" "iterm2" ];
+          brews = [ ];
+          casks = [ "rectangle" "tg-pro" "iterm2" "docker" ];
         };
 
         security.pam.enableSudoTouchIdAuth = true;
