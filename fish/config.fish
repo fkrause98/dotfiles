@@ -86,3 +86,8 @@ end
 function tide-setup
     tide configure --auto --style=Lean --prompt_colors='True color' --show_time=No --lean_prompt_height='Two lines' --prompt_connection=Disconnected --prompt_spacing=Sparse --icons='Few icons' --transient=No
 end
+
+## If using colima, set the proper docker socket
+if type -q colima
+    set -x DOCKER_HOST "unix://$HOME/.colima/docker.sock"
+end
