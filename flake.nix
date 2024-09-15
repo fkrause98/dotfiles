@@ -17,7 +17,7 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
     let
-      configuration = { pkgs, ... }: rec {
+      configuration = { pkgs, ... }: {
         services.nix-daemon.enable = true;
         # Necessary for using flakes on this system.
         nix.settings.experimental-features = "nix-command flakes";
@@ -38,7 +38,7 @@
           home = "/Users/fran";
         };
 
-        programs.zsh.enable = false;
+        programs.zsh.enable = true;
         programs.fish.enable = true;
         services.emacs = {
           enable = true;
