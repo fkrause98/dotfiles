@@ -70,11 +70,7 @@
        :emacs
        (dired +dirvish +icons)             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
-       <<<<<<< Updated upstream
        ;;ibuffer         ; interactive buffer management
-       =======
-       ibuffer         ; interactive buffer management
-       >>>>>>> Stashed changes
        (undo +tree)              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 
