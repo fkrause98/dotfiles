@@ -77,8 +77,34 @@ function tide-setup
 end
 
 ## If using colima, set the proper docker socket
-if type -q colima
+if not command -v nerdctl &>/dev/null
+    echo "nerdctl not found. Installing with Colima..."
+
+    # Set up aliases for docker commands
+    alias docker="nerdctl"
+    alias docker-compose="nerdctl compose"
+    # Alias for darwin-rebuild switch command
+    alias drs='darwin-rebuild switch --flake $HOME/dotfiles/'
+
     set -x DOCKER_HOST "unix://$HOME/.colima/docker.sock"
+
+    # Check if nerdctl is in PATH
+    # Check if Colima is installed
+    if command -v colima &>/dev/null
+        # Install nerdctl using Colima
+        sudo colima nerdctl install
+
+        # Check if installation was successful
+        if test $status -eq 0
+            echo "nerdctl installed successfully."
+        else
+            echo "Failed to install nerdctl. Please check your Colima installation."
+        end
+    else
+        echo "Colima is not installed. Please install Colima first."
+    end
+else
+    echo "nerdctl is already installed."
 end
 
 alias docker="nerdctl"
@@ -99,30 +125,4 @@ if test (uname) = Darwin
         echo "ASDF fish file not found at $asdf_fish_path"
     end
 
-    # Set up aliases for docker commands
-    alias docker="nerdctl"
-    alias docker-compose="nerdctl compose"
-    # Alias for darwin-rebuild switch command
-    alias drs='darwin-rebuild switch --flake $HOME/dotfiles/'
-    # Check if nerdctl is in PATH
-    if not command -v nerdctl &>/dev/null
-        echo "nerdctl not found. Installing with Colima..."
-
-        # Check if Colima is installed
-        if command -v colima &>/dev/null
-            # Install nerdctl using Colima
-            sudo colima nerdctl install
-
-            # Check if installation was successful
-            if test $status -eq 0
-                echo "nerdctl installed successfully."
-            else
-                echo "Failed to install nerdctl. Please check your Colima installation."
-            end
-        else
-            echo "Colima is not installed. Please install Colima first."
-        end
-    else
-        echo "nerdctl is already installed."
-    end
 end

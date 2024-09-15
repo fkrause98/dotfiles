@@ -13,9 +13,19 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    darwin-emacs = {
+      url = "github:c4710n/nix-darwin-emacs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    darwin-emacs-packages = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager
+    , darwin-emacs-packages, darwin-emacs }:
     let
       configuration = { pkgs, ... }: {
         services.nix-daemon.enable = true;
@@ -39,46 +49,73 @@
         };
 
         programs.zsh.enable = true;
-        programs.fish.enable = true;
-        services.emacs = {
-          enable = true;
-          package = pkgs.emacs-macport;
-        };
+        services.emacs = { enable = false; };
 
-        environment.systemPackages = with pkgs; [
-          ((emacsPackagesFor emacs-macport).emacsWithPackages
-            (epkgs: [ epkgs.vterm ]))
-          fastfetch
-          vim
-          darwin.CF
-          darwin.apple_sdk.frameworks.SystemConfiguration
-          colima
-          asdf-vm
-          wxGTK32
-          elixir-ls
-          iterm2
-          ngrok
-          protobuf
-          libiconv
-          # omnisharp-roslyn
-          # dotnet-sdk_7
-          rustup
-          (import ./home-manager/lsp-booster.nix { pkgs = pkgs; })
-          nodejs_18
-          yarn
-          sqlx-cli
-        ];
+        environment.systemPackages = with pkgs;
+          [
+            cmake
+            fastfetch
+            vim
+            colima
+            asdf-vm
+            wxGTK32
+            erlang-ls
+            elixir-ls
+            iterm2
+            ngrok
+            protobuf
+            libiconv
+            just
+            # omnisharp-roslyn
+            # dotnet-sdk_7
+            rustup
+            (import ./home-manager/lsp-booster.nix { pkgs = pkgs; })
+            nodejs_18
+            yarn
+            sqlx-cli
+            gleam
+            go
+            neovim
+          ] ++
+          # Rust build dependencies
+          [
+            pkgs.darwin.CF
+            pkgs.darwin.apple_sdk.frameworks.SystemConfiguration
+            pkgs.libiconv
+          ];
 
         homebrew = {
           enable = true;
-          taps = [ "jorgelbg/tap" "shaunsingh/SFMono-Nerd-Font-Ligaturized" ];
-          brews = [ ];
+          taps = [
+            "shaunsingh/SFMono-Nerd-Font-Ligaturized"
+            "d12frosted/emacs-plus"
+          ];
+          brews = [
+            "mosh"
+            "ansible"
+            "qemu"
+            {
+              name = "emacs-plus@30";
+              args = [
+                "with-debug"
+                "with-xwidgets"
+                "with-imagemagick"
+                "with-native-comp"
+                "with-poll"
+                "with-savchenkovaleriy-big-sur-curvy-3d-icon"
+              ];
+            }
+          ];
           casks = [
             "rectangle"
+            "vagrant"
             "tg-pro"
             "iterm2"
+            "docker"
             "font-sf-mono-nerd-font-ligaturized"
+            "Zettlr"
           ];
+          onActivation.extraFlags = [ "--verbose" ];
         };
 
         security.pam.enableSudoTouchIdAuth = true;
@@ -95,6 +132,15 @@
       };
       darwin_conf = nix-darwin.lib.darwinSystem {
         modules = [
+          # inputs.nix-doom-emacs-unstraightened.hmModule
+          {
+            nixpkgs = {
+              overlays = [
+                darwin-emacs.overlays.emacs
+                darwin-emacs-packages.overlays.package
+              ];
+            };
+          }
           configuration
           home-manager.darwinModules.home-manager
           {
@@ -115,7 +161,7 @@
         ];
       };
     in {
-      darwinConfigurations."atreides" = darwin_conf;
-      darwinConfigurations."harkonnen" = darwin_conf;
+      darwinConfigurations."dune" = darwin_conf;
+      darwinConfigurations."arrakis" = darwin_conf;
     };
 }

@@ -21,8 +21,9 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+(when (bound-and-true-p IS-MAC)
+  (setq doom-font (font-spec :family "Liga SFMono Nerd Font" :size 12 :weight 'regular)
+        doom-variable-pitch-font (font-spec :family "Liga SFMono Nerd Font" :size 13)))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -32,8 +33,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
-
+(setq doom-theme 'modus-vivendi)
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
@@ -79,7 +79,28 @@
   (eglot-booster-mode))
 
 (after! dape
-  (load-file "./dape.el"))
+  (setq dape-cwd-fn 'projectile-project-root)
+  (map! :map dap-mode-map
+        :leader
+        :prefix ("d" . "dap")
+        :desc "dap hydra" "h" #'hydra-dap/body
+
+        :desc "dap debug"   "s" #'dape
+        :desc "dap quit"    "q" #'dape-quit
+        :desc "dap restart" "r" #'dape-restart
+
+        :desc "dap breakpoint toggle"     "b" #'dape-breakpoint-toggle
+        :desc "dap breakpoint remove all" "B" #'dape-breakpoint-remove-all
+        :desc "dap breakpoint log"        "l" #'dape-breakpoint-log
+
+        :desc "dap continue" "c" #'dape-continue
+        :desc "dap next"     "n" #'dape-next
+        :desc "dap step in"  "i" #'dape-step-in
+        :desc "dap step out" "o" #'dape-step-out
+
+        :desc "dap eval" "e" #'dape-evaluate-expression))
+
+
 
 (after! magit
   (map! :map magit-mode-map
@@ -92,3 +113,19 @@
   (load "./lsp.el"))
 
 (setq shell-file-name "fish")
+
+(setq-default line-spacing 4)
+
+(after! compile
+  (compilation-set-skip-threshold 2))
+
+(after! rustic
+  (add-hook! rustic-mode
+             #'(lambda ()
+                 (set-popup-rule! "^\\*rustic-compilation"
+                   :side 'bottom
+                   :size 0.5
+                   :select t
+                   :quit 'current)
+                 (setq display-buffer-alist (assq-delete-all '^\\*rustic-compilation display-buffer-alist))
+                 (setq compilation-skip-threshold 2))))
