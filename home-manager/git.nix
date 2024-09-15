@@ -1,4 +1,5 @@
 _: {
+  userName = "fkrause98";
   extraConfig = ''
     [merge]
       conflictstyle = diff3
@@ -13,6 +14,4 @@ _: {
     [pager]
          difftool = true
   '';
-  userEmail = "fkrausear@gmail.com";
-  userName = "fkrause98";
 }

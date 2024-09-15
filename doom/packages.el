@@ -61,3 +61,7 @@
   :disable t)
 
 (package! dape)
+
+(package! gleam-ts-mode)
+
+(package! evil-matchit)

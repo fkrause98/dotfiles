@@ -27,7 +27,7 @@ let
     jq
     nixfmt
     git
-    vim
+    neovim
     victor-mono
     fira-code
     nil

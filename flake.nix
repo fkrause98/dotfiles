@@ -38,8 +38,8 @@
           home = "/Users/fran";
         };
 
-        # Create /etc/zshrc that loads the nix-darwin environment.
-        programs.zsh.enable = true;
+        programs.zsh.enable = false;
+        programs.fish.enable = true;
         services.emacs = {
           enable = true;
           package = pkgs.emacs-macport;
@@ -71,9 +71,14 @@
 
         homebrew = {
           enable = true;
-          taps = [ ];
+          taps = [ "jorgelbg/tap" "shaunsingh/SFMono-Nerd-Font-Ligaturized" ];
           brews = [ ];
-          casks = [ "rectangle" "tg-pro" "iterm2" "docker" ];
+          casks = [
+            "rectangle"
+            "tg-pro"
+            "iterm2"
+            "font-sf-mono-nerd-font-ligaturized"
+          ];
         };
 
         security.pam.enableSudoTouchIdAuth = true;
@@ -83,10 +88,12 @@
         # Enable Rosetta 2
         system.activationScripts.extraActivation.text = ''
           softwareupdate --install-rosetta --agree-to-license
+          if test -f $HOME/.config/emacs/bin/doom; then
+             $HOME/.config/emacs/bin/doom sync
+          fi
         '';
       };
-    in {
-      darwinConfigurations."muaddib" = nix-darwin.lib.darwinSystem {
+      darwin_conf = nix-darwin.lib.darwinSystem {
         modules = [
           configuration
           home-manager.darwinModules.home-manager
@@ -107,5 +114,8 @@
           }
         ];
       };
+    in {
+      darwinConfigurations."atreides" = darwin_conf;
+      darwinConfigurations."harkonnen" = darwin_conf;
     };
 }

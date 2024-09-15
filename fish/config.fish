@@ -33,9 +33,6 @@ function pythonEnv --description 'start a nix-shell with the given python packag
     nix-shell -p $ppkgs
 end
 if [ (uname -s) = Darwin ]
-    # Increase file descriptors limit
-    ulimit -n 200000
-    ulimit -u 2048
 end
 ## Add copy and paste as
 ## a terminal command
@@ -54,16 +51,8 @@ fish_add_path $HOME/.config/emacs/bin/
 fish_add_path $HOME/.config/emacs/.local/etc/dap-extension/vscode/cpptools/extension/debugAdapters/lldb-mi/bin
 ## Make iex remember command history
 set -x ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
-## Add asdf completions
-if test -d ~/.asdf/completions/asdf.fish
-    ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
-end
 
-## Loads asdf definitions
-# source "$HOME/.nix-profile/share/asdf-vm/asdf.fish"
-source (dirname (dirname (readlink -f (which asdf))))/share/asdf-vm/asdf.fish
-
-function install-doom-emacs --description 'Install doom emacs'
+function install-doom --description 'Install doom emacs'
     rm -rf $HOME/.emacs.d
     git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
     ~/.config/emacs/bin/doom install
@@ -90,4 +79,50 @@ end
 ## If using colima, set the proper docker socket
 if type -q colima
     set -x DOCKER_HOST "unix://$HOME/.colima/docker.sock"
+end
+
+alias docker="nerdctl"
+alias docker-compose="nerdctl compose"
+
+# If we're on macOS...
+if test (uname) = Darwin
+    # Increase file descriptor limit.
+    ulimit -n 200000
+    ulimit -u 2048
+
+    # Source asdf completions from nix-darwin.
+    set asdf_fish_path /run/current-system/sw/share/fish/vendor_completions.d/asdf.fish
+    if test -f $asdf_fish_path
+        source $asdf_fish_path
+        echo "ASDF configuration sourced successfully."
+    else
+        echo "ASDF fish file not found at $asdf_fish_path"
+    end
+
+    # Set up aliases for docker commands
+    alias docker="nerdctl"
+    alias docker-compose="nerdctl compose"
+    # Alias for darwin-rebuild switch command
+    alias drs='darwin-rebuild switch --flake $HOME/dotfiles/'
+    # Check if nerdctl is in PATH
+    if not command -v nerdctl &>/dev/null
+        echo "nerdctl not found. Installing with Colima..."
+
+        # Check if Colima is installed
+        if command -v colima &>/dev/null
+            # Install nerdctl using Colima
+            sudo colima nerdctl install
+
+            # Check if installation was successful
+            if test $status -eq 0
+                echo "nerdctl installed successfully."
+            else
+                echo "Failed to install nerdctl. Please check your Colima installation."
+            end
+        else
+            echo "Colima is not installed. Please install Colima first."
+        end
+    else
+        echo "nerdctl is already installed."
+    end
 end
