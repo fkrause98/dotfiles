@@ -113,7 +113,6 @@
             "iterm2"
             "docker"
             "font-sf-mono-nerd-font-ligaturized"
-            "Zettlr"
           ];
           onActivation.extraFlags = [ "--verbose" ];
         };
