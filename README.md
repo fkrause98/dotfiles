@@ -67,3 +67,4 @@ fish && tide-setup && install-doom-emacs
 ## Some useful Nix references:
 
 - [CPP Flake Template](https://github.com/nkoturovic/cpp-nix-project-template)
+- [The nix book](https://nixos-and-flakes.thiscute.world/)
