@@ -31,3 +31,5 @@
       orig-result)))
 
 (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
+
+(setq lsp-signature-auto-activate nil)

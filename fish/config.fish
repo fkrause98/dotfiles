@@ -76,39 +76,39 @@ function tide-setup
     tide configure --auto --style=Lean --prompt_colors='True color' --show_time=No --lean_prompt_height='Two lines' --prompt_connection=Disconnected --prompt_spacing=Sparse --icons='Few icons' --transient=No
 end
 
-## If using colima, set the proper docker socket
-if not command -v nerdctl &>/dev/null
-    echo "nerdctl not found. Installing with Colima..."
+# ## If using colima, set the proper docker socket
+# if not command -v nerdctl &>/dev/null
+#     echo "nerdctl not found. Installing with Colima..."
 
-    # Set up aliases for docker commands
-    alias docker="nerdctl"
-    alias docker-compose="nerdctl compose"
-    # Alias for darwin-rebuild switch command
-    alias drs='darwin-rebuild switch --flake $HOME/dotfiles/'
+#     # Set up aliases for docker commands
+#     alias docker="nerdctl"
+#     alias docker-compose="nerdctl compose"
+#     # Alias for darwin-rebuild switch command
+#     alias drs='darwin-rebuild switch --flake $HOME/dotfiles/'
 
-    set -x DOCKER_HOST "unix://$HOME/.colima/docker.sock"
+#     set -x DOCKER_HOST "unix://$HOME/.colima/docker.sock"
 
-    # Check if nerdctl is in PATH
-    # Check if Colima is installed
-    if command -v colima &>/dev/null
-        # Install nerdctl using Colima
-        sudo colima nerdctl install
+#     # Check if nerdctl is in PATH
+#     # Check if Colima is installed
+#     if command -v colima &>/dev/null
+#         # Install nerdctl using Colima
+#         sudo colima nerdctl install
 
-        # Check if installation was successful
-        if test $status -eq 0
-            echo "nerdctl installed successfully."
-        else
-            echo "Failed to install nerdctl. Please check your Colima installation."
-        end
-    else
-        echo "Colima is not installed. Please install Colima first."
-    end
-else
-    echo "nerdctl is already installed."
-end
+#         # Check if installation was successful
+#         if test $status -eq 0
+#             echo "nerdctl installed successfully."
+#         else
+#             echo "Failed to install nerdctl. Please check your Colima installation."
+#         end
+#     else
+#         echo "Colima is not installed. Please install Colima first."
+#     end
+# else
+#     echo "nerdctl is already installed."
+# end
 
-alias docker="nerdctl"
-alias docker-compose="nerdctl compose"
+# alias docker="nerdctl"
+# alias docker-compose="nerdctl compose"
 
 # If we're on macOS...
 if test (uname) = Darwin

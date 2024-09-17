@@ -31,10 +31,7 @@
   targets.genericLinux.enable = vars.isLinux;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.tmux = import ./tmux.nix {
-    pkgs = pkgs;
-    fishNixPath = vars.fishNixPath;
-  };
+  programs.tmux.enable = true;
   programs.vim = import ./vim.nix { };
   programs.fish = import ./fish.nix { pkgs = pkgs; };
   programs.git = import ./git.nix { };

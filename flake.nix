@@ -94,6 +94,7 @@
             "mosh"
             "ansible"
             "qemu"
+            "docker"
             {
               name = "emacs-plus@30";
               args = [
