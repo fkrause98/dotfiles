@@ -32,4 +32,5 @@
 
 (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
 
-(setq lsp-signature-auto-activate nil)
+(add-hook! lsp
+           #'(lambda () (setq lsp-signature-auto-activate '(:on-server-request))))

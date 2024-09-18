@@ -47,6 +47,8 @@ if test (uname -s) = Linux
 end
 ## Add doom binary to path
 fish_add_path $HOME/.config/emacs/bin/
+## Add cargo installed binaries to path
+fish_add_path $HOME/.cargo/bin
 ## Add lldb-mi binary to path for dap-mode debugging
 fish_add_path $HOME/.config/emacs/.local/etc/dap-extension/vscode/cpptools/extension/debugAdapters/lldb-mi/bin
 ## Make iex remember command history
