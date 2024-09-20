@@ -38,6 +38,8 @@
         # before changing: `darwin-rebuild changelog`.
         system.stateVersion = 4;
 
+        # Remap caps lock to control
+        system.keyboard.remapCapsLockToControl = true;
         # The platform the configuration will be used on.
         # If you're on an Intel system, replace with "x86_64-darwin"
         nixpkgs.hostPlatform = "aarch64-darwin";
@@ -112,7 +114,6 @@
             "vagrant"
             "tg-pro"
             "iterm2"
-            "docker"
             "font-sf-mono-nerd-font-ligaturized"
           ];
           onActivation.extraFlags = [ "--verbose" ];
