@@ -13,19 +13,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    darwin-emacs = {
-      url = "github:c4710n/nix-darwin-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    darwin-emacs-packages = {
-      url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager
-    , darwin-emacs-packages, darwin-emacs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
     let
       configuration = { pkgs, ... }: {
         services.nix-daemon.enable = true;
@@ -52,9 +42,11 @@
 
         programs.zsh.enable = true;
         services.emacs = { enable = false; };
-
+        system.keyboard.enableKeyMapping = true;
         environment.systemPackages = with pkgs;
           [
+            helix
+            delta
             cmake
             fastfetch
             vim
@@ -77,12 +69,14 @@
             sqlx-cli
             gleam
             go
+            gopls
             neovim
           ] ++
           # Rust build dependencies
           [
             pkgs.darwin.CF
             pkgs.darwin.apple_sdk.frameworks.SystemConfiguration
+            pkgs.darwin.apple_sdk.frameworks.Security
             pkgs.libiconv
           ];
 
@@ -133,15 +127,7 @@
       };
       darwin_conf = nix-darwin.lib.darwinSystem {
         modules = [
-          # inputs.nix-doom-emacs-unstraightened.hmModule
-          {
-            nixpkgs = {
-              overlays = [
-                darwin-emacs.overlays.emacs
-                darwin-emacs-packages.overlays.package
-              ];
-            };
-          }
+          { nixpkgs = { overlays = [ ]; }; }
           configuration
           home-manager.darwinModules.home-manager
           {
@@ -161,8 +147,5 @@
           }
         ];
       };
-    in {
-      darwinConfigurations."dune" = darwin_conf;
-      darwinConfigurations."arrakis" = darwin_conf;
-    };
+    in { darwinConfigurations."mac" = darwin_conf; };
 }
