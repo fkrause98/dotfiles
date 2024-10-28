@@ -1,4 +1,4 @@
-{ config, pkgs, vars, ... }:
+{ config, pkgs, ... }:
 let
   # Rust packages overlay
   fenix = import
@@ -7,13 +7,10 @@ let
   lsp-booster = import ./lsp-booster.nix { pkgs = pkgs; };
 in with pkgs;
 let
-  macPackages = if vars.isMac then [ ] else [ ];
-  linuxPackages = if vars.isLinux then [ xsel flameshot ] else [ ];
   rustUtils = [ bacon mprocs ];
   devPackages = [ nodePackages_latest.typescript-language-server ];
   basePackages = [
     fzf
-    lazygit
     htop
     statix
     ripgrep
@@ -39,23 +36,20 @@ let
     nodejs
     pyright
   ];
-  # doomEmacsDeps = [
-  #   binutils
-  #   (ripgrep.override { withPCRE2 = true; })
-  #   gnutls
-  #   fd
-  #   imagemagick
-  #   zstd
-  #   # nodePackages.javascript-typescript-langserver
-  #   # sqlite
-  #   editorconfig-core-c
-  # ];
+   doomEmacsDeps = [
+     binutils
+     (ripgrep.override { withPCRE2 = true; })
+     gnutls
+     fd
+     imagemagick
+     zstd
+     sqlite
+     editorconfig-core-c
+   ];
 
 in builtins.concatLists [
   # doomEmacsDeps
   basePackages
-  macPackages
-  linuxPackages
   rustUtils
   devPackages
 ]
