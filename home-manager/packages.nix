@@ -30,7 +30,8 @@ let
     nil
     jetbrains-mono
     fzf
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    nerd-fonts.FiraCode
+    nerd-fonts.JetBrainsMono
     difftastic
     cargo-nextest
     nodejs

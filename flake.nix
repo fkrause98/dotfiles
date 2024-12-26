@@ -17,6 +17,7 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
     let
+      home-manager-config = import ./home-manager/home.nix;
       configuration = { pkgs, ... }: {
         services.nix-daemon.enable = true;
         # Necessary for using flakes on this system.
@@ -147,5 +148,9 @@
           }
         ];
       };
-    in { darwinConfigurations."mac" = darwin_conf; };
+    in {
+	homeConfigurations."fran" = home-manager.lib.homeManagerConfiguration {
+		modules = [ ./home-manager/home.nix ];
+	};
+    };
 }
