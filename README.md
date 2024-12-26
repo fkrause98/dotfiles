@@ -44,7 +44,7 @@ one of these two:
 ```
 5. Install nix-darwin
 ```sh
-nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake ~/dotfiles
+nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake ~/dotfiles.#mac
 ```
 6. Setup fish's prompt, install doom emacs:
 ```sh

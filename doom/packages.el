@@ -79,3 +79,4 @@
                    (:exclude ".dir-locals.el" "*-tests.el"))))
 
 (package! perfect-margin)
+(package! xenops)

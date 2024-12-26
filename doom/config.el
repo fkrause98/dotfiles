@@ -109,8 +109,8 @@
 (after! tree-sitter
   (add-to-list 'auto-mode-alist '("\\.gleam$" . gleam-ts-mode)))
 
-(after! lsp-mode
-  (load "./lsp.el"))
+;; (after! lsp-mode
+;;   (load "./lsp.el"))
 
 (setq shell-file-name "fish")
 
@@ -129,3 +129,12 @@
                    :quit 'current)
                  (setq display-buffer-alist (assq-delete-all '^\\*rustic-compilation display-buffer-alist))
                  (setq compilation-skip-threshold 2))))
+
+
+
+(after! cc-mode
+  (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
+  (setq c-default-style
+        '((java-mode . "java")
+          (awk-mode . "awk")
+          (other . "cc-mode"))))
