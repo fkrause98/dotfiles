@@ -26,12 +26,11 @@ let
     git
     neovim
     victor-mono
-    fira-code
     nil
-    jetbrains-mono
     fzf
-    nerd-fonts.FiraCode
-    nerd-fonts.JetBrainsMono
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    fira-code
+    jetbrains-mono
     difftastic
     cargo-nextest
     nodejs
