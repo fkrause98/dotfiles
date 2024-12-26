@@ -4,8 +4,7 @@ This repo contains my configuration files for the programs I use, managed with n
 It should work both on Mac and Linux.
 
 ##  Setup
-## 🐧 Linux  nix setup:
-For linux, I'm using home-manager alone.
+## 🐧 Linux:
 1. Install nix
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix >> nix.sh && sh nix.sh install && rm nix.sh
@@ -14,23 +13,11 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ```sh
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 ```
-3. Link this repo's config (make s
-ure you're in the repo's local folder)
+3. Clone the repo and bootstrap home-manager:
 ```
-mkdir -p ~/.config/home-manager && ln -s $(pwd)/home-manager/home.nix ~/.config/home-manager/home.nix
+git clone git@github.com:fkrause98/dotfiles.git ~/dotfiles && nix run home-manager/master -- init --switch ~/dotfiles 
 ```
-4. Install home-manager:
-```
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager &&
-  nix-channel --update &&
-  nix-shell '<home-manager>' -A install
-```
-5. Finally, run home-manager:
-```
-home-manager switch
-```
-And now, follow the steps to install home manager.
-## 🍎 Mac nix install:
+## 🍎 Mac install:
 
 For Mac, I'm using both home-manager and nix-darwin.
 
