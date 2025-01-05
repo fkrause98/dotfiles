@@ -17,7 +17,6 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
     let
-      home-manager-config = import ./home-manager/home.nix;
       pkgs = nixpkgs;
       configuration = { pkgs, ... }: {
         services.nix-daemon.enable = true;
@@ -65,7 +64,7 @@
             # omnisharp-roslyn
             # dotnet-sdk_7
             rustup
-            (import ./home-manager/lsp-booster.nix { pkgs = pkgs; })
+            (import ./nix-configs/lsp-booster.nix { pkgs = pkgs; })
             nodejs_18
             yarn
             sqlx-cli
@@ -153,6 +152,15 @@
       homeConfigurations."fran" = home-manager.lib.homeManagerConfiguration {
         modules = [ ./home.nix ];
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        extraSpecialArgs = {
+          vars = rec {
+            isMac = false;
+            isLinux = true;
+            home = "/home/fran";
+            emacsConfig = ./doom;
+            fishNixPath = home + "/.nix-profile/bin/fish";
+          };
+        };
       };
       darwinConfigurations."mac" = darwin_conf;
     };

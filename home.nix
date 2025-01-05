@@ -1,11 +1,9 @@
-{ config, lib, pkgs, ... }:
-
-{
+{ config, lib, pkgs, vars, ... }: {
 
   # Home Manager needs a bit of information about you and the paths it should
   # manager
   home.username = "fran";
-  home.homeDirectory = "/home/fran";
+  home.homeDirectory = vars.home;
   nixpkgs.config.allowUnfree = true;
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
