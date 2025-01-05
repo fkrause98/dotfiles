@@ -10,6 +10,7 @@ let
   rustUtils = [ bacon mprocs ];
   devPackages = [ nodePackages_latest.typescript-language-server ];
   basePackages = [
+    lan-mouse
     fzf
     htop
     statix
@@ -36,16 +37,16 @@ let
     nodejs
     pyright
   ];
-   doomEmacsDeps = [
-     binutils
-     (ripgrep.override { withPCRE2 = true; })
-     gnutls
-     fd
-     imagemagick
-     zstd
-     sqlite
-     editorconfig-core-c
-   ];
+  doomEmacsDeps = [
+    binutils
+    (ripgrep.override { withPCRE2 = true; })
+    gnutls
+    fd
+    imagemagick
+    zstd
+    sqlite
+    editorconfig-core-c
+  ];
 
 in builtins.concatLists [
   # doomEmacsDeps
