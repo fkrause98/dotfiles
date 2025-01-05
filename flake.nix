@@ -136,7 +136,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.verbose = true;
-            home-manager.users.fran = import ./home-manager/home.nix;
+            home-manager.users.fran = import ./home.nix;
             home-manager.extraSpecialArgs = {
               vars = rec {
                 isMac = true;
@@ -150,10 +150,10 @@
         ];
       };
     in {
-	homeConfigurations."fran" = home-manager.lib.homeManagerConfiguration {
-		modules = [ ./home.nix ];
-		pkgs = nixpkgs.legacyPackages."x86_64-linux";
-	};
-	darwinConfigurations."mac" = darwin_conf;
+      homeConfigurations."fran" = home-manager.lib.homeManagerConfiguration {
+        modules = [ ./home.nix ];
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      };
+      darwinConfigurations."mac" = darwin_conf;
     };
 }
