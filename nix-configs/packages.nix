@@ -8,7 +8,7 @@ let
 in with pkgs;
 let
   rustUtils = [ bacon mprocs ];
-  devPackages = [ nodePackages_latest.typescript-language-server ];
+  devPackages = [ nodePackages_latest.typescript-language-server nodePackages.prettier ];
   basePackages = [
     lan-mouse
     fzf
@@ -34,7 +34,7 @@ let
     jetbrains-mono
     difftastic
     cargo-nextest
-    nodejs
+    # nodejs
     pyright
   ];
   doomEmacsDeps = [
