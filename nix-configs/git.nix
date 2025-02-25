@@ -1,17 +1,39 @@
 _: {
   userName = "fkrause98";
   extraConfig = ''
+    [core]
+      pager = delta
+
+    [interactive]
+      diffFilter = delta --color-only
+
+    [delta]
+      navigate = true
+      dark = true
+
     [merge]
-      conflictstyle = diff3
+     conflictstyle = zdiff3
+
     [pull]
       rebase = true
-    [diff]
-        tool = difftastic
-    [difftool]
-         prompt = false
-    [difftool "difftastic"]
-         cmd = difft "$LOCAL" "$REMOTE"
-    [pager]
-         difftool = true
+
+    [rebase]
+        autoSquash = true
+        autoStash = true
+        updateRefs = true
+
+    [fetch]
+        prune = true
+        pruneTags = true
+        all = true
+
+    [init]
+       defaultBranch = main
+
+    [column]
+       ui = auto
+
+    [branch]
+       sort = -committerdate
   '';
 }

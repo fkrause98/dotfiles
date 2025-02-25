@@ -8,9 +8,11 @@ let
 in with pkgs;
 let
   rustUtils = [ bacon mprocs ];
-  devPackages = [ nodePackages_latest.typescript-language-server nodePackages.prettier ];
+  devPackages =
+    [ nodePackages_latest.typescript-language-server nodePackages.prettier ];
   basePackages = [
     lan-mouse
+    solc-select
     fzf
     htop
     statix
