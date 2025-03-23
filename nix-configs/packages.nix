@@ -31,9 +31,6 @@ let
     victor-mono
     nil
     fzf
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
-    fira-code
-    jetbrains-mono
     difftastic
     cargo-nextest
     # nodejs
