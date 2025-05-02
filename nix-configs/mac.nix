@@ -40,13 +40,15 @@
     rustup
     apple-sdk
     (import ./lsp-booster.nix { pkgs = pkgs; })
-    emacs
   ];
 
   homebrew = {
     enable = true;
-    taps =
-      [ "shaunsingh/SFMono-Nerd-Font-Ligaturized" "railwaycat/emacsmacport" ];
+    taps = [
+      "shaunsingh/SFMono-Nerd-Font-Ligaturized"
+      "railwaycat/emacsmacport"
+      "jimeh/emacs-builds"
+    ];
     brews = [ "mosh" "qemu" "docker" ];
     casks = [
       "rectangle"
@@ -54,6 +56,7 @@
       "tg-pro"
       "iterm2"
       "font-sf-mono-nerd-font-ligaturized"
+      "emacs-app"
     ];
     onActivation.extraFlags = [ "--verbose" ];
   };
