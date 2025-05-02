@@ -109,8 +109,8 @@
 (after! tree-sitter
   (add-to-list 'auto-mode-alist '("\\.gleam$" . gleam-ts-mode)))
 
-;; (after! lsp-mode
-;;   (load "./lsp.el"))
+(after! lsp-mode
+  (load "./lsp.el"))
 
 (setq shell-file-name "fish")
 
