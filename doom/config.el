@@ -106,9 +106,6 @@
   (map! :map magit-mode-map
         :nv "g$" #'magit-process-buffer))
 
-(after! tree-sitter
-  (add-to-list 'auto-mode-alist '("\\.gleam$" . gleam-ts-mode)))
-
 (after! lsp-mode
   (load "./lsp.el"))
 

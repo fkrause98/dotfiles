@@ -1,7 +1,5 @@
 ;;; lsp.el -*- lexical-binding: t; -*-
 
-(add-to-list 'lsp-language-id-configuration '(gleam-ts-mode . '("gleam" "lsp")))
-
 (defun lsp-booster--advice-json-parse (old-fn &rest args)
   "Try to parse bytecode instead of json."
   (or
