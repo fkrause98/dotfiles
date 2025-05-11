@@ -31,7 +31,6 @@
       };
       darwinSystem = nix-darwin.lib.darwinSystem {
         modules = [
-          { nixpkgs = pkgs ; }
           darwinConfig
           home-manager.darwinModules.home-manager
           {
