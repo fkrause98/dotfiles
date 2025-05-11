@@ -22,7 +22,7 @@
   };
 
   programs.zsh.enable = true;
-  services.emacs.enable = true;
+  services.emacs.enable = false;
   system.keyboard.enableKeyMapping = true;
   environment.systemPackages = with pkgs; [
     helix
@@ -40,28 +40,24 @@
     rustup
     apple-sdk
     (import ./lsp-booster.nix { pkgs = pkgs; })
+    emacs
   ];
 
   homebrew = {
     enable = true;
     taps = [
       "shaunsingh/SFMono-Nerd-Font-Ligaturized"
-      "railwaycat/emacsmacport"
-      "jimeh/emacs-builds"
     ];
-    brews = [ "mosh" "qemu" "docker" ];
+    brews = [ "mosh" "docker" ];
     casks = [
-      "rectangle"
-      "vagrant"
       "tg-pro"
       "iterm2"
       "font-sf-mono-nerd-font-ligaturized"
-      "emacs-app"
     ];
     onActivation.extraFlags = [ "--verbose" ];
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
   # Enable tap to click
   system.defaults.trackpad.Clicking = true;
   # system.defaults.trackpad.Clicking = true;
