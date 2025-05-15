@@ -41,19 +41,15 @@
     apple-sdk
     (import ./lsp-booster.nix { pkgs = pkgs; })
     emacs
+    go
+    glibtool
   ];
 
   homebrew = {
     enable = true;
-    taps = [
-      "shaunsingh/SFMono-Nerd-Font-Ligaturized"
-    ];
+    taps = [ "shaunsingh/SFMono-Nerd-Font-Ligaturized" ];
     brews = [ "mosh" "docker" ];
-    casks = [
-      "tg-pro"
-      "iterm2"
-      "font-sf-mono-nerd-font-ligaturized"
-    ];
+    casks = [ "tg-pro" "iterm2" "font-sf-mono-nerd-font-ligaturized" ];
     onActivation.extraFlags = [ "--verbose" ];
   };
 

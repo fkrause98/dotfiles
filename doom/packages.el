@@ -80,3 +80,6 @@
 
 (package! perfect-margin)
 (package! modus-themes)
+(package! copilot-chat)
+(package! scroll-on-jump)
+(package! ellama)

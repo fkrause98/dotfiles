@@ -166,3 +166,34 @@
         '((java-mode . "java")
           (awk-mode . "awk")
           (other . "cc-mode"))))
+;; (with-eval-after-load 'evil
+;;   (scroll-on-jump-advice-add evil-undo)
+;;   (scroll-on-jump-advice-add evil-redo)
+;;   (scroll-on-jump-advice-add evil-jump-item)
+;;   (scroll-on-jump-advice-add evil-jump-forward)
+;;   (scroll-on-jump-advice-add evil-jump-backward)
+;;   (scroll-on-jump-advice-add evil-ex-search-next)
+;;   (scroll-on-jump-advice-add evil-ex-search-previous)
+;;   (scroll-on-jump-advice-add evil-forward-paragraph)
+;;   (scroll-on-jump-advice-add evil-backward-paragraph)
+;;   (scroll-on-jump-advice-add evil-goto-mark)
+
+;;   ;; Actions that themselves scroll.
+;;   (scroll-on-jump-with-scroll-advice-add evil-goto-line)
+;;   (scroll-on-jump-with-scroll-advice-add evil-scroll-down)
+;;   (scroll-on-jump-with-scroll-advice-add evil-scroll-up)
+;;   (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-center)
+;;   (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-top)
+;;   (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-bottom))
+
+;; (with-eval-after-load 'goto-chg
+;;   (scroll-on-jump-advice-add goto-last-change)
+;;   (scroll-on-jump-advice-add goto-last-change-reverse))
+
+;; (global-set-key (kbd "<C-M-next>") (scroll-on-jump-interactive 'diff-hl-next-hunk))
+;; (global-set-key (kbd "<C-M-prior>") (scroll-on-jump-interactive 'diff-hl-previous-hunk))
+
+(after! ellama
+  (setq ellama-auto-scroll t)
+  (ellama-context-header-line-global-mode +1)
+  (ellama-session-header-line-global-mode +1))
