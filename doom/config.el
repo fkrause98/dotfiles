@@ -79,7 +79,7 @@
   (eglot-booster-mode))
 
 (after! dape
-  (setq dape-cwd-fn 'projectile-project-root)
+  (setq dape-cwd-function 'projectile-project-root)
   (map! :map dap-mode-map
         :leader
         :prefix ("d" . "dap")
