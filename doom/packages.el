@@ -82,4 +82,4 @@
 (package! modus-themes)
 (package! copilot-chat)
 (package! scroll-on-jump)
-(package! ellama)
+(package! gptel :recipe (:nonrecursive t))
