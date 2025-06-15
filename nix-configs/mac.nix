@@ -47,8 +47,8 @@
 
   homebrew = {
     enable = true;
-    taps = [ "shaunsingh/SFMono-Nerd-Font-Ligaturized" ];
-    brews = [ "mosh" "docker" "pinentry-mac" ];
+    taps = [ "shaunsingh/SFMono-Nerd-Font-Ligaturized" "jorgelbg/tap" ];
+    brews = [ "mosh" "docker" "pinentry-mac" "pinentry-touchid" ];
     casks = [ "tg-pro" "iterm2" "font-sf-mono-nerd-font-ligaturized" ];
     onActivation.extraFlags = [ "--verbose" ];
   };
