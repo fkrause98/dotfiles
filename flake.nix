@@ -65,6 +65,6 @@
         };
       };
       darwinConfigurations.arrakis = darwinSystem;
-      darwinConfigurations.fran-mbp = darwinSystem;
+      darwinConfigurations.muaddib = darwinSystem;
     };
 }

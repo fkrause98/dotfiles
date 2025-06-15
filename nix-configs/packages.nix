@@ -35,6 +35,7 @@ let
     cargo-nextest
     # nodejs
     pyright
+    gnupg
   ];
   doomEmacsDeps = [
     binutils
