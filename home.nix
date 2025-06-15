@@ -18,6 +18,10 @@
       source = ./doom;
       recursive = true;
     };
+    ".gnupg/gpg-agent.conf" = {
+      source = ./gpg-agent.conf;
+      enable = vars.isMac;
+    };
   };
   home.sessionVariables = {
     # The best $EDITOR
