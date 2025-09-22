@@ -40,6 +40,10 @@
     rustup
     apple-sdk
     (import ./lsp-booster.nix { pkgs = pkgs; })
+    (import ./elixir-lsp.nix {
+      pkgs = pkgs;
+      is-mac = true;
+    })
     emacs
     go
     glibtool
