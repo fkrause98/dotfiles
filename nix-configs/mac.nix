@@ -11,6 +11,7 @@
 
   # Remap caps lock to control
   system.keyboard.remapCapsLockToControl = true;
+  system.primaryUser = "fran";
   # The platform the configuration will be used on.
   # If you're on an Intel system, replace with "x86_64-darwin"
   nixpkgs.hostPlatform = "aarch64-darwin";
@@ -40,10 +41,6 @@
     rustup
     apple-sdk
     (import ./lsp-booster.nix { pkgs = pkgs; })
-    (import ./elixir-lsp.nix {
-      pkgs = pkgs;
-      is-mac = true;
-    })
     emacs
     go
     glibtool
@@ -52,7 +49,8 @@
   homebrew = {
     enable = true;
     taps = [ "shaunsingh/SFMono-Nerd-Font-Ligaturized" "jorgelbg/tap" ];
-    brews = [ "mosh" "docker" "pinentry-mac" "pinentry-touchid" ];
+    brews =
+      [ "mosh" "docker" "pinentry-mac" "pinentry-touchid" "graphviz" "wabt" ];
     casks = [ "tg-pro" "iterm2" "font-sf-mono-nerd-font-ligaturized" ];
     onActivation.extraFlags = [ "--verbose" ];
   };

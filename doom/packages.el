@@ -83,3 +83,30 @@
 (package! copilot-chat)
 (package! scroll-on-jump)
 (package! gptel :recipe (:nonrecursive t))
+
+(package! symex-core
+  :recipe (
+           :host github
+           :host github
+           :repo "drym-org/symex.el"
+           :files ("symex-core/symex*.el" )))
+
+(package! symex
+  :recipe (
+           :host github
+           :repo "drym-org/symex.el"
+           :files ("symex/symex*.el" "symex/doc/*.texi" "symex/doc/figures"
+                   )))
+
+(package! symex-evil
+  :recipe (
+           :host github
+           :repo "drym-org/symex.el"
+           :files ("symex-evil/symex*.el")
+           ))
+
+(package! symex-ide
+  :recipe (
+           :host github
+           :repo "drym-org/symex.el"
+           :files ("symex-ide/symex*.el")))

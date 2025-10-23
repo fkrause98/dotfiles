@@ -29,6 +29,8 @@ let
     difftastic
     cargo-nextest
     cmake
+    # nodejs
+    nodejs
     pyright
     gnupg
     nerd-fonts.fira-code

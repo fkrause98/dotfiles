@@ -7,7 +7,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/25.05";
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/master";
+      url = "github:LnL7/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -17,21 +17,15 @@
     };
 
     darwin-emacs = {
-      url = "github:c4710n/nix-darwin-emacs";
+      url = "github:c4710n/nix-darwin-emacs/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs =
-    {
-      self,
-      nix-darwin,
-      nixpkgs,
-      home-manager,
-      darwin-emacs,
-    }:
+  outputs = { self, nix-darwin, nixpkgs, home-manager, darwin-emacs, }:
     let
-      pkgs = (nixpkgs.legacyPackages.aarch64-darwin.extend darwin-emacs.overlays.emacs);
+      pkgs = (nixpkgs.legacyPackages.aarch64-darwin.extend
+        darwin-emacs.overlays.emacs);
       darwinConfig = import ./nix-configs/mac.nix {
         pkgs = pkgs;
         self = self;
@@ -57,8 +51,7 @@
           }
         ];
       };
-    in
-    {
+    in {
       homeConfigurations."fran" = home-manager.lib.homeManagerConfiguration {
         modules = [ ./home.nix ];
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
