@@ -1,5 +1,5 @@
-_: {
-  enable = true;
+{ vars }: {
+  enable = vars.isLinux;
   settings = { ignorecase = true; };
   extraConfig = ''
     set mouse=a

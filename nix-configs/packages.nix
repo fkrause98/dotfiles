@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, vars, ... }:
 let lsp-booster = import ./lsp-booster.nix { pkgs = pkgs; };
 in with pkgs;
 let
@@ -39,7 +39,6 @@ let
     nerd-fonts.hurmit
     nerd-fonts._0xproto
     lsp-booster
-    clang
   ];
   doomEmacsDeps = [
     (ripgrep.override { withPCRE2 = true; })

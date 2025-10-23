@@ -12,6 +12,7 @@
   home.packages = import ./nix-configs/packages.nix {
     config = config;
     pkgs = pkgs;
+    vars = vars;
   };
   home.file = {
     ".config/doom" = {
@@ -31,7 +32,7 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.tmux.enable = true;
-  programs.vim = import ./nix-configs/vim.nix { };
+  programs.vim = import ./nix-configs/vim.nix { vars = vars; };
 
   services.emacs.enable = true;
   programs.emacs = {
