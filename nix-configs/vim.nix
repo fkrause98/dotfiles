@@ -1,4 +1,5 @@
 _: {
+  enable = true;
   settings = { ignorecase = true; };
   extraConfig = ''
     set mouse=a

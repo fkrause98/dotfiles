@@ -166,6 +166,7 @@
         '((java-mode . "java")
           (awk-mode . "awk")
           (other . "cc-mode"))))
+
 ;; (with-eval-after-load 'evil
 ;;   (scroll-on-jump-advice-add evil-undo)
 ;;   (scroll-on-jump-advice-add evil-redo)
@@ -193,17 +194,5 @@
 ;; (global-set-key (kbd "<C-M-next>") (scroll-on-jump-interactive 'diff-hl-next-hunk))
 ;; (global-set-key (kbd "<C-M-prior>") (scroll-on-jump-interactive 'diff-hl-previous-hunk))
 
-(use-package! gptel
-  :config
-  (setq gptel-model 'qwen2.5-coder:32b
-        gptel-backend (gptel-make-ollama "Ollama"
-                        :host "localhost:11434"
-                        :stream t
-                        :models '(qwen2.5-coder:32b))
-        gptel-default-mode #'org-mode)
-  (add-hook! gptel-post-stream 'gptel-auto-scroll)
-  (map!
-   :leader
-   (:prefix-map ("o" . "open")
-    :desc "Open GPT Chat"        "c" #'gptel
-    :desc "GPT Menu"             "g" #'gptel-menu)))
+
+

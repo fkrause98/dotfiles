@@ -1,4 +1,4 @@
-{ config, lib, pkgs, vars, ... }: {
+{ config, pkgs, vars, ... }: {
 
   # Home Manager needs a bit of information about you and the paths it should
   # manager
@@ -32,6 +32,14 @@
   programs.home-manager.enable = true;
   programs.tmux.enable = true;
   programs.vim = import ./nix-configs/vim.nix { };
+
+  services.emacs.enable = true;
+  programs.emacs = {
+    enable = true;
+    package = (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages
+      (epkgs: [ epkgs.vterm ]);
+  };
+
   programs.fish = import ./nix-configs/fish.nix { pkgs = pkgs; };
   programs.git = import ./nix-configs/git.nix { };
   programs.direnv = import ./nix-configs/direnv.nix;

@@ -1,39 +1,50 @@
 _: {
+  enable = true;
   userName = "fkrause98";
-  extraConfig = ''
-    [core]
-      pager = delta
+  extraConfig = {
+    core = {
+      pager = "delta";
+    };
 
-    [interactive]
-      diffFilter = delta --color-only
+    interactive = {
+      diffFilter = "delta --color-only";
+    };
 
-    [delta]
-      navigate = true
-      dark = true
+    delta = {
+      navigate = "true";
+      dark = "true";
+    };
 
-    [merge]
-     conflictstyle = zdiff3
+    merge = {
+      conflictstyle = "zdiff3";
+    };
 
-    [pull]
-      rebase = true
+    pull = {
+      rebase = "true";
+    };
 
-    [rebase]
-        autoSquash = true
-        autoStash = true
-        updateRefs = true
+    rebase = {
+      autoSquash = "true";
+      autoStash = "true";
+      updateRefs = "true";
+    };
 
-    [fetch]
-        prune = true
-        pruneTags = true
-        all = true
+    fetch = {
+      prune = "true";
+      pruneTags = "true";
+      all = "true";
+    };
 
-    [init]
-       defaultBranch = main
+    init = {
+      defaultBranch = "main";
+    };
 
-    [column]
-       ui = auto
+    column = {
+      ui = "auto";
+    };
 
-    [branch]
-       sort = -committerdate
-  '';
+    branch = {
+      sort = "-committerdate";
+    };
+  };
 }
