@@ -51,7 +51,8 @@
     taps = [ "shaunsingh/SFMono-Nerd-Font-Ligaturized" "jorgelbg/tap" ];
     brews =
       [ "mosh" "docker" "pinentry-mac" "pinentry-touchid" "graphviz" "wabt" ];
-    casks = [ "tg-pro" "iterm2" "font-sf-mono-nerd-font-ligaturized" ];
+    casks =
+      [ "tg-pro" "iterm2" "font-sf-mono-nerd-font-ligaturized" "ghostty" ];
     onActivation.extraFlags = [ "--verbose" ];
   };
 
