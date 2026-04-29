@@ -51,6 +51,11 @@ sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .
 fish && tide-setup && install-doom-emacs
 ```
 
+To switch generations:
+```sh
+sudo darwin-rebuild switch --flake ~/dotfiles
+```
+
 ## Some useful links:
 
 - [CPP Flake Template](https://github.com/nkoturovic/cpp-nix-project-template)

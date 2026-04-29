@@ -1,10 +1,16 @@
 _: {
   enable = true;
+
+  signing = {
+    signByDefault = true;
+    format = "ssh";
+    key = "~/.ssh/id_ed25519.pub";
+  };
+
   extraConfig = {
     user = {
       name = "fkrause98";
       email = "fkrausear@gmail.com";
-      signingkey = "~/.ssh/id_ed25519.pub";
     };
     core = { pager = "delta"; };
 
@@ -37,8 +43,5 @@ _: {
 
     branch = { sort = "-committerdate"; };
 
-    signing = { signByDefault = true; };
-
-    gpg = { format = "ssh"; };
   };
 }
