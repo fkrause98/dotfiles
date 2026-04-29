@@ -1,27 +1,23 @@
 _: {
   enable = true;
-  userName = "fkrause98";
   extraConfig = {
-    core = {
-      pager = "delta";
+    user = {
+      name = "fkrause98";
+      email = "fkrausear@gmail.com";
+      signingkey = "~/.ssh/id_ed25519.pub";
     };
+    core = { pager = "delta"; };
 
-    interactive = {
-      diffFilter = "delta --color-only";
-    };
+    interactive = { diffFilter = "delta --color-only"; };
 
     delta = {
       navigate = "true";
       dark = "true";
     };
 
-    merge = {
-      conflictstyle = "zdiff3";
-    };
+    merge = { conflictstyle = "zdiff3"; };
 
-    pull = {
-      rebase = "true";
-    };
+    pull = { rebase = "true"; };
 
     rebase = {
       autoSquash = "true";
@@ -35,16 +31,14 @@ _: {
       all = "true";
     };
 
-    init = {
-      defaultBranch = "main";
-    };
+    init = { defaultBranch = "main"; };
 
-    column = {
-      ui = "auto";
-    };
+    column = { ui = "auto"; };
 
-    branch = {
-      sort = "-committerdate";
-    };
+    branch = { sort = "-committerdate"; };
+
+    signing = { signByDefault = true; };
+
+    gpg = { format = "ssh"; };
   };
 }

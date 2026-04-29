@@ -44,14 +44,15 @@ one of these two:
 ```
 5. Install nix-darwin
 ```sh
-nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake ~/dotfiles.#mac
+sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .
 ```
 6. Setup fish's prompt, install doom emacs:
 ```sh
 fish && tide-setup && install-doom-emacs
 ```
 
-## Some useful Nix references:
+## Some useful links:
 
 - [CPP Flake Template](https://github.com/nkoturovic/cpp-nix-project-template)
 - [The nix book](https://nixos-and-flakes.thiscute.world/)
+- [Generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)

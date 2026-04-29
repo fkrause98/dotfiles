@@ -1,7 +1,7 @@
 # ~/.config/nix/flake.nix
 
 {
-  description = "Fran's mac config";
+  description = "Fran's nix config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/25.05";
